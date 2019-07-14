@@ -183,6 +183,67 @@ pRamVariables.HardResetFlag = HardResetFlagDisabled;
 
 #if RAMTUNE_AUTOCOPY
 
+void Copy3DTableToRam(ThreeDTable *table, void* pRamBuffer, int ramBufferSize)
+{
+	int cellSize;
+	switch(table->tableType)
+	{
+		case UInt8Table3D:
+			Copy8Bit3DTableToRam(table, (char*)pRamBuffer, ramBufferSize);
+			break;
+			
+		case UInt16Table3D:
+			Copy16Bit3DTableToRam(table, (short*)pRamBufffer, ramBufferSize);
+			break;			
+	}
+}
+
+void Copy8Bit3DTableToRam(ThreeDTable table, char* pRamBuffer, int ramBufferSize)
+{
+	int sizeNeeded = table->rowCount * table->ColumnCount;
+	if (sizeNeeded != ramBufferSize)
+	{
+		// This would be bad. How do we tell the user that something is wrong? 
+		// Set a CEL?
+		// Set the whole ram buffer to zero, hope the car won't run?
+		return;
+	}
+	
+	char *source = (char*)table->tableCells;
+	char *destination = (char*)pRamBuffer;
+	
+	for(int x = 0; x < table->rowCount; x++)
+	{
+		for (int y = 0; y < table->columnCount; y++)
+		{
+			destination[x][y] = source[x][y];
+		}
+	}
+}
+
+void Copy16Bit3DTableToRam(ThreeDTable table, short* pRamBuffer, int ramBufferSize)
+{
+	int sizeNeeded = 2 * table->rowCount * table->ColumnCount;
+	if (sizeNeeded != ramBufferSize)
+	{
+		// This would be bad. How do we tell the user that something is wrong? 
+		// Set a CEL?
+		// Set the whole ram buffer to zero, hope the car won't run?
+		return;
+	}
+	
+	short *source = (short*)table->tableCells;
+	short *destination = (short*)pRamBuffer;
+	
+	for(int x = 0; x < table->rowCount; x++)
+	{
+		for (int y = 0; y < table->columnCount; y++)
+		{
+			destination[x][y] = source[x][y];
+		}
+	}
+}
+
 void AutoPopulateRamTables()
 {
 short* spoint;
