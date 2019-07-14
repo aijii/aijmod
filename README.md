@@ -1,3 +1,10 @@
+# AijMod
+
+Aijmod was forked from Merpmod... some time in 2016 to build out blending/switching/injector scaling to be more feature-rich in a flex-fuel context. 
+
+This ultimately needs to be re-based back into Merpmod but I don't know how to do it, so we're in a new repo for the moment whilst live-tuning gets built.
+
+
 # MerpMod
 
 MerpMod is a patch designed for Subaru ecu roms. The goal of this project is to bring advanced features to the oem ecu.
