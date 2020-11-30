@@ -63,6 +63,10 @@ void GenericTests()
 	ProgModeUnitTests();
 #endif
 
+#if DYN_RAMTUNING
+    Pull2DFloatUnitTests();
+#endif
+
 	BrickBuster();
 }
 

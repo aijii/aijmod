@@ -121,6 +121,15 @@ void Assert(int condition, unsigned char *message) __attribute__ ((section ("Mis
 int AreCloseEnough(float actual, float expected) __attribute__ ((section ("Misc")));
 
 
+//////////////////////////
+//Dynamic RAM Tuning
+//////////////////////////
+#if DYN_RAMTUNING
+#define DefaultRAMTableRomAddr 0xFFFFFFFF
+#define DefaultRAMTableRamAddr 0x0000FFFF
+extern void Pull2DFloatDynRamHook(TwoDTable *table);
+#endif
+
 ////////////////////
 //TABLES
 ////////////////////

@@ -4,6 +4,10 @@ SECTIONS
 	{
 		*(RevLimit)
 	}
+	hPull2DFloatRamInjectStart 0x000BE80C : AT (0x000BE80C)
+	{
+		*(Pull2DFloatRamInjectStart)
+	}
 	ROMHOLE_START 0x000E1400 : AT (0x000E1400)
 	{
 		*(RomHole_Identifier)

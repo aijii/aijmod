@@ -191,6 +191,23 @@ typedef struct
 	float offset;
 } TwoDTable;
 
+typedef struct __attribute__ ((__packed__))
+{
+    /*
+    8-byte structure in RAM used to identify a RAM Tune table
+
+    the first 4 bytes store the original table address in ROM (romaddress)
+
+    the final 4 bytes store the offset of the corresponding RAM table from the
+    base RAM table array. For SH7058, RAM is from 0xFFFF0000 to 0xFFFFBFFF.
+    Because of this, any offset will necessarily be less than 0xBFFF, which means
+    that the top two bytes will never be nonzero. As such, we can use the two
+    most significant bytes to handle anything we need to
+    */
+    unsigned long romaddress;
+    unsigned long ramaddress; // use top two bytes for flags, lower bytes as offset from base of ramtable array
+} TableDefRAM;
+
 typedef struct
 {
 	ThreeDTable* TableI;

@@ -231,3 +231,10 @@
 #define pMemoryResetLimit (0xFFFFBF9F)
 #define hMemoryResetLimit (0x00011C58)
 
+/////////////////////
+// Dynamic RAM Tuning
+/////////////////////
+
+#define hPull2DFloatRamInjectStart (0x000BE80C)
+#define hPull2DFloatRamInjectEnd (0x000BE834)
+

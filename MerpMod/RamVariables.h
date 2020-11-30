@@ -309,6 +309,14 @@ typedef struct
 	unsigned long ScannedStackPointer;
 #endif
 
+//this should be at the end of the RAM hole to not have to worry about
+//collisions with other RAM variables
+#if DYN_RAMTUNING
+#define _MAX_RAM_TABLES_ 10 //arbitrary number for now...
+    TableDefRAM RAMTableHeaders[_MAX_RAM_TABLES_];
+    unsigned char RAMTableArrayMarker;
+#endif
+
 long	RamHoleSpace;
 char	RamHoleEndMarker;
 	

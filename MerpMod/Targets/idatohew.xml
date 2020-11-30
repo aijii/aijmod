@@ -610,6 +610,11 @@
             <ida name="HOOK_MEMORY_RESET_LIMIT" />
         </define>
     </category>
+
+    <category name="Dynamic RAM Tuning">
+        <define name="hPull2DFloatRamInjectStart" />
+        <define name="hPull2DFloatRamInjectEnd" />
+    </category>
   
   </defines>
   <sections>
@@ -622,6 +627,9 @@
     </section>
     <section name="SPARK_CUT_GR_START">
       <subsection name="SparkCutGRhook" />
+    </section>
+    <section name="hPull2DFloatRamInjectStart">
+      <subsection name="Pull2DFloatRamInjectStart" />
     </section>
     <section name="ROMHOLE_START">
         <alias name="dRomHoleStart" />

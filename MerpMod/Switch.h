@@ -53,5 +53,6 @@
 #define TIPIN_RAMTUNING 0	//
 #define RAM_HOLE_SCANNER 1  //
 #define RAMTUNE_AUTOCOPY 1	//
+#define DYN_RAMTUNING 1		//
 							//
 //////////////////////////////	

@@ -178,6 +178,21 @@ modinfo	:	ModInfo OpDelim
 	};
 #endif
 
+#if DYN_RAMTUNING
+//////////////////////
+//					//
+//DYNAMIC RAMTUNING	//
+//					//
+//////////////////////
+	const MetaPatch Pull2DFloatRamInjectStart METADATA =
+	{
+		op: OpPatch,
+		startaddress: hPull2DFloatRamInjectStart,
+		endaddress: hPull2DFloatRamInjectEnd - 1,
+		name: STR(Pull2DFloat Dynamic Ramtuning)
+	};
+#endif
+
 #if REVLIM_HACKS
 //////////////////////
 //					//

@@ -176,6 +176,15 @@ pRamVariables.CruiseCoastLast = TestCruiseCoastSwitch();
 	AutoPopulateRamTables();
 #endif
 
+#if DYN_RAMTUNING
+    TableDefRAM *p = &(pRamVariables.RAMTableHeaders[_MAX_RAM_TABLES_ - 1]);
+    while(p >= pRamVariables.RAMTableHeaders){
+        p->romaddress = DefaultRAMTableRomAddr;
+        p->ramaddress = DefaultRAMTableRamAddr;
+        p--;
+    }
+#endif
+
 pRamVariables.ECUIdentifier = *(long*)dEcuId;
 pRamVariables.HardResetFlag = HardResetFlagDisabled;
 
