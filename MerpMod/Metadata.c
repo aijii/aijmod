@@ -540,7 +540,7 @@ const MetaReplace POLFHook METADATA =
 	{
 		op: OpReplace4Bytes,
 		address: hFBKCRetardValue,
-		oldval: dFBKCRetardValue,
+		oldval: (long) dFBKCRetardValue,
 		newval: (int)&(pRamVariables.FBKCRetardValue),
 		name: STR(Timing FBKC Retard Hook)
 	};
@@ -549,7 +549,7 @@ const MetaReplace POLFHook METADATA =
 	{
 		op: OpReplace4Bytes,
 		address: hFBKCRetardValueAlternate,
-		oldval: dFBKCRetardValueAlternate,
+		oldval: (long) dFBKCRetardValueAlternate,
 		newval: (int)&(pRamVariables.FBKCRetardValueAlternate),
 		name: STR(Timing FBKC Retard Alternate Hook)
 	};	
