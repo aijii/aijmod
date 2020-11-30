@@ -1,0 +1,41 @@
+SECTIONS
+{
+	REVLIM_START 0x00038884 : AT (0x00038884)
+	{
+		*(RevLimit)
+	}
+	SPARK_CUT_OCR_START 0x0000A892 : AT (0x0000A892)
+	{
+		*(SparkCutOCRhook)
+	}
+	SPARK_CUT_GR_START 0x0000A902 : AT (0x0000A902)
+	{
+		*(SparkCutGRhook)
+	}
+	hPull2DFloatRamInjectStart 0x000020B4 : AT (0x000020B4)
+	{
+		*(Pull2DFloatRamInjectStart)
+	}
+	ROMHOLE_START 0x000DF810 : AT (0x000DF810)
+	{
+		*(RomHole_Identifier)
+		*(RomHole_Misc)
+		*(RomHole_SpeedDensityTables)
+		*(RomHole_RevLimTables)
+		*(RomHole_CelFlashTables)
+		*(RomHole_POLFHackTables)
+		*(RomHole_BoostHackTables)
+		*(RomHole_TimingHackTables)
+		*(RomHole_MapSwitchTables)
+		*(RomHole_ProgModeTables)
+		*(RomHole_PortLoggerTables)
+		*(RomHole_Vin)
+		*(RomHole_Code)
+		*(RomHole_Functions)
+		*(RomHole_RomHoleEndMarker)
+	}
+	RAMHOLE_START 0xFFFFB500 : AT (0xFFFFB500)
+	{
+		*(RamHole)
+	}
+}
