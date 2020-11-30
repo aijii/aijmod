@@ -334,6 +334,10 @@
 "C:\Projects\MerpMod-aijv1.6\MerpMod\TableHackTests.c" "User" "C source file|Tests" 2 
 "C:\Projects\MerpMod-aijv1.6\MerpMod\TargetConfig.h" "User" "C header file" 2 
 "C:\Projects\MerpMod-aijv1.6\MerpMod\TargetHeader.h" "User" "C header file" 2 
+"C:\Projects\MerpMod-aijv1.6\MerpMod\Targets\A2UI001L.h" "User" "C header file|ECU Specific Headers|USDM|LGT|A2UI001L_USDM_2007_LGT_SPECB" 2 
+"C:\Projects\MerpMod-aijv1.6\MerpMod\Targets\A2UI001L.map" "User" "C header file|ECU Specific Headers|USDM|LGT|A2UI001L_USDM_2007_LGT_SPECB" 2 
+"C:\Projects\MerpMod-aijv1.6\MerpMod\Targets\A2UI001L.txt" "User" "C header file|ECU Specific Headers|USDM|LGT|A2UI001L_USDM_2007_LGT_SPECB" 2 
+"C:\Projects\MerpMod-aijv1.6\MerpMod\Targets\A2UI001LConfig.h" "User" "C header file|ECU Specific Headers|USDM|LGT|A2UI001L_USDM_2007_LGT_SPECB" 2 
 "C:\Projects\MerpMod-aijv1.6\MerpMod\Targets\A8DK100H.h" "User" "C header file|ECU Specific Headers|ADM|A8DK100H_ADM_2007_FXT_AT" 2 
 "C:\Projects\MerpMod-aijv1.6\MerpMod\Targets\A8DK100H.txt" "User" "C header file|ECU Specific Headers|ADM|A8DK100H_ADM_2007_FXT_AT" 2 
 "C:\Projects\MerpMod-aijv1.6\MerpMod\Targets\A8DK100HConfig.h" "User" "C header file|ECU Specific Headers|ADM|A8DK100H_ADM_2007_FXT_AT" 2 
@@ -399,6 +403,7 @@
 "C header file|ECU Specific Headers|USDM|FXT|A2WC412I_USDM_2005_FXT" "" 
 "C header file|ECU Specific Headers|USDM|LGT" "" 
 "C header file|ECU Specific Headers|USDM|LGT|A2UG002T_USDM_2007_LGT_MT" "" 
+"C header file|ECU Specific Headers|USDM|LGT|A2UI001L_USDM_2007_LGT_SPECB" "" 
 "C header file|ECU Specific Headers|USDM|LGT|A2WC522N_USDM_2005_LGT_MT" "" 
 "C header file|ECU Specific Headers|USDM|OBXT" "" 
 "C header file|ECU Specific Headers|USDM|OBXT|A2WC510S_USDM_2005_OBXT" "" 
