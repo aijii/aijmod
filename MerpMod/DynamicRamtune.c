@@ -16,6 +16,7 @@
 
 #if DYN_RAMTUNING
 
+void Pull2DFloatDynRamHook(TwoDTable* table) ROMCODE;
 void Pull2DFloatDynRamHook(TwoDTable* table){
 
     //push x index (in r6) to stack
