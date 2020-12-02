@@ -886,9 +886,9 @@
 [LINKAGE_ORDER_Gratis_Testing]
 [GENERAL_DATA_CONFIGURATION_Gratis_Testing]
 [OPTIONS_Switch_Debug_GNU Assembler]
-"Assembly source file" "05ff67a07d201d10" 4 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\DynamicRamtunePatch.s" "0e0086208f5c6d10" 4 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\ResetHandler.s" "05ff67a07d201d10" 4 
+"Assembly source file" "05ff67a07d201d10" 5 
+"C:\Projects\MerpMod-aijv1.6\MerpMod\DynamicRamtunePatch.s" "0e0086208f5c6d10" 5 
+"C:\Projects\MerpMod-aijv1.6\MerpMod\ResetHandler.s" "05ff67a07d201d10" 5 
 [OPTIONS_Switch_Debug_GNU Compiler]
 "C source file" "05ff67a07d201d10" 2 
 "C++ source file" "05ff67a07d201d10" 2 
@@ -900,7 +900,7 @@
 "C:\Projects\MerpMod-aijv1.6\MerpMod\CelFlashTests.c" "05ff67a07d201d10" 2 
 "C:\Projects\MerpMod-aijv1.6\MerpMod\Debug.c" "05ff67a07d201d10" 2 
 "C:\Projects\MerpMod-aijv1.6\MerpMod\Definition.c" "05ff67a07d201d10" 2 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\DynamicRamtune.c" "0a4d3084c86c6d10" 3 
+"C:\Projects\MerpMod-aijv1.6\MerpMod\DynamicRamtune.c" "02489d99108c6d10" 4 
 "C:\Projects\MerpMod-aijv1.6\MerpMod\DynamicRamtuneTests.c" "0a4d3084c86c6d10" 3 
 "C:\Projects\MerpMod-aijv1.6\MerpMod\EcuHacks.c" "05ff67a07d201d10" 2 
 "C:\Projects\MerpMod-aijv1.6\MerpMod\FailSafes.c" "01637a0eb2061d10" 2 
@@ -939,7 +939,7 @@
 [OPTIONS_Switch_Debug_GNU Library Generator]
 "Single Shot" "0aafeb6ac96c6d10" 1 
 [OPTIONS_Switch_Debug_GNU Linker]
-"Single Shot" "0d34b717ef835d10" 5 
+"Single Shot" "046ee196608c6d10" 6 
 [OPTIONS_Switch_Debug_Target Selection]
 "Single Shot" "06bf4d23307eec10" 0 
 [OPTIONS_Switch_Debug_Update Test Rom]
@@ -951,8 +951,10 @@
 
 
 -T ^"^"$(PROJDIR)\LinkerScript.txt^"^"^"] [S|CPUTYPE|SH4-SINGLE-ONLY] [S|ENDIAN|BIG] [B|MRENESAS|1] [B|MIEEE|1] [S|PROJECTTYPE|CAPPPROJECT] [B|DOOPTLIB|1] [B|DOPROJBUILT|1]
-" 5 
+" 6 
 "[V|VERSION|2] [S|INCDIR|^"$(PROJDIR)^"] [I|DEBUGLV|2] [S|OBJPATH|^"$(CONFIGDIR)\$(FILELEAF).o^"] [B|LINCASS|1] [B|LINCSYM|1] [B|LINCHLS|1] [S|CPUTYPE|SH4-SINGLE-ONLY] [S|ENDIAN|BIG] [B|MRENESAS|1] [B|MIEEE|1] [S|PROJECTTYPE|CAPPPROJECT]
+" 5 
+"[V|VERSION|2] [S|INCDIR|^"$(TCINSTALL)\sh-elf\sh-elf\optlibinc^"|^"$(TCINSTALL)\sh-elf\lib\gcc\sh-elf\4.7-GNUSH_v13.01\optlibinc^"] [S|DEFINES|DEBUG|TARGET_ECU=A8DH202X] [S|OUTPUT|ASMCODE] [S|OBJPATH|^"$(CONFIGDIR)\$(FILELEAF).s^"] [B|DEBUG|0] [S|DEBUGFT|Native] [I|DEBUGLV|2] [S|ALIGN4|ALL] [S|ASSEMBLY|^"[V|VERSION|2]] [I|DEBUGLV|2]] [S|OBJPATH|^"^"$(CONFIGDIR)\$(FILELEAF).o^"^"]] [S|CPUTYPE|SH4-SINGLE-ONLY]] [S|ENDIAN|BIG]] [B|MRENESAS|1]] [B|MIEEE|1]] [S|PROJECTTYPE|CAPPPROJECT]]^"] [B|OPTIMIZE|1] [B|LTO|0] [I|OPTLV|2] [B|NOSTDINC|1] [S|CPUTYPE|SH4-SINGLE-ONLY] [S|ENDIAN|BIG] [B|MRENESAS|1] [B|MIEEE|1] [S|PROJECTTYPE|CAPPPROJECT] [B|DOOPTLIB|1]
 " 4 
 "[V|VERSION|2] [S|INCDIR|^"$(TCINSTALL)\sh-elf\sh-elf\optlibinc^"|^"$(TCINSTALL)\sh-elf\lib\gcc\sh-elf\4.7-GNUSH_v13.01\optlibinc^"] [S|DEFINES|DEBUG|TARGET_ECU=A8DH202X] [S|OUTPUT|ASMCODE] [S|OBJPATH|^"$(CONFIGDIR)\$(FILELEAF).s^"] [B|DEBUG|1] [S|DEBUGFT|Native] [I|DEBUGLV|2] [S|ALIGN4|ALL] [S|ASSEMBLY|^"[V|VERSION|2]] [I|DEBUGLV|2]] [S|OBJPATH|^"^"$(CONFIGDIR)\$(FILELEAF).o^"^"]] [S|CPUTYPE|SH4-SINGLE-ONLY]] [S|ENDIAN|BIG]] [B|MRENESAS|1]] [B|MIEEE|1]] [S|PROJECTTYPE|CAPPPROJECT]]^"] [B|OPTIMIZE|0] [B|LTO|0] [I|OPTLV|2] [B|NOSTDINC|1] [S|CPUTYPE|SH4-SINGLE-ONLY] [S|ENDIAN|BIG] [B|MRENESAS|1] [B|MIEEE|1] [S|PROJECTTYPE|CAPPPROJECT] [B|DOOPTLIB|1]
 " 2 
@@ -965,12 +967,13 @@
 [OUTPUT_FILES_Switch_Debug_Target Selection]
 [OUTPUT_FILES_Switch_Debug_Update Test Rom]
 [EXCLUDED_FILES_Switch_Debug]
+"C:\Projects\MerpMod-aijv1.6\MerpMod\DynamicRamtune.c" 
 [LINKAGE_ORDER_Switch_Debug]
 [GENERAL_DATA_CONFIGURATION_Switch_Debug]
 [OPTIONS_Switch_Release_GNU Assembler]
-"Assembly source file" "0232ed23307eec10" 3 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\DynamicRamtunePatch.s" "042eb933746c6d10" 5 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\ResetHandler.s" "0232ed23307eec10" 3 
+"Assembly source file" "0232ed23307eec10" 6 
+"C:\Projects\MerpMod-aijv1.6\MerpMod\DynamicRamtunePatch.s" "01a00a60d08c6d10" 5 
+"C:\Projects\MerpMod-aijv1.6\MerpMod\ResetHandler.s" "0232ed23307eec10" 6 
 [OPTIONS_Switch_Release_GNU Compiler]
 "C source file" "08c9cd23307eec10" 2 
 "C++ source file" "08c9cd23307eec10" 2 
@@ -982,8 +985,8 @@
 "C:\Projects\MerpMod-aijv1.6\MerpMod\CelFlashTests.c" "08c9cd23307eec10" 2 
 "C:\Projects\MerpMod-aijv1.6\MerpMod\Debug.c" "08c9cd23307eec10" 2 
 "C:\Projects\MerpMod-aijv1.6\MerpMod\Definition.c" "08c9cd23307eec10" 2 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\DynamicRamtune.c" "03d5e2bf366c6d10" 4 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\DynamicRamtuneTests.c" "06486792376c6d10" 3 
+"C:\Projects\MerpMod-aijv1.6\MerpMod\DynamicRamtune.c" "04fb53b3808c6d10" 4 
+"C:\Projects\MerpMod-aijv1.6\MerpMod\DynamicRamtuneTests.c" "0fe1354f808c6d10" 3 
 "C:\Projects\MerpMod-aijv1.6\MerpMod\EcuHacks.c" "08c9cd23307eec10" 2 
 "C:\Projects\MerpMod-aijv1.6\MerpMod\FailSafes.c" "01637a0eb2061d10" 2 
 "C:\Projects\MerpMod-aijv1.6\MerpMod\FuelHackTables.c" "08c9cd23307eec10" 2 
@@ -1021,7 +1024,7 @@
 [OPTIONS_Switch_Release_GNU Library Generator]
 "Single Shot" "08c9cd23307eec10" 1 
 [OPTIONS_Switch_Release_GNU Linker]
-"Single Shot" "0d34b717ef835d10" 4 
+"Single Shot" "038bdfc5d08c6d10" 7 
 [OPTIONS_Switch_Release_Target Selection]
 "Single Shot" "08c9cd23307eec10" 0 
 [OPTIONS_Switch_Release_Update Test Rom]
@@ -1033,9 +1036,19 @@
 
 
 -T ^"^"$(PROJDIR)\LinkerScript.txt^"^"^"] [S|CPUTYPE|SH2E] [S|ENDIAN|BIG] [B|MRENESAS|1] [B|MIEEE|1] [S|PROJECTTYPE|CAPPPROJECT] [B|DOOPTLIB|1] [B|DOPROJBUILT|1]
-" 4 
+" 7 
 "[V|VERSION|2] [S|INCDIR|^"$(PROJDIR)^"] [I|DEBUGLV|2] [S|OBJPATH|^"$(CONFIGDIR)\$(FILELEAF).o^"] [B|LINCASS|1] [B|LINCSYM|1] [B|LINCHLS|1] [S|CPUTYPE|SH2E] [S|ENDIAN|BIG] [B|MRENESAS|1] [B|MIEEE|1] [S|PROJECTTYPE|CAPPPROJECT]
+" 6 
+"[V|VERSION|2] [S|INCDIR|^"$(PROJDIR)^"] [I|DEBUGLV|2] [S|OBJPATH|^"$(CONFIGDIR)\$(FILELEAF).o^"] [S|ENDIAN|BIG] [S|PROJECTTYPE|CAPPPROJECT] [S|APPTXT|^"-renesas^"]
+" 5 
+"[V|VERSION|2] [S|INCDIR|^"$(PROJDIR)^"] [S|OUTPUT|OBJECT] [S|OBJPATH|^"$(CONFIGDIR)\$(FILELEAF).o^"] [B|DEBUG|1] [S|DEBUGFT|Native] [I|DEBUGLV|2] [S|ALIGN4|ALL] [B|LINCASS|1] [B|LINCSYM|1] [B|LINCHLS|1] [B|OPTIMIZE|0] [B|LTO|0] [I|OPTLV|3] [S|CPUTYPE|SH2E] [S|ENDIAN|BIG] [B|MRENESAS|1] [B|MIEEE|1] [S|PROJECTTYPE|CAPPPROJECT] [B|DOOPTLIB|1]
 " 3 
+"[V|VERSION|2] [S|INCDIR|^"$(TCINSTALL)\sh-elf\lib\gcc\sh-elf\4.7-GNUSH_v13.01\mrenesas\m2e^"|^"$(CONFIGDIR)^"] [S|OUTPUT|ASMCODE] [S|OBJPATH|^"$(CONFIGDIR)\$(FILELEAF).s^"] [B|DEBUG|0] [S|DEBUGFT|Native] [I|DEBUGLV|3] [S|ALIGN4|ALL] [S|ASSEMBLY|^"[V|VERSION|2]] [I|DEBUGLV|2]] [S|OBJPATH|^"^"$(CONFIGDIR)\$(FILELEAF).o^"^"]] [S|CPUTYPE|SH2E]] [S|ENDIAN|BIG]] [S|PROJECTTYPE|CAPPPROJECT]]^"] [B|OPTIMIZE|1] [B|LTO|0] [I|OPTLV|3] [B|NOSTDINC|1] [S|APPTXT|^"-e _ResetHandler
+
+
+
+-T ^"^"$(PROJDIR)\LinkerScript.txt^"^"^"] [S|CPUTYPE|SH2E] [S|ENDIAN|BIG] [B|MRENESAS|1] [B|MIEEE|1] [S|PROJECTTYPE|CAPPPROJECT] [B|DOOPTLIB|1]
+" 4 
 "[V|VERSION|2] [S|INCDIR|^"$(TCINSTALL)\sh-elf\sh-elf\optlibinc^"|^"$(TCINSTALL)\sh-elf\lib\gcc\sh-elf\4.7-GNUSH_v13.01\optlibinc^"] [S|DEFINES|DEBUG|TARGET_ECU=A8DH202X] [S|OUTPUT|ASMCODE] [S|OBJPATH|^"$(CONFIGDIR)\$(FILELEAF).s^"] [B|DEBUG|1] [S|DEBUGFT|Native] [I|DEBUGLV|2] [S|ALIGN4|ALL] [S|ASSEMBLY|^"[V|VERSION|2]] [I|DEBUGLV|2]] [S|OBJPATH|^"^"$(CONFIGDIR)\$(FILELEAF).o^"^"]] [S|CPUTYPE|SH2E]] [S|ENDIAN|BIG]] [B|MRENESAS|1]] [B|MIEEE|1]] [S|PROJECTTYPE|CAPPPROJECT]]^"] [B|OPTIMIZE|0] [B|LTO|0] [I|OPTLV|2] [B|NOSTDINC|1] [S|CPUTYPE|SH2E] [S|ENDIAN|BIG] [B|MRENESAS|1] [B|MIEEE|1] [S|PROJECTTYPE|CAPPPROJECT] [B|DOOPTLIB|1]
 " 2 
 "[V|VERSION|2] [S|MODE|BUILD/CHANGED] [B|CTYPE|1] [B|DOPROJBUILT|1] [B|DOOPTLIB|1] [S|OUTPUTPATH|^"$(CONFIGDIR)\lib$(PROJECTNAME).a^"] [B|OPTIMIZE|1] [I|OPTTYPE|1] [S|CPUTYPE|SH2E] [S|ENDIAN|BIG] [B|MRENESAS|1] [B|MIEEE|1]
@@ -1045,6 +1058,7 @@
 [OUTPUT_FILES_Switch_Release_Target Selection]
 [OUTPUT_FILES_Switch_Release_Update Test Rom]
 [EXCLUDED_FILES_Switch_Release]
+"C:\Projects\MerpMod-aijv1.6\MerpMod\DynamicRamtune.c" 
 [LINKAGE_ORDER_Switch_Release]
 [GENERAL_DATA_CONFIGURATION_Switch_Release]
 [OPTIONS_Switch_Testing_GNU Assembler]

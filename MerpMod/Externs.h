@@ -106,6 +106,21 @@ void LeanBoostCount() ROMCODE;
 void UpdateFailSafes() ROMCODE;
 
 //////////////////////////
+//Dynamic RAM Tuning
+//////////////////////////
+#if DYN_RAMTUNING
+
+#define _MAX_RAM_TABLES_ 10 //arbitrary number for now...
+#define DefaultRAMTableRomAddr 0xFFFFFFFF
+#define DefaultRAMTableRamAddr 0x00000000
+extern void Pull2DFloatDynRamHook(TwoDTable* table);
+extern unsigned long RAMTableHeaders_ROMStart;
+extern unsigned long RAMTableHeaders_RAMStart;
+extern unsigned short MaxRAMTableHeaders;
+
+#endif
+
+//////////////////////////
 //Extern Function Pointers
 //////////////////////////
 extern float (*Pull3DHooked)(ThreeDTable* table, float xLookup, float yLookup);
@@ -119,16 +134,6 @@ extern void (*RevLimDeleteHooked) ();
 void TestFailed(unsigned char *message) __attribute__ ((section ("Misc")));
 void Assert(int condition, unsigned char *message) __attribute__ ((section ("Misc")));
 int AreCloseEnough(float actual, float expected) __attribute__ ((section ("Misc")));
-
-
-//////////////////////////
-//Dynamic RAM Tuning
-//////////////////////////
-#if DYN_RAMTUNING
-#define DefaultRAMTableRomAddr 0xFFFFFFFF
-#define DefaultRAMTableRamAddr 0x0000FFFF
-extern void Pull2DFloatDynRamHook(TwoDTable *table);
-#endif
 
 ////////////////////
 //TABLES

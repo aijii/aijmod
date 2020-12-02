@@ -1,6 +1,6 @@
 /*
     Copyright (C) 2020 Shamit Som shamitsom@gmail.com
-    
+
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
@@ -19,65 +19,103 @@
 
 // float (*Pull2DHooked)(TwoDTable *table, float xval) = (float(*)(TwoDTable*, float)) sPull2DFloat;
 
+//this test assumes the patched ROM is downloaded into HEW first, followed by the
+//MerpMod.x file immediately after
 void Pull2DFloatUnitTests() __attribute__ ((section ("Misc")));
 void Pull2DFloatUnitTests()
 {
     ClearRam();
     PopulateRamVariables();
 
-    int i;
+    short i;
 
-    //Verify Pull2D with 4-byte values (Front O2 Scaling Table)
+    //Verify Pull2DFloat with 4-byte values directly from ROM (Front O2 Scaling Table)
+    TwoDTable *FrontO2Scaling = (TwoDTable*) tFrontO2Scaling;
+    short numCells = FrontO2Scaling->columnCount;
+    float *FrontO2_X = FrontO2Scaling->columnHeaderArray;
+    float *FrontO2_Y_ROM = (float*) FrontO2Scaling->tableCells;
 
-    //Populate the two arrays with values directly from your ROM's disassembly,
-    //should be an easy copy-paste directly from IDA if you use float formatting
-    //and arrays for your tables data in the disassembly
-    float FrontO2_X[13] = {-1.3f,-0.86999995f,-0.47f,-0.13999999f, 0.0f, 0.099999994f, 0.23999999f, 0.38999999f, 0.52999997f, 0.63999999f, 0.73999995f, 0.73999995f, 0.73999995f};
-    float FrontO2_Y[13] = {0.7586f, 0.82758617f, 0.89655167f, 0.96551722f, 1.0f, 1.0344827f, 1.1034483f, 1.1724137f, 1.2413793f, 1.3103448f, 1.3793103f, 1.3793103f, 1.3793103f};
+    //arbitrary tables to populate in RAM, generated with different values
+    //calculated from the original ROM tables
+    float FrontO2_Y_RAM_1[numCells];
+    float FrontO2_Y_RAM_2[numCells];
+    for(i = 0; i < numCells; i++){
+        FrontO2_Y_RAM_1[i] = FrontO2_Y_ROM[i]*2.0;
+        FrontO2_Y_RAM_2[i] = FrontO2_Y_ROM[i]*0.5;
+    }
 
-    //arbitrary tables to populate in RAM (note the duplicated ending values,
-    //which should correspond to any duplicated values in the X-axis in the ROM
-    float FrontO2_YRAM[13] = {0.0f, 0.1f, 0.2f, 0.3f, 0.4f, 0.5f, 0.6f, 0.7f, 0.8f, 0.9f, 1.0f, 1.0f, 1.0f};
-
-    //Check that Pull2D works correctly from regular ROM tables
-    for(i = 0; i < 13; i++){
+    //Check that Pull2D pulls from regular ROM table when no RAM table defined
+    for(i = 0; i < numCells; i++){
         Assert(
-            AreCloseEnough(
-                Pull2DHooked((TwoDTable*) tFrontO2Scaling, FrontO2_X[i]), FrontO2_Y[i]),
-                "Pull2DHooked: Incorrect value, 4-byte table, ROM Table"
+            AreCloseEnough(Pull2DHooked(FrontO2Scaling, FrontO2_X[i]), FrontO2_Y_ROM[i]),
+            "Pull2DHooked: Incorrect value, 4-byte table, ROM Table"
         );
     }
 
-    //allocate a corresponding table in RAM with some arbitrary values
+    //allocate a corresponding table in RAM with arbitrary values
     float *test4ByteTable = (float*) &(pRamVariables.RAMTableArrayMarker);
-    for(i = 0; i < 13; i++){
-        test4ByteTable[i] = FrontO2_YRAM[i];
+    for(i = 0; i < numCells; i++){
+        test4ByteTable[i] = FrontO2_Y_RAM_1[i];
     }
 
     //create an INVALID header for the allocated RAM table
-    pRamVariables.RAMTableHeaders[0] = (TableDefRAM){
-        .romaddress = (long) ((TwoDTable*) tFrontO2Scaling)->tableCells,
-        .ramaddress = (long) test4ByteTable - (long) &(pRamVariables.RAMTableArrayMarker)
-    };
+    //
+    //ROM table is indexed increasing from base (0th element is _first_ in array)
+    //RAM table is addressed decreasing from end (0th element is _last_ in array)
+    //
+    //RAM table entry looks like 0xLLLLOOOO where "OOOO" is the lower 2 bytes
+    //of the table's base address, "LLLL" are flags. The RAM table is considered
+    //valid when the most-significant byte is set equal to 0xFF. Both upper
+    //bytes can be used by a connected PC for any desired flags when table is
+    //invalid, however since the ECU only checks the MSB for validity, it must
+    //be ensured that the lower byte is set to 0xFF ONLY if ALL of the upper flag
+    //bytes are also set to 0xFF, otherwise an undefined address will be used to
+    //pull data from, which is obviously not good.
+    //
+    //When valid, the full dword is just the RAM address to be used. This makes
+    //for a very efficient way for the ECU to check table validity without wasting
+    //precious ECU cycles, and it makes the organization of the dynamic RAM tables
+    //nearly trivial.
+    pRamVariables.RAMTableHeaderROMAddr[0] = (long) FrontO2_Y_ROM;
+    pRamVariables.RAMTableHeaderRAMAddr[_MAX_RAM_TABLES_ - 1] = (long) test4ByteTable & 0xAAAAFFFF; //arbitrary, non-valid flag bytes
 
     //ensure values still pulled from ROM with the invalid table header
-    for(i = 0; i < 13; i++){
+    for(i = 0; i < numCells; i++){
         Assert(
-            AreCloseEnough(
-                Pull2DHooked((TwoDTable*) tFrontO2Scaling, FrontO2_X[i]), FrontO2_Y[i]),
-                "Pull2DHooked: Incorrect value, 4-byte table, Invalid RAM table"
+            AreCloseEnough(Pull2DHooked(FrontO2Scaling, FrontO2_X[i]), FrontO2_Y_ROM[i]),
+            "Pull2DHooked: Incorrect value, 4-byte table, Invalid RAM table at 0th header"
         );
     }
 
     //mark table as valid, ensure values now pulled from RAM
-    pRamVariables.RAMTableHeaders[0].ramaddress |= 0xFFFF0000;
-    for(i = 0; i < 13; i++){
+    pRamVariables.RAMTableHeaderRAMAddr[_MAX_RAM_TABLES_ - 1] |= 0xFFFF0000;
+    for(i = 0; i < numCells; i++){
         Assert(
-            AreCloseEnough(
-                Pull2DHooked((TwoDTable*) tFrontO2Scaling, FrontO2_X[i]), FrontO2_YRAM[i]),
-                "Pull2DHooked: Incorrect value, 4-byte table, RAM Table"
+            AreCloseEnough(Pull2DHooked(FrontO2Scaling, FrontO2_X[i]), FrontO2_Y_RAM_1[i]),
+            "Pull2DHooked: Incorrect value, 4-byte table, RAM Table at 0th header"
         );
     }
+
+    //check final header case
+    test4ByteTable += numCells; //move to next free spot in RAM
+    for(i = 0; i < numCells; i++){
+        test4ByteTable[i] = FrontO2_Y_RAM_2[i];
+    }
+    //clear original header
+    pRamVariables.RAMTableHeaderROMAddr[0] = DefaultRAMTableRomAddr;
+    pRamVariables.RAMTableHeaderRAMAddr[_MAX_RAM_TABLES_ - 1] = DefaultRAMTableRamAddr;
+
+    //create new header
+    pRamVariables.RAMTableHeaderROMAddr[_MAX_RAM_TABLES_ - 1] = (long) FrontO2_Y_ROM;
+    pRamVariables.RAMTableHeaderRAMAddr[0] = (long) test4ByteTable; //initialized valid
+    for(i = 0; i < numCells; i++){
+        Assert(
+            AreCloseEnough(Pull2DHooked(FrontO2Scaling, FrontO2_X[i]), FrontO2_Y_RAM_2[i]),
+            "Pull2DHooked: Incorrect value, 4-byte table, RAM Table at last header"
+        );
+    }
+
+    asm("nop"); //breakpoint handle
 }
-    
+
 #endif

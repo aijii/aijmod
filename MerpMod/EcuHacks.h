@@ -44,6 +44,21 @@ SHORT TERM:
 #define BOOSTDATA __attribute__ ((section ("RomHole_BoostHackTables"),aligned(4)))
 #define PORTDATA __attribute__ ((section ("RomHole_PortLoggerTables"),aligned(4)))
 
+/*
+    Below is a kind of klugy way to eliminate the warnings emitted by the
+    assembler when compiling C code with only data to be used in the
+    `RomHole_Code` section. By default, the compiler will translate a C section
+    attribute directive into something like `.section <name>,"ax",@progbits`
+    or similar. If you compile C code only with data to be linked with raw
+    assembly source code in the same section, then the section flags that the
+    compiler generates will likely conflict with the section directive in
+    the assembly source, which will generate warnings.
+
+    To eliminate this, suffixing the section name with a `!` will cause
+    the assembler to disregard everything after the section name as a comment,
+    eliminating the compiler warning.
+*/
+#define ROMCODE_DATA __attribute__((section("RomHole_Code!")))
 
 
 //Select ECU Target!!

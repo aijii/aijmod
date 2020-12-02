@@ -177,11 +177,15 @@ pRamVariables.CruiseCoastLast = TestCruiseCoastSwitch();
 #endif
 
 #if DYN_RAMTUNING
-    TableDefRAM *p = &(pRamVariables.RAMTableHeaders[_MAX_RAM_TABLES_ - 1]);
-    while(p >= pRamVariables.RAMTableHeaders){
-        p->romaddress = DefaultRAMTableRomAddr;
-        p->ramaddress = DefaultRAMTableRamAddr;
-        p--;
+    unsigned long *p;
+    p = &(pRamVariables.RAMTableHeaderROMAddr[_MAX_RAM_TABLES_]);
+    while(--p >= pRamVariables.RAMTableHeaderROMAddr){
+        *p = DefaultRAMTableRomAddr;
+    }
+
+    p = &(pRamVariables.RAMTableHeaderRAMAddr[_MAX_RAM_TABLES_]);
+    while(--p >= pRamVariables.RAMTableHeaderRAMAddr){
+        *p = DefaultRAMTableRamAddr;
     }
 #endif
 

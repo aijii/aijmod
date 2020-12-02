@@ -1,6 +1,6 @@
 /*
-	Copyright (C) 2020 Shamit Som shamitsom@gmail.com
-	
+    Copyright (C) 2020 Shamit Som shamitsom@gmail.com
+
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
@@ -12,53 +12,37 @@
     GNU General Public License for more details.
 */
 
+/*
+    NOTE:
+    This file is used to define the data section of the assembly source
+    file `DynamicRamtunePatch.s`. This file must be excluded from the build
+    and compiled to assembly code with no debug information MANUALLY before
+    building the rest of the project.
+
+    In order to get the dynamic addresses for the RAM table headers as usable
+    symbols in pure assembly code, they need to be determined in C as it is
+    below, compiled with no debug information, and the resulting assembly file
+    is then included in the assembly source file. Because it is included in
+    the assembly source file, the compiled assembly from this file cannot
+    be linked because that will result in multiply defined symbols.
+
+    This is because there is no way (as far as I could tell...) to
+    exclude HEW from linking the resulting assembly file unless it's excluded
+    from the project, short of using custom makefiles.
+
+    It is true that the assembly could be written with inline assembly in this
+    file and then compiled, but it seems prudent  to avoid the extra overhead
+    of the function call when using inline assembly in C. The extra cycles may
+    not be a huge deal, but better to be safe when hacking time-critical
+    systems...
+*/
+
 #include "EcuHacks.h"
 
 #if DYN_RAMTUNING
 
-void Pull2DFloatDynRamHook(TwoDTable* table) ROMCODE;
-void Pull2DFloatDynRamHook(TwoDTable* table){
-
-    //push x index (in r6) to stack
-    __asm__(
-        "mov.l r6, @-r15\n\t"
-    );
-
-    TableDefRAM *header = &(pRamVariables.RAMTableHeaders[_MAX_RAM_TABLES_ - 1]);
-    while(header >= pRamVariables.RAMTableHeaders){
-        if(
-            //check if a RAMTable for the given table has been allocated
-            table->tableCells == (long *) header->romaddress
-
-            //if so, check if allocated table is valid
-            && (header->ramaddress & 0xFFFF0000)
-        ){
-            //swap address in r1 with RAM table address
-            unsigned long addr= (
-                (unsigned long) &(pRamVariables.RAMTableArrayMarker)
-                + (unsigned short) header->ramaddress
-            );
-            asm("mov %0, r1"::"r"(addr));
-            //short-circuit loop
-            goto exit;
-        }
-        else
-        {
-            header -= 1;
-        }
-    }
-
-    //put original ROM table address into r1 if no RAM table allocated
-    asm("mov %0, r1"::"r"(table->tableCells));
-
-    //Put datatype into r0 before returning back into original function
-    //and restore x index into r6 from stack
-    exit:
-    __asm__(
-        "mov.l @r15+, r6\n\t"
-        "mov.b @(0x2,r4), r0\n\t"
-        "extu.b  r0, r3\n\t"
-    );
-}
+unsigned long *ROMHeadersStart ROMCODE_DATA = pRamVariables.RAMTableHeaderROMAddr;
+unsigned long *RAMHeadersStart ROMCODE_DATA = pRamVariables.RAMTableHeaderRAMAddr;
+unsigned short MaxRAMTableHeaders ROMCODE_DATA = _MAX_RAM_TABLES_;
 
 #endif
