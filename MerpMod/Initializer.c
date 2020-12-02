@@ -1,6 +1,6 @@
 /*
 	Copyright (C) 2012-2013 Merrill A. Myers III merrillamyersiii@gmail.com
-	
+
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
@@ -67,7 +67,7 @@ void ClearRamVariables(long *start, long *end)
 
 void PopulateRamVariables()
 {
-	
+
 #if CRUISE_CONTROL
 pRamVariables.CruiseResumeLast = TestCruiseResumeSwitch();
 pRamVariables.CruiseCoastLast = TestCruiseCoastSwitch();
@@ -90,8 +90,8 @@ pRamVariables.CruiseCoastLast = TestCruiseCoastSwitch();
 	pRamVariables.FuelPressureDeltaCounter = FuelPressureDeltaDelay;
 	pRamVariables.WideBandLambda = 0;
 	pRamVariables.FuelPressure = 0;
-	
-	
+
+
 #endif
 
 #if PROG_MODE
@@ -121,8 +121,8 @@ pRamVariables.CruiseCoastLast = TestCruiseCoastSwitch();
 	pRamVariables.ClutchSwitchLast = *pClutchFlags & ClutchBitMask;
 #if !AUTO_TRANS
 	RevLimReset();
-#endif	
-#endif 
+#endif
+#endif
 
 #if VIN_HACKS
 	VinCheck();
@@ -205,7 +205,7 @@ int i=0;
 #if VE_RAMTUNING
 
 	spoint = pRamVariables.VERamData;
-	
+
 	for (i=0; i < 576; i++)
 	{
 		if(DefaultRamTuneTableBlend == 0)
@@ -230,17 +230,17 @@ int i=0;
 				case MapSwitch3:
 					*ucpoint = F1SS_DATA[i];
 				break;
-			
+
 				case MapSwitch2:
 					*ucpoint = F1S_DATA[i];
 				break;
-			
+
 				default:
 					*ucpoint = F1I_DATA[i];
 				break;
 			}
-			
-		}	
+
+		}
 		else
 		{
 			switch(DefaultRamTuneTableSwitch)
@@ -248,19 +248,19 @@ int i=0;
 				case MapSwitch3:
 					*ucpoint = F2SS_DATA[i];
 				break;
-			
+
 				case MapSwitch2:
 					*ucpoint = F2S_DATA[i];
 				break;
-			
+
 				default:
 					*ucpoint = F2I_DATA[i];
 				break;
-			}			
+			}
 		}
 	ucpoint += 0x1;
-	}	
-	
+	}
+
 #endif
 
 #if TIMING_RAMTUNING
@@ -276,17 +276,17 @@ int i=0;
 				case MapSwitch3:
 					*ucpoint = T1ss_DATA[i];
 				break;
-			
+
 				case MapSwitch2:
 					*ucpoint = T1s_DATA[i];
 				break;
-			
+
 				default:
 					*ucpoint = T1i_DATA[i];
 				break;
 			}
-			
-		}	
+
+		}
 		else
 		{
 			switch(DefaultRamTuneTableSwitch)
@@ -294,18 +294,18 @@ int i=0;
 				case MapSwitch3:
 					*ucpoint = T2ss_DATA[i];
 				break;
-			
+
 				case MapSwitch2:
 					*ucpoint = T2s_DATA[i];
 				break;
-			
+
 				default:
 					*ucpoint = T2i_DATA[i];
 				break;
-			}			
+			}
 		}
 	ucpoint += 0x1;
-	}	
+	}
 #endif
 
 #if PGWG_RAMTUNING
@@ -321,17 +321,17 @@ int i=0;
 				case MapSwitch3:
 					*spoint = PGWGData1ss[i];
 				break;
-			
+
 				case MapSwitch2:
 					*spoint = PGWGData1s[i];
 				break;
-			
+
 				default:
 					*spoint = PGWGData1i[i];
 				break;
 			}
-			
-		}	
+
+		}
 		else
 		{
 			switch(DefaultRamTuneTableSwitch)
@@ -339,18 +339,18 @@ int i=0;
 				case MapSwitch3:
 					*spoint = PGWGData2ss[i];
 				break;
-			
+
 				case MapSwitch2:
 					*spoint = PGWGData2s[i];
 				break;
-			
+
 				default:
 					*spoint = PGWGData2i[i];
 				break;
-			}			
+			}
 		}
 	spoint += 0x1;
-	}	
+	}
 
 
 	spoint = pRamVariables.PGTBRamData;
@@ -364,17 +364,17 @@ int i=0;
 				case MapSwitch3:
 					*spoint = PGTBData1ss[i];
 				break;
-			
+
 				case MapSwitch2:
 					*spoint = PGTBData1s[i];
 				break;
-			
+
 				default:
 					*spoint = PGTBData1i[i];
 				break;
 			}
-			
-		}	
+
+		}
 		else
 		{
 			switch(DefaultRamTuneTableSwitch)
@@ -382,15 +382,15 @@ int i=0;
 				case MapSwitch3:
 					*spoint = PGTBData2ss[i];
 				break;
-			
+
 				case MapSwitch2:
 					*spoint = PGTBData2s[i];
 				break;
-			
+
 				default:
 					*spoint = PGTBData2i[i];
 				break;
-			}			
+			}
 		}
 	spoint += 0x1;
 	}
@@ -410,17 +410,17 @@ int i=0;
 				case MapSwitch3:
 					*spoint = WGDCInitialData1ss[i];
 				break;
-			
+
 				case MapSwitch2:
 					*spoint = WGDCInitialData1s[i];
 				break;
-			
+
 				default:
 					*spoint = WGDCInitialData1i[i];
 				break;
 			}
-			
-		}	
+
+		}
 		else
 		{
 			switch(DefaultRamTuneTableSwitch)
@@ -428,19 +428,19 @@ int i=0;
 				case MapSwitch3:
 					*spoint = WGDCInitialData2ss[i];
 				break;
-			
+
 				case MapSwitch2:
 					*spoint = WGDCInitialData2s[i];
 				break;
-			
+
 				default:
 					*spoint = WGDCInitialData2i[i];
 				break;
-			}			
+			}
 		}
 	spoint += 0x1;
 	}
-	
+
 	spoint = pRamVariables.WGDCMaxRamData;
 
 	for (i=0; i < 256; i++)
@@ -452,17 +452,17 @@ int i=0;
 				case MapSwitch3:
 					*spoint = WGDCMaxData1ss[i];
 				break;
-			
+
 				case MapSwitch2:
 					*spoint = WGDCMaxData1s[i];
 				break;
-			
+
 				default:
 					*spoint = WGDCMaxData1i[i];
 				break;
 			}
-			
-		}	
+
+		}
 		else
 		{
 			switch(DefaultRamTuneTableSwitch)
@@ -470,15 +470,15 @@ int i=0;
 				case MapSwitch3:
 					*spoint = WGDCMaxData2ss[i];
 				break;
-			
+
 				case MapSwitch2:
 					*spoint = WGDCMaxData2s[i];
 				break;
-			
+
 				default:
 					*spoint = WGDCMaxData2i[i];
 				break;
-			}			
+			}
 		}
 	spoint += 0x1;
 	}
@@ -514,7 +514,7 @@ int i=0;
 
 void VinCheck()
 {
-	//Init VIN	
+	//Init VIN
 }
 
 #endif

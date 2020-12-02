@@ -1,6 +1,6 @@
 /*
 	Copyright (C) 2012-2013 Merrill A. Myers III merrillamyersiii@gmail.com
-	
+
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
@@ -26,7 +26,7 @@ typedef struct
 	unsigned char blank0;
 	unsigned char blank1;
 	unsigned char blank2;
-	
+
 #if VIN_HACKS
 	unsigned char VehicleIdent[20];
 #endif
@@ -35,7 +35,7 @@ typedef struct
 	float InjectorScaling;
 	float InjectorScalingMultiplier;
 #endif
-	
+
 #if SPARK_CUT
 	unsigned char SparkEventsX;
 	unsigned char se;
@@ -78,9 +78,9 @@ typedef struct
 	unsigned char AVCSLookupMAPLoad;
 
 
-//ToDo:	
-// 	
-//  float WideBandDelta;	
+//ToDo:
+//
+//  float WideBandDelta;
 
 #endif
 
@@ -91,18 +91,18 @@ typedef struct
 	unsigned char SDInitFlag;		//96d
 	unsigned char MafMode;
 	unsigned char SDempty;
-	unsigned char sdempty1;	
+	unsigned char sdempty1;
 	float VolumetricEfficiency;	//	96d
 	float MafFromSpeedDensity;
 	float MafFromSensor;
 	float AtmosphericCompensation; //96
-	float DeltaMapCompensation;	
+	float DeltaMapCompensation;
 	float SDMafBlendRatio;
 	float SDMafFromBlend;
 	float MafFromDualSensorScaling;
 
 #endif
-	
+
 #if REVLIM_HACKS
 	//Rev Limiter params
 	unsigned char  	RevLimInitFlag;  //96
@@ -118,7 +118,7 @@ typedef struct
   	float  	RedLineCut;
 	float	RedLineHyst;	//9
 	float	LaunchControlSpeedMax;
-  	float  	LaunchControlCut;	
+  	float  	LaunchControlCut;
 	float  	LaunchControlHyst;
  	float  	FFSRPM;
 	float 	FlatFootShiftRpmThreshold;
@@ -127,24 +127,24 @@ typedef struct
 	float  	FlatFootShiftHyst;	//9
   	float  	FlatFootShiftSpeedThreshold; //97
 #endif
-	
+
 #if CEL_HACKS
 	// New variables needed for the CEL Flash Hack
-	unsigned char CelSignal;				
-	unsigned char CelSignalLast;				
-	unsigned char CruiseSignal;			
-	unsigned char CruiseSignalLast;	
-		
-	unsigned char CelFlashSpeed;				
+	unsigned char CelSignal;
+	unsigned char CelSignalLast;
+	unsigned char CruiseSignal;
+	unsigned char CruiseSignalLast;
+
+	unsigned char CelFlashSpeed;
 	unsigned char CelFlashSpeedCounter;
-	unsigned char CelFlashCount;			
+	unsigned char CelFlashCount;
 	unsigned char CelFlashCounter;
-			
+
 	unsigned char CelRepeatSwitch;
 	unsigned char CelFlashStatus;
 	unsigned char CelFlashDelay;
 	unsigned char celunused;
-	
+
 	unsigned char FailSafeFBKCHiSwitch;
 	unsigned char FailSafeFBKCLoSwitch;
 #if !defined(NOAF1RES)
@@ -161,14 +161,14 @@ typedef struct
 	unsigned char ValetMode;
 	unsigned char asdf3;
 	float ProgModeValue;
-#endif			
+#endif
 
 #if TIMING_HACKS
 	//Timing Hack params
 	unsigned char 	TimingHackInitFlag;		//97
 	unsigned char 	LCTimingMode;
 	unsigned char	TimingHackEnabled;
-	unsigned char	Tempty1;	
+	unsigned char	Tempty1;
 	float	BaseTimingTarget;
 	float 	BaseTimingOutput;	//97
 	float 	LCTimingRetard;		//97
@@ -186,7 +186,7 @@ typedef struct
 	unsigned char 	POLFuelHackInitFlag;	//97
 	unsigned char 	LCFuelMode;
 	unsigned char	PolfHackEnabled;
-	unsigned char	Fempty1;	
+	unsigned char	Fempty1;
 	float PolfTarget;
 	float PolfOutput;		//97
 	float LCFuelEnrich;			//97
@@ -194,7 +194,7 @@ typedef struct
 	float LCFuelEnrichMultiplier;
 #endif
 
-#if BOOST_HACKS	
+#if BOOST_HACKS
 	unsigned char BoostHackEnabled;
 	unsigned char bhempty;
 	unsigned char bhempty1;
@@ -202,20 +202,20 @@ typedef struct
 	//Target Boost Params
 	float TargetBoostTarget;
 	float TargetBoostOutput;
-		
+
 	//PGWG Params
 	float PGWGInitialComp;
 	float PGWGMaxComp;
 	float PGTBComp;
-	
+
 	//WGDC Params
 	float WGDCInitialTarget;
 	float WGDCInitialOutput;
 	float WGDCMaxTarget;
 	float WGDCMaxOutput;
 #endif
-	
-	
+
+
 #if VE_RAMTUNING
 //VE RAMTUNING
 	unsigned char VERamFlag;
@@ -256,7 +256,7 @@ typedef struct
 //	unsigned char LCFFuelEnrichData[400];
 #endif
 
-	
+
 #if PGWG_RAMTUNING
 	//PGWG RAMTUNING
 	unsigned char PGWGRamFlag;
@@ -266,10 +266,10 @@ typedef struct
 //	float PGWGRamCols[6];
 //	float PGWGRamRows[10];
 	short PGWGRamData[96];
-	short PGTBRamData[96];	
+	short PGTBRamData[96];
 #endif
 
-	
+
 #if WGDC_RAMTUNING
 	//WGDC RAMTUNIN
 	unsigned char WGDCInitialRamFlag;
@@ -300,7 +300,7 @@ typedef struct
 	unsigned char testchar4;
 	unsigned short PortParameters[20];
 	unsigned short ADCParameters[40];
-	
+
 #endif
 
 #if RAM_HOLE_SCANNER
@@ -319,7 +319,7 @@ typedef struct
 
 long	RamHoleSpace;
 char	RamHoleEndMarker;
-	
+
 	//IF ADDING PARAMS, MUST UPDATE SPARK CUT ASM!!!!
-	
+
 } RamVariables;
