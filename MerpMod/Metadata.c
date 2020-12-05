@@ -189,7 +189,14 @@ modinfo	:	ModInfo OpDelim
 		op: OpPatch,
 		startaddress: hPull2DFloatRamInjectStart,
 		endaddress: hPull2DFloatRamInjectEnd - 1,
-		name: STR(Pull2DFloat Dynamic Ramtuning)
+		name: STR(Pull2DFloat Dynamic RAM Tuning)
+	};
+	const MetaPatch Pull3DFloatRamInjectStart METADATA =
+	{
+		op: OpPatch,
+		startaddress: hPull3DFloatRamInjectStart,
+		endaddress: hPull3DFloatRamInjectEnd + 3,
+		name: STR(Pull3DFloat Dynamic RAM Tuning)
 	};
 #endif
 

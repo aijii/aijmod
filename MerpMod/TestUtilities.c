@@ -50,18 +50,11 @@ void ClearRam()
 }
 // It's hard to express a floating point number with enough precision to use
 // the == operator.  Or impossible: http://en.wikipedia.org/wiki/Machine_epsilon
-// So we'll just test wither the actual an expected values are within +/- 0.001.
+// Should be sufficient to ensure difference of squares is < 1e-12
+// this will also work for negative numbers
+// assumes any floats used anywhere in the ECU or the code are well within
+// the limits where their squares will not cause multiplication overflow
 int AreCloseEnough(float actual, float expected)
 {
-	if ((actual * 1.001) < expected) 
-	{
-		return 0;
-	}
-	
-	if ((actual * 0.999) > expected)
-	{
-		return 0;
-	}	
-	
-	return 1;
+    return (actual*actual - expected*expected) < 1e-12;
 }

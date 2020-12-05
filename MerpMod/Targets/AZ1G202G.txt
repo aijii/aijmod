@@ -8,6 +8,10 @@ SECTIONS
 	{
 		*(Pull2DFloatRamInjectStart)
 	}
+	hPull3DFloatRamInjectStart 0x000BE8C0 : AT (0x000BE8C0)
+	{
+		*(Pull3DFloatRamInjectStart)
+	}
 	ROMHOLE_START 0x000E1400 : AT (0x000E1400)
 	{
 		*(RomHole_Identifier)

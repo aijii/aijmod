@@ -64,7 +64,8 @@ void GenericTests()
 #endif
 
 #if DYN_RAMTUNING
-    Pull2DFloatUnitTests();
+    Pull2DFloatTests();
+    Pull3DFloatTests();
 #endif
 
 	BrickBuster();

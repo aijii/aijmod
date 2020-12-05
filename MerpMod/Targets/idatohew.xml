@@ -614,6 +614,8 @@
     <category name="Dynamic RAM Tuning">
         <define name="hPull2DFloatRamInjectStart" />
         <define name="hPull2DFloatRamInjectEnd" />
+        <define name="hPull3DFloatRamInjectStart" />
+        <define name="hPull3DFloatRamInjectEnd" />
     </category>
   
   </defines>
@@ -630,6 +632,9 @@
     </section>
     <section name="hPull2DFloatRamInjectStart">
       <subsection name="Pull2DFloatRamInjectStart" />
+    </section>
+    <section name="hPull3DFloatRamInjectStart">
+      <subsection name="Pull3DFloatRamInjectStart" />
     </section>
     <section name="ROMHOLE_START">
         <alias name="dRomHoleStart" />

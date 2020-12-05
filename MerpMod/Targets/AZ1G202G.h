@@ -237,4 +237,6 @@
 
 #define hPull2DFloatRamInjectStart (0x000BE80C)
 #define hPull2DFloatRamInjectEnd (0x000BE834)
+#define hPull3DFloatRamInjectStart (0x000BE8C0)
+#define hPull3DFloatRamInjectEnd (0x000BE8E4)
 

@@ -438,7 +438,9 @@
  0000:00002128       sub_2128
  0000:00002140       sub_2140
  0000:00002160       SBR_PULL3D_FLOAT
+ 0000:00002168       hPull3DFloatRamInjectStart
  0000:00002186       get_3D_map_value_exit
+ 0000:0000218C       hPull3DFloatRamInjectEnd
  0000:00002190       off_2190
  0000:000021A4       sub_21A4
  0000:000021C0       SBR_Pull2d_unk

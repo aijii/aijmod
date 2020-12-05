@@ -17,45 +17,87 @@
 
 #if DYN_RAMTUNING
 
-// float (*Pull2DHooked)(TwoDTable *table, float xval) = (float(*)(TwoDTable*, float)) sPull2DFloat;
+//the test below assumes:
+// - the `MerpMod.x` patch file is downloaded into HEW first,
+// - the patched ROM is downloaded immediately after
+// - the PC is manually set to the first line of the function manually
 
-//this test assumes the patched ROM is downloaded into HEW first, followed by the
-//MerpMod.x file immediately after
-void Pull2DFloatUnitTests() __attribute__ ((section ("Misc")));
-void Pull2DFloatUnitTests()
+void Pull2DFloatTests() __attribute__ ((section ("Misc")));
+void Pull3DFloatTests() __attribute__ ((section ("Misc")));
+
+//-----------------------------------------------------------------------------
+//  Check Pull2DFloat
+//-----------------------------------------------------------------------------
+void Pull2DFloatTests()
 {
     ClearRam();
     PopulateRamVariables();
 
-    short i;
+    int i;
+    float returned = 0.0f;
+    float expected = 0.0f;
 
-    //Verify Pull2DFloat with 4-byte values directly from ROM (Front O2 Scaling Table)
-    TwoDTable *FrontO2Scaling = (TwoDTable*) tFrontO2Scaling;
-    short numCells = FrontO2Scaling->columnCount;
-    float *FrontO2_X = FrontO2Scaling->columnHeaderArray;
-    float *FrontO2_Y_ROM = (float*) FrontO2Scaling->tableCells;
+    TwoDTable *table;
+    int tableType;
+    short numCols;
+    short numRows;
+    float *TableCols;
+    float *TableRows;
+    float mult;
+    float offs;
+
+    //uncomment the type of table you're checking
+    //e.g. Base Timing is a 1-byte table, so uncomment the `char` table
+
+    // char *Table_Y_ROM;
+    // short *Table_Y_ROM;
+    float *Table_Y_ROM;
+
+    // unsigned char *testTable;
+    // unsigned short *testTable;
+    float *testTable;
+
+    // unsigned char Table_Y_RAM_1[numCols];
+    // unsigned char Table_Y_RAM_2[numCols];
+    // unsigned short Table_Y_RAM_1[numCols];
+    // unsigned short Table_Y_RAM_2[numCols];
+    float Table_Y_RAM_1[numCols];
+    float Table_Y_RAM_2[numCols];
+
+    //Verify Pull2DFloat using values directly from ROM
+    table = (TwoDTable*) tFrontO2Scaling;
+    tableType = table->tableType;
+    numCols = table->columnCount;
+    TableCols = table->columnHeaderArray;
+    Table_Y_ROM = (float*) table->tableCells;
+    mult = table->multiplier;
+    offs = table->offset;
 
     //arbitrary tables to populate in RAM, generated with different values
     //calculated from the original ROM tables
-    float FrontO2_Y_RAM_1[numCells];
-    float FrontO2_Y_RAM_2[numCells];
-    for(i = 0; i < numCells; i++){
-        FrontO2_Y_RAM_1[i] = FrontO2_Y_ROM[i]*2.0;
-        FrontO2_Y_RAM_2[i] = FrontO2_Y_ROM[i]*0.5;
+    for(i = 0; i < numCols; i++){
+        Table_Y_RAM_1[i] = Table_Y_ROM[i]*2.0;
+        Table_Y_RAM_2[i] = Table_Y_ROM[i]*0.5;
     }
 
     //Check that Pull2D pulls from regular ROM table when no RAM table defined
-    for(i = 0; i < numCells; i++){
+    for(i = 0; i < numCols; i++){
+        returned = Pull2DHooked(table, TableCols[i]);
+        expected = Table_Y_ROM[i];
+        if(tableType){
+            expected *= mult;
+            expected += offs;
+        }
         Assert(
-            AreCloseEnough(Pull2DHooked(FrontO2Scaling, FrontO2_X[i]), FrontO2_Y_ROM[i]),
+            AreCloseEnough(returned, expected),
             "Pull2DHooked: Incorrect value, 4-byte table, ROM Table"
         );
     }
 
     //allocate a corresponding table in RAM with arbitrary values
-    float *test4ByteTable = (float*) &(pRamVariables.RAMTableArrayMarker);
-    for(i = 0; i < numCells; i++){
-        test4ByteTable[i] = FrontO2_Y_RAM_1[i];
+    testTable = (float*) &(pRamVariables.RAMTableArrayMarker);
+    for(i = 0; i < numCols; i++){
+        testTable[i] = Table_Y_RAM_1[i];
     }
 
     //create an INVALID header for the allocated RAM table
@@ -76,46 +118,208 @@ void Pull2DFloatUnitTests()
     //for a very efficient way for the ECU to check table validity without wasting
     //precious ECU cycles, and it makes the organization of the dynamic RAM tables
     //nearly trivial.
-    pRamVariables.RAMTableHeaderROMAddr[0] = (long) FrontO2_Y_ROM;
-    pRamVariables.RAMTableHeaderRAMAddr[_MAX_RAM_TABLES_ - 1] = (long) test4ByteTable & 0xAAAAFFFF; //arbitrary, non-valid flag bytes
+    pRamVariables.RAMTableHeaderROMAddr[0] = (long) Table_Y_ROM;
+    pRamVariables.RAMTableHeaderRAMAddr[_MAX_RAM_TABLES_ - 1] = (long) testTable & 0xAAAAFFFF; //arbitrary, non-valid flag bytes
 
     //ensure values still pulled from ROM with the invalid table header
-    for(i = 0; i < numCells; i++){
+    for(i = 0; i < numCols; i++){
+        returned = Pull2DHooked(table, TableCols[i]);
+        expected = Table_Y_ROM[i];
+        if(tableType){
+            expected *= mult;
+            expected += offs;
+        }
         Assert(
-            AreCloseEnough(Pull2DHooked(FrontO2Scaling, FrontO2_X[i]), FrontO2_Y_ROM[i]),
-            "Pull2DHooked: Incorrect value, 4-byte table, Invalid RAM table at 0th header"
+            AreCloseEnough(returned, expected),
+            "Pull2DHooked: Incorrect value, 4-byte table, ROM Table (invalid RAM table header)"
         );
     }
 
     //mark table as valid, ensure values now pulled from RAM
     pRamVariables.RAMTableHeaderRAMAddr[_MAX_RAM_TABLES_ - 1] |= 0xFFFF0000;
-    for(i = 0; i < numCells; i++){
+    for(i = 0; i < numCols; i++){
+        returned = Pull2DHooked(table, TableCols[i]);
+        expected = Table_Y_RAM_1[i];
+        if(tableType){
+            expected *= mult;
+            expected += offs;
+        }
         Assert(
-            AreCloseEnough(Pull2DHooked(FrontO2Scaling, FrontO2_X[i]), FrontO2_Y_RAM_1[i]),
-            "Pull2DHooked: Incorrect value, 4-byte table, RAM Table at 0th header"
+            AreCloseEnough(returned, expected),
+            "Pull2DHooked: Incorrect value, 4-byte table, RAM Table (first header)"
         );
     }
 
     //check final header case
-    test4ByteTable += numCells; //move to next free spot in RAM
-    for(i = 0; i < numCells; i++){
-        test4ByteTable[i] = FrontO2_Y_RAM_2[i];
+    testTable += numCols; //move to next free spot in RAM
+    for(i = 0; i < numCols; i++){
+        testTable[i] = Table_Y_RAM_2[i];
     }
     //clear original header
     pRamVariables.RAMTableHeaderROMAddr[0] = DefaultRAMTableRomAddr;
     pRamVariables.RAMTableHeaderRAMAddr[_MAX_RAM_TABLES_ - 1] = DefaultRAMTableRamAddr;
 
     //create new header
-    pRamVariables.RAMTableHeaderROMAddr[_MAX_RAM_TABLES_ - 1] = (long) FrontO2_Y_ROM;
-    pRamVariables.RAMTableHeaderRAMAddr[0] = (long) test4ByteTable; //initialized valid
-    for(i = 0; i < numCells; i++){
+    pRamVariables.RAMTableHeaderROMAddr[_MAX_RAM_TABLES_ - 1] = (long) Table_Y_ROM;
+    pRamVariables.RAMTableHeaderRAMAddr[0] = (long) testTable; //initialized valid
+    for(i = 0; i < numCols; i++){
+        returned = Pull2DHooked(table, TableCols[i]);
+        expected = Table_Y_RAM_2[i];
+        if(tableType){
+            expected *= mult;
+            expected += offs;
+        }
         Assert(
-            AreCloseEnough(Pull2DHooked(FrontO2Scaling, FrontO2_X[i]), FrontO2_Y_RAM_2[i]),
-            "Pull2DHooked: Incorrect value, 4-byte table, RAM Table at last header"
+            AreCloseEnough(returned, expected),
+            "Pull2DHooked: Incorrect value, 4-byte table, RAM Table (last header)"
         );
     }
 
-    asm("nop"); //breakpoint handle
+    asm("nop"); //breakpoint handle to check Pull2DFloat Patch
+}
+
+//-----------------------------------------------------------------------------
+//  Check Pull3DFloat
+//-----------------------------------------------------------------------------
+void Pull3DFloatTests(){
+
+    ClearRam();
+    PopulateRamVariables();
+
+    int i, j;
+    float returned = 0.0f;
+    float expected = 0.0f;
+
+    ThreeDTable *table;
+    int tableType;
+    short numCols;
+    short numRows;
+    float *TableCols;
+    float *TableRows;
+    float mult;
+    float offs;
+
+    //uncomment the type of table you're checking
+    //e.g. Base Timing is a 1-byte table, so uncomment the `char` table
+
+    unsigned char *Table_Z_ROM;
+    // unsigned short *Table_Z_ROM;
+    // float *Table_Z_ROM;
+
+    unsigned char *testTable;
+    // unsigned short *testTable;
+    // float *testTable;
+
+    unsigned char Table_Z_RAM_1[numCols*numRows];
+    unsigned char Table_Z_RAM_2[numCols*numRows];
+    // unsigned short Table_Z_RAM_1[numCols*numRows];
+    // unsigned short Table_Z_RAM_2[numCols*numRows];
+    // float Table_Z_RAM_1[numCols*numRows];
+    // float Table_Z_RAM_2[numCols*numRows];
+
+    table = (ThreeDTable*) tBaseTimingPNonCruise;
+    tableType = table->tableType;
+    numCols = table->columnCount;
+    numRows = table->rowCount;
+    TableCols = table->columnHeaderArray;
+    TableRows = table->rowHeaderArray;
+    Table_Z_ROM = (char*) (table->tableCells);
+    mult = table->multiplier;
+    offs = table->offset;
+
+    //arbitrary tables to populate in RAM, generated with different values
+    //calculated from the original ROM tables
+    for(i = 0; i < numRows; i++){
+        for(j = 0; j < numCols; j++){
+            if(tableType){
+                Table_Z_RAM_1[i*numCols + j] = Table_Z_ROM[i*numCols + j] << 1;
+                Table_Z_RAM_2[i*numCols + j] = Table_Z_ROM[i*numCols + j] << 2;
+            }
+            else{
+                Table_Z_RAM_1[i*numCols + j] = Table_Z_ROM[i*numCols + j]*2.0;
+                Table_Z_RAM_2[i*numCols + j] = Table_Z_ROM[i*numCols + j]*4.0;
+            }
+        }
+    }
+
+    //Check that Pull3D pulls from regular ROM table when no RAM table defined
+    for(i = 0; i < numRows; i++){
+        for(j = 0; j < numCols; j++){
+            returned = Pull3DHooked(table, TableCols[j], TableRows[i]);
+            expected = Table_Z_ROM[i*numCols + j];
+            if(tableType){
+                expected *= mult;
+                expected += offs;
+            }
+            Assert(AreCloseEnough(returned, expected), "Pull3DHooked: Incorrect value, ROM Table");
+        }
+    }
+
+    //allocate a corresponding table in RAM with arbitrary values
+    testTable = (char*) &(pRamVariables.RAMTableArrayMarker);
+    for(i = 0; i < numRows; i++){
+        for(j = 0; j < numCols; j++){;
+            testTable[i*numCols + j] = Table_Z_RAM_1[i*numCols + j];
+        }
+    }
+
+    pRamVariables.RAMTableHeaderROMAddr[0] = (long) Table_Z_ROM;
+    pRamVariables.RAMTableHeaderRAMAddr[_MAX_RAM_TABLES_ - 1] = (long) testTable & 0xAAAAFFFF; //arbitrary, non-valid flag bytes
+
+    //ensure values still pulled from ROM with the invalid table header
+    for(i = 0; i < numRows; i++){
+        for(j = 0; j < numCols; j++){
+            returned = Pull3DHooked(table, TableCols[j], TableRows[i]);
+            expected = Table_Z_ROM[i*numCols + j];
+            if(tableType){
+                expected *= mult;
+                expected += offs;
+            }
+            Assert(AreCloseEnough(returned, expected), "Pull3DHooked: Incorrect value, ROM Table (Invalid RAM Header)");
+        }
+    }
+
+    //mark table as valid, ensure values now pulled from RAM
+    pRamVariables.RAMTableHeaderRAMAddr[_MAX_RAM_TABLES_ - 1] |= 0xFFFF0000;
+    for(i = 0; i < numRows; i++){
+        for(j = 0; j < numCols; j++){
+            returned = Pull3DHooked(table, TableCols[j], TableRows[i]);
+            expected = Table_Z_RAM_1[i*numCols + j];
+            if(tableType){
+                expected *= mult;
+                expected += offs;
+            }
+            Assert(AreCloseEnough(returned, expected), "Pull3DHooked: Incorrect value, RAM Table (first header)");
+        }
+    }
+
+    //check final header case
+    testTable += numCols*numRows; //move to next free spot in RAM
+    for(i = 0; i < numRows; i++){
+        for(j = 0; j < numCols; j++){
+            testTable[i*numCols + j] = Table_Z_RAM_2[i*numCols + j];
+        }
+    }
+    //clear original header
+    pRamVariables.RAMTableHeaderROMAddr[0] = DefaultRAMTableRomAddr;
+    pRamVariables.RAMTableHeaderRAMAddr[_MAX_RAM_TABLES_ - 1] = DefaultRAMTableRamAddr;
+
+    //create new header
+    pRamVariables.RAMTableHeaderROMAddr[_MAX_RAM_TABLES_ - 1] = (long) Table_Z_ROM;
+    pRamVariables.RAMTableHeaderRAMAddr[0] = (long) testTable; //initialized valid
+    for(i = 0; i < numRows; i++){
+        for(j = 0; j < numCols; j++){
+            returned = Pull3DHooked(table, TableCols[j], TableRows[i]);
+            expected = Table_Z_RAM_2[i*numCols + j];
+            if(tableType){
+                expected *= mult;
+                expected += offs;
+            }
+            Assert(AreCloseEnough(returned, expected), "Pull3DHooked: Incorrect value, RAM Table (last header)");
+        }
+    }
+
+    asm("nop"); //breakpoint handle to check Pull3DFloat patch
 }
 
 #endif

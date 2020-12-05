@@ -885,82 +885,80 @@
 [EXCLUDED_FILES_Gratis_Testing]
 [LINKAGE_ORDER_Gratis_Testing]
 [GENERAL_DATA_CONFIGURATION_Gratis_Testing]
-[OPTIONS_Switch_Debug_GNU Assembler]
-"Assembly source file" "05ff67a07d201d10" 5 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\DynamicRamtunePatch.s" "0e0086208f5c6d10" 5 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\ResetHandler.s" "05ff67a07d201d10" 5 
-[OPTIONS_Switch_Debug_GNU Compiler]
-"C source file" "05ff67a07d201d10" 2 
-"C++ source file" "05ff67a07d201d10" 2 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\BlendAndSwitch.c" "05ff67a07d201d10" 2 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\BoostHackTables.c" "05ff67a07d201d10" 2 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\BoostHacks.c" "05ff67a07d201d10" 2 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\CelFlash.c" "05ff67a07d201d10" 2 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\CelFlashTables.c" "05ff67a07d201d10" 2 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\CelFlashTests.c" "05ff67a07d201d10" 2 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\Debug.c" "05ff67a07d201d10" 2 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\Definition.c" "05ff67a07d201d10" 2 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\DynamicRamtune.c" "02489d99108c6d10" 4 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\DynamicRamtuneTests.c" "0a4d3084c86c6d10" 3 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\EcuHacks.c" "05ff67a07d201d10" 2 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\FailSafes.c" "01637a0eb2061d10" 2 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\FuelHackTables.c" "05ff67a07d201d10" 2 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\FuelHacks.c" "05ff67a07d201d10" 2 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\FuelPressure.c" "0b351106bfc51d10" 2 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\Functions.c" "05ff67a07d201d10" 2 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\GenericTests.c" "05ff67a07d201d10" 2 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\Identifier.c" "05ff67a07d201d10" 2 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\Initializer.c" "05ff67a07d201d10" 2 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\InputHandler.c" "0a7fb0866fc51d10" 2 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\MapSwitchTables.c" "05ff67a07d201d10" 2 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\Metadata.c" "05ff67a07d201d10" 2 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\MiscInputTables.c" "0e616cdd10e51d10" 2 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\PortLogger.c" "05ff67a07d201d10" 2 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\ProgMode.c" "05ff67a07d201d10" 2 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\ProgModeTables.c" "05ff67a07d201d10" 2 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\ProgModeTests.c" "05ff67a07d201d10" 2 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\PullRamHooks.c" "05ff67a07d201d10" 2 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\RamHoleScanner.c" "03d63486b9535d10" 2 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\RamTuneTables.c" "002aa617ef835d10" 2 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\RevLimiter.c" "05ff67a07d201d10" 2 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\RevLimiterTables.c" "05ff67a07d201d10" 2 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\RevLimiterTests.c" "05ff67a07d201d10" 2 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\SparkHacks.c" "05ff67a07d201d10" 2 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\SpeedDensity.c" "05ff67a07d201d10" 2 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\SpeedDensityTables.c" "05ff67a07d201d10" 2 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\SpeedDensityTests.c" "05ff67a07d201d10" 2 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\SwitchChecks.c" "05ff67a07d201d10" 2 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\TableHackTests.c" "05ff67a07d201d10" 2 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\TestUtilities.c" "05ff67a07d201d10" 2 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\TimingHackTables.c" "05ff67a07d201d10" 2 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\TimingHacks.c" "05ff67a07d201d10" 2 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\WideBand.c" "03eeaba6afc51d10" 2 
-"Preprocess Assembly file" "05ff67a07d201d10" 2 
-[OPTIONS_Switch_Debug_GNU Library Generator]
-"Single Shot" "0aafeb6ac96c6d10" 1 
-[OPTIONS_Switch_Debug_GNU Linker]
-"Single Shot" "046ee196608c6d10" 6 
-[OPTIONS_Switch_Debug_Target Selection]
+[OPTIONS_Switch_Debug_GNU Assembler] 
+"Assembly source file" "037c862aec9c6d10" 4 
+"C:\Projects\MerpMod-aijv1.6\MerpMod\DynamicRamtunePatch.s" "037c862aec9c6d10" 4 
+"C:\Projects\MerpMod-aijv1.6\MerpMod\ResetHandler.s" "037c862aec9c6d10" 4 
+[OPTIONS_Switch_Debug_GNU Compiler] 
+"C source file" "037c862aec9c6d10" 2 
+"C++ source file" "037c862aec9c6d10" 2 
+"C:\Projects\MerpMod-aijv1.6\MerpMod\BlendAndSwitch.c" "037c862aec9c6d10" 2 
+"C:\Projects\MerpMod-aijv1.6\MerpMod\BoostHackTables.c" "037c862aec9c6d10" 2 
+"C:\Projects\MerpMod-aijv1.6\MerpMod\BoostHacks.c" "037c862aec9c6d10" 2 
+"C:\Projects\MerpMod-aijv1.6\MerpMod\CelFlash.c" "037c862aec9c6d10" 2 
+"C:\Projects\MerpMod-aijv1.6\MerpMod\CelFlashTables.c" "037c862aec9c6d10" 2 
+"C:\Projects\MerpMod-aijv1.6\MerpMod\CelFlashTests.c" "037c862aec9c6d10" 2 
+"C:\Projects\MerpMod-aijv1.6\MerpMod\Debug.c" "037c862aec9c6d10" 2 
+"C:\Projects\MerpMod-aijv1.6\MerpMod\Definition.c" "037c862aec9c6d10" 2 
+"C:\Projects\MerpMod-aijv1.6\MerpMod\DynamicRamtune.c" "037c862aec9c6d10" 3 
+"C:\Projects\MerpMod-aijv1.6\MerpMod\DynamicRamtuneTests.c" "037c862aec9c6d10" 2 
+"C:\Projects\MerpMod-aijv1.6\MerpMod\EcuHacks.c" "037c862aec9c6d10" 2 
+"C:\Projects\MerpMod-aijv1.6\MerpMod\FailSafes.c" "037c862aec9c6d10" 2 
+"C:\Projects\MerpMod-aijv1.6\MerpMod\FuelHackTables.c" "037c862aec9c6d10" 2 
+"C:\Projects\MerpMod-aijv1.6\MerpMod\FuelHacks.c" "037c862aec9c6d10" 2 
+"C:\Projects\MerpMod-aijv1.6\MerpMod\FuelPressure.c" "037c862aec9c6d10" 2 
+"C:\Projects\MerpMod-aijv1.6\MerpMod\Functions.c" "037c862aec9c6d10" 2 
+"C:\Projects\MerpMod-aijv1.6\MerpMod\GenericTests.c" "037c862aec9c6d10" 2 
+"C:\Projects\MerpMod-aijv1.6\MerpMod\Identifier.c" "037c862aec9c6d10" 2 
+"C:\Projects\MerpMod-aijv1.6\MerpMod\Initializer.c" "037c862aec9c6d10" 2 
+"C:\Projects\MerpMod-aijv1.6\MerpMod\InputHandler.c" "037c862aec9c6d10" 2 
+"C:\Projects\MerpMod-aijv1.6\MerpMod\MapSwitchTables.c" "037c862aec9c6d10" 2 
+"C:\Projects\MerpMod-aijv1.6\MerpMod\Metadata.c" "037c862aec9c6d10" 2 
+"C:\Projects\MerpMod-aijv1.6\MerpMod\MiscInputTables.c" "037c862aec9c6d10" 2 
+"C:\Projects\MerpMod-aijv1.6\MerpMod\PortLogger.c" "037c862aec9c6d10" 2 
+"C:\Projects\MerpMod-aijv1.6\MerpMod\ProgMode.c" "037c862aec9c6d10" 2 
+"C:\Projects\MerpMod-aijv1.6\MerpMod\ProgModeTables.c" "037c862aec9c6d10" 2 
+"C:\Projects\MerpMod-aijv1.6\MerpMod\ProgModeTests.c" "037c862aec9c6d10" 2 
+"C:\Projects\MerpMod-aijv1.6\MerpMod\PullRamHooks.c" "037c862aec9c6d10" 2 
+"C:\Projects\MerpMod-aijv1.6\MerpMod\RamHoleScanner.c" "037c862aec9c6d10" 2 
+"C:\Projects\MerpMod-aijv1.6\MerpMod\RamTuneTables.c" "037c862aec9c6d10" 2 
+"C:\Projects\MerpMod-aijv1.6\MerpMod\RevLimiter.c" "037c862aec9c6d10" 2 
+"C:\Projects\MerpMod-aijv1.6\MerpMod\RevLimiterTables.c" "037c862aec9c6d10" 2 
+"C:\Projects\MerpMod-aijv1.6\MerpMod\RevLimiterTests.c" "037c862aec9c6d10" 2 
+"C:\Projects\MerpMod-aijv1.6\MerpMod\SparkHacks.c" "037c862aec9c6d10" 2 
+"C:\Projects\MerpMod-aijv1.6\MerpMod\SpeedDensity.c" "037c862aec9c6d10" 2 
+"C:\Projects\MerpMod-aijv1.6\MerpMod\SpeedDensityTables.c" "037c862aec9c6d10" 2 
+"C:\Projects\MerpMod-aijv1.6\MerpMod\SpeedDensityTests.c" "037c862aec9c6d10" 2 
+"C:\Projects\MerpMod-aijv1.6\MerpMod\SwitchChecks.c" "037c862aec9c6d10" 2 
+"C:\Projects\MerpMod-aijv1.6\MerpMod\TableHackTests.c" "037c862aec9c6d10" 2 
+"C:\Projects\MerpMod-aijv1.6\MerpMod\TestUtilities.c" "037c862aec9c6d10" 2 
+"C:\Projects\MerpMod-aijv1.6\MerpMod\TimingHackTables.c" "037c862aec9c6d10" 2 
+"C:\Projects\MerpMod-aijv1.6\MerpMod\TimingHacks.c" "037c862aec9c6d10" 2 
+"C:\Projects\MerpMod-aijv1.6\MerpMod\WideBand.c" "037c862aec9c6d10" 2 
+"Preprocess Assembly file" "037c862aec9c6d10" 2 
+[OPTIONS_Switch_Debug_GNU Library Generator] 
+"Single Shot" "0011e8bec7ac6d10" 1 
+[OPTIONS_Switch_Debug_GNU Linker] 
+"Single Shot" "05281551baac6d10" 5 
+[OPTIONS_Switch_Debug_Target Selection] 
 "Single Shot" "06bf4d23307eec10" 0 
 [OPTIONS_Switch_Debug_Update Test Rom]
 "Single Shot" "002aa617ef835d10" 0 
 [OPTIONS_Switch_Debug]
 "" 0 
-"[V|VERSION|2] [B|DOSEGF|1] [S|INCDIR|^"$(TCINSTALL)\sh-elf\lib\gcc\sh-elf\4.7-GNUSH_v13.01\mrenesas\m4-single-only^"|^"$(CONFIGDIR)^"] [B|RSARCH|1] [B|FIXUPLIBS|1] [S|ARCHIVE|libgcc.a*libgcc-Os-4-200.a*lib$(PROJECTNAME).a] [S|OUTFORM|BOTH] [S|OUTFILE|^"$(CONFIGDIR)\$(PROJECTNAME).x^"] [S|GROUPDET|Zero|0|0||1|0x00000000|0|0|0|Zero|All-files|<<FEND>>|<<CEND>>|<<GEND>>|INTHandler|0|0||1|0x00000100|0|0|<<CEND>>|<<GEND>>|RSTHandler|0|0||1|0x00E00000|0|0|1|_ResetHandler|<<FEND>>|<<CEND>>|<<GEND>>|DefinitionData|0|0||1|0x00F00000|0|0|0|DefinitionDataHeader|All-files|<<FEND>>|0|DefinitionData|All-files|<<FEND>>|0|DefinitionDataEnd|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.text|0|0||1|0x07001000|0|0|0|.text|All-files|<<FEND>>|0|.text.*|All-files|<<FEND>>|1|etext|<<FEND>>|<<CEND>>|<<GEND>>|.init|0|0||0||0|0|0|.init|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.fini|0|0||0||0|0|0|.fini|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.got|0|0||0||0|0|0|.got|All-files|<<FEND>>|0|.got.plt|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.rodata|0|0||0||0|0|0|.rodata|All-files|<<FEND>>|0|.rodata.*|All-files|<<FEND>>|1|_erodata|<<FEND>>|<<CEND>>|<<GEND>>|.eh_frame_hdr|0|0||0||0|0|0|.eh_frame_hdr|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.eh_frame|0|0||0||0|0|0|.eh_frame|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.jcr|0|0||0||0|0|0|.jcr|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.tors|0|0||0||0|0|1|__CTOR_LIST__|<<FEND>>|1|___ctors|<<FEND>>|0|.ctors|All-files|<<FEND>>|1|___ctors_end|<<FEND>>|1|__CTOR_END__|<<FEND>>|1|__DTOR_LIST__|<<FEND>>|1|___dtors|<<FEND>>|0|.dtors|All-files|<<FEND>>|1|___dtors_end|<<FEND>>|1|__DTOR_END__|<<FEND>>|1|_mdata|<<FEND>>|<<CEND>>|<<GEND>>|Misc|0|0||1|0x0E005000|0|0|0|Misc|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.data|0|2|_mdata|1|0x70000000|0|0|1|_data|<<FEND>>|0|.data|All-files|<<FEND>>|0|.data.*|All-files|<<FEND>>|1|_edata|<<FEND>>|<<CEND>>|<<GEND>>|.gcc_exc|0|0||0||0|0|0|.gcc_exc|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.bss|0|0||0||0|0|1|_bss|<<FEND>>|0|.bss|All-files|<<FEND>>|0|.bss.*|All-files|<<FEND>>|0|COMMON|All-files|<<FEND>>|1|_ebss|<<FEND>>|1|_end|<<FEND>>|<<CEND>>|<<GEND>>|.stack|0|0||1|0x73FFFBF0|0|0|1|_stack|<<FEND>>|<<CEND>>|<<GEND>>|MetaData|0|0||1|0x80001000|0|0|0|MetaDataHeader|All-files|<<FEND>>|0|MetaData|All-files|<<FEND>>|0|MetaDataEnd|All-files|<<FEND>>|<<CEND>>|<<GEND>>|] [S|APPTXT|^"-e _ResetHandler
-
-
-
--T ^"^"$(PROJDIR)\LinkerScript.txt^"^"^"] [S|CPUTYPE|SH4-SINGLE-ONLY] [S|ENDIAN|BIG] [B|MRENESAS|1] [B|MIEEE|1] [S|PROJECTTYPE|CAPPPROJECT] [B|DOOPTLIB|1] [B|DOPROJBUILT|1]
-" 6 
-"[V|VERSION|2] [S|INCDIR|^"$(PROJDIR)^"] [I|DEBUGLV|2] [S|OBJPATH|^"$(CONFIGDIR)\$(FILELEAF).o^"] [B|LINCASS|1] [B|LINCSYM|1] [B|LINCHLS|1] [S|CPUTYPE|SH4-SINGLE-ONLY] [S|ENDIAN|BIG] [B|MRENESAS|1] [B|MIEEE|1] [S|PROJECTTYPE|CAPPPROJECT]
+"[V|VERSION|2] [B|DOSEGF|1] [S|INCDIR|^"$(TCINSTALL)\sh-elf\lib\gcc\sh-elf\4.7-GNUSH_v13.01\mrenesas\m2e^"|^"$(CONFIGDIR)^"] [B|RSARCH|1] [B|FIXUPLIBS|1] [S|ARCHIVE|libgcc.a*libgcc-Os-4-200.a*lib$(PROJECTNAME).a] [S|OUTFORM|BOTH] [S|OUTFILE|^"$(CONFIGDIR)\$(PROJECTNAME).x^"] [S|GROUPDET|Zero|0|0||1|0x00000000|0|0|0|Zero|All-files|<<FEND>>|<<CEND>>|<<GEND>>|INTHandler|0|0||1|0x00000100|0|0|<<CEND>>|<<GEND>>|RSTHandler|0|0||1|0x00E00000|0|0|1|_ResetHandler|<<FEND>>|<<CEND>>|<<GEND>>|DefinitionData|0|0||1|0x00F00000|0|0|0|DefinitionDataHeader|All-files|<<FEND>>|0|DefinitionData|All-files|<<FEND>>|0|DefinitionDataEnd|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.text|0|0||1|0x07001000|0|0|0|.text|All-files|<<FEND>>|0|.text.*|All-files|<<FEND>>|1|etext|<<FEND>>|<<CEND>>|<<GEND>>|.init|0|0||0||0|0|0|.init|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.fini|0|0||0||0|0|0|.fini|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.got|0|0||0||0|0|0|.got|All-files|<<FEND>>|0|.got.plt|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.rodata|0|0||0||0|0|0|.rodata|All-files|<<FEND>>|0|.rodata.*|All-files|<<FEND>>|1|_erodata|<<FEND>>|<<CEND>>|<<GEND>>|.eh_frame_hdr|0|0||0||0|0|0|.eh_frame_hdr|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.eh_frame|0|0||0||0|0|0|.eh_frame|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.jcr|0|0||0||0|0|0|.jcr|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.tors|0|0||0||0|0|1|__CTOR_LIST__|<<FEND>>|1|___ctors|<<FEND>>|0|.ctors|All-files|<<FEND>>|1|___ctors_end|<<FEND>>|1|__CTOR_END__|<<FEND>>|1|__DTOR_LIST__|<<FEND>>|1|___dtors|<<FEND>>|0|.dtors|All-files|<<FEND>>|1|___dtors_end|<<FEND>>|1|__DTOR_END__|<<FEND>>|1|_mdata|<<FEND>>|<<CEND>>|<<GEND>>|Misc|0|0||1|0x0E005000|0|0|0|Misc|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.data|0|2|_mdata|1|0x70000000|0|0|1|_data|<<FEND>>|0|.data|All-files|<<FEND>>|0|.data.*|All-files|<<FEND>>|1|_edata|<<FEND>>|<<CEND>>|<<GEND>>|.gcc_exc|0|0||0||0|0|0|.gcc_exc|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.bss|0|0||0||0|0|1|_bss|<<FEND>>|0|.bss|All-files|<<FEND>>|0|.bss.*|All-files|<<FEND>>|0|COMMON|All-files|<<FEND>>|1|_ebss|<<FEND>>|1|_end|<<FEND>>|<<CEND>>|<<GEND>>|.stack|0|0||1|0x73FFFBF0|0|0|1|_stack|<<FEND>>|<<CEND>>|<<GEND>>|MetaData|0|0||1|0x80001000|0|0|0|MetaDataHeader|All-files|<<FEND>>|0|MetaData|All-files|<<FEND>>|0|MetaDataEnd|All-files|<<FEND>>|<<CEND>>|<<GEND>>|] [S|APPTXT|^"-e _ResetHandler 
+ 
+ 
+ 
+-T ^"^"$(PROJDIR)\LinkerScript.txt^"^"^"] [S|CPUTYPE|SH2E] [S|ENDIAN|BIG] [B|MRENESAS|1] [B|MIEEE|1] [S|PROJECTTYPE|CAPPPROJECT] [B|DOOPTLIB|1] [B|DOPROJBUILT|1] 
 " 5 
-"[V|VERSION|2] [S|INCDIR|^"$(TCINSTALL)\sh-elf\sh-elf\optlibinc^"|^"$(TCINSTALL)\sh-elf\lib\gcc\sh-elf\4.7-GNUSH_v13.01\optlibinc^"] [S|DEFINES|DEBUG|TARGET_ECU=A8DH202X] [S|OUTPUT|ASMCODE] [S|OBJPATH|^"$(CONFIGDIR)\$(FILELEAF).s^"] [B|DEBUG|0] [S|DEBUGFT|Native] [I|DEBUGLV|2] [S|ALIGN4|ALL] [S|ASSEMBLY|^"[V|VERSION|2]] [I|DEBUGLV|2]] [S|OBJPATH|^"^"$(CONFIGDIR)\$(FILELEAF).o^"^"]] [S|CPUTYPE|SH4-SINGLE-ONLY]] [S|ENDIAN|BIG]] [B|MRENESAS|1]] [B|MIEEE|1]] [S|PROJECTTYPE|CAPPPROJECT]]^"] [B|OPTIMIZE|1] [B|LTO|0] [I|OPTLV|2] [B|NOSTDINC|1] [S|CPUTYPE|SH4-SINGLE-ONLY] [S|ENDIAN|BIG] [B|MRENESAS|1] [B|MIEEE|1] [S|PROJECTTYPE|CAPPPROJECT] [B|DOOPTLIB|1]
+"[V|VERSION|2] [S|INCDIR|^"$(PROJDIR)^"] [I|DEBUGLV|2] [S|OBJPATH|^"$(CONFIGDIR)\$(FILELEAF).o^"] [B|LINCASS|1] [B|LINCSYM|1] [B|LINCHLS|1] [S|CPUTYPE|SH2E] [S|ENDIAN|BIG] [B|MRENESAS|1] [B|MIEEE|1] [S|PROJECTTYPE|CAPPPROJECT] 
 " 4 
-"[V|VERSION|2] [S|INCDIR|^"$(TCINSTALL)\sh-elf\sh-elf\optlibinc^"|^"$(TCINSTALL)\sh-elf\lib\gcc\sh-elf\4.7-GNUSH_v13.01\optlibinc^"] [S|DEFINES|DEBUG|TARGET_ECU=A8DH202X] [S|OUTPUT|ASMCODE] [S|OBJPATH|^"$(CONFIGDIR)\$(FILELEAF).s^"] [B|DEBUG|1] [S|DEBUGFT|Native] [I|DEBUGLV|2] [S|ALIGN4|ALL] [S|ASSEMBLY|^"[V|VERSION|2]] [I|DEBUGLV|2]] [S|OBJPATH|^"^"$(CONFIGDIR)\$(FILELEAF).o^"^"]] [S|CPUTYPE|SH4-SINGLE-ONLY]] [S|ENDIAN|BIG]] [B|MRENESAS|1]] [B|MIEEE|1]] [S|PROJECTTYPE|CAPPPROJECT]]^"] [B|OPTIMIZE|0] [B|LTO|0] [I|OPTLV|2] [B|NOSTDINC|1] [S|CPUTYPE|SH4-SINGLE-ONLY] [S|ENDIAN|BIG] [B|MRENESAS|1] [B|MIEEE|1] [S|PROJECTTYPE|CAPPPROJECT] [B|DOOPTLIB|1]
-" 2 
-"[V|VERSION|2] [S|INCDIR|^"$(TCINSTALL)\sh-elf\sh-elf\optlibinc^"|^"$(TCINSTALL)\sh-elf\lib\gcc\sh-elf\4.7-GNUSH_v13.01\optlibinc^"] [S|DEFINES|DEBUG|TARGET_ECU=A8DH202X] [S|OUTPUT|ASMCODE] [S|OBJPATH|^"$(CONFIGDIR)\$(FILELEAF).s^"] [B|DEBUG|1] [S|DEBUGFT|Native] [I|DEBUGLV|2] [S|ALIGN4|ALL] [S|ASSEMBLY|^"[V|VERSION|2]] [I|DEBUGLV|2]] [S|OBJPATH|^"^"$(CONFIGDIR)\$(FILELEAF).o^"^"]] [S|CPUTYPE|SH4-SINGLE-ONLY]] [S|ENDIAN|BIG]] [B|MRENESAS|1]] [B|MIEEE|1]] [S|PROJECTTYPE|CAPPPROJECT]]^"] [B|OPTIMIZE|1] [B|LTO|0] [I|OPTLV|2] [B|NOSTDINC|1] [S|CPUTYPE|SH4-SINGLE-ONLY] [S|ENDIAN|BIG] [B|MRENESAS|1] [B|MIEEE|1] [S|PROJECTTYPE|CAPPPROJECT] [B|DOOPTLIB|1]
+"[V|VERSION|2] [S|INCDIR|^"$(TCINSTALL)\sh-elf\sh-elf\optlibinc^"|^"$(TCINSTALL)\sh-elf\lib\gcc\sh-elf\4.7-GNUSH_v13.01\optlibinc^"] [S|DEFINES|DEBUG|TARGET_ECU=A8DH202X] [S|OUTPUT|ASMCODE] [S|OBJPATH|^"$(CONFIGDIR)\$(FILELEAF).s^"] [B|DEBUG|0] [S|DEBUGFT|Native] [I|DEBUGLV|2] [S|ALIGN4|ALL] [S|ASSEMBLY|^"[V|VERSION|2]] [I|DEBUGLV|2]] [S|OBJPATH|^"^"$(CONFIGDIR)\$(FILELEAF).o^"^"]] [S|CPUTYPE|SH2E]] [S|ENDIAN|BIG]] [B|MRENESAS|1]] [B|MIEEE|1]] [S|PROJECTTYPE|CAPPPROJECT]]^"] [B|OPTIMIZE|1] [B|LTO|0] [I|OPTLV|2] [B|NOSTDINC|1] [S|CPUTYPE|SH2E] [S|ENDIAN|BIG] [B|MRENESAS|1] [B|MIEEE|1] [S|PROJECTTYPE|CAPPPROJECT] [B|DOOPTLIB|1] 
 " 3 
-"[V|VERSION|2] [S|MODE|BUILD/CHANGED] [B|CTYPE|1] [B|STRING|1] [B|DOPROJBUILT|1] [B|DOOPTLIB|1] [S|OUTPUTPATH|^"$(CONFIGDIR)\lib$(PROJECTNAME).a^"] [B|OPTIMIZE|1] [I|OPTTYPE|1] [S|CPUTYPE|SH4-SINGLE-ONLY] [S|ENDIAN|BIG] [B|MRENESAS|1] [B|MIEEE|1]
+"[V|VERSION|2] [S|INCDIR|^"$(TCINSTALL)\sh-elf\sh-elf\optlibinc^"|^"$(TCINSTALL)\sh-elf\lib\gcc\sh-elf\4.7-GNUSH_v13.01\optlibinc^"] [S|DEFINES|DEBUG|TARGET_ECU=A8DH202X] [S|OUTPUT|ASMCODE] [S|OBJPATH|^"$(CONFIGDIR)\$(FILELEAF).s^"] [B|DEBUG|1] [S|DEBUGFT|Native] [I|DEBUGLV|2] [S|ALIGN4|ALL] [S|ASSEMBLY|^"[V|VERSION|2]] [I|DEBUGLV|2]] [S|OBJPATH|^"^"$(CONFIGDIR)\$(FILELEAF).o^"^"]] [S|CPUTYPE|SH2E]] [S|ENDIAN|BIG]] [B|MRENESAS|1]] [B|MIEEE|1]] [S|PROJECTTYPE|CAPPPROJECT]]^"] [B|OPTIMIZE|0] [B|LTO|0] [I|OPTLV|2] [B|NOSTDINC|1] [S|CPUTYPE|SH2E] [S|ENDIAN|BIG] [B|MRENESAS|1] [B|MIEEE|1] [S|PROJECTTYPE|CAPPPROJECT] [B|DOOPTLIB|1] 
+" 2 
+"[V|VERSION|2] [S|MODE|BUILD/CHANGED] [B|CTYPE|1] [B|DOPROJBUILT|1] [B|DOOPTLIB|1] [S|OUTPUTPATH|^"$(CONFIGDIR)\lib$(PROJECTNAME).a^"] [B|OPTIMIZE|1] [I|OPTTYPE|1] [S|CPUTYPE|SH2E] [S|ENDIAN|BIG] [B|MRENESAS|1] [B|MIEEE|1] 
 " 1 
 [DEPENDENCIES_Switch_Debug_Target Selection]
 [DEPENDENCIES_Switch_Debug_Update Test Rom]

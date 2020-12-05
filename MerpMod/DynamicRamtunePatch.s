@@ -54,6 +54,41 @@ Pull2DFloatDynRamHook:
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+! Hook and inject Pull3DFloat
+.section Pull3DFloatRamInjectStart,"ax"
+
+_Pull3DFloatRamPatch:
+    !don't touch r2, r3, r4, fr0, fr1
+    mov.l   Pull3DFloatDynRamHook, r5
+    mova    Pull3DFloatDynRamHook + 4, r0
+    jsr     @r5
+    mov.l   @(0xC, r4), r1
+
+    jsr     @r5
+    mov.w   @(0,r4), r0
+
+    tst     r5, r5
+    bt/s    _Pull3DFloatRamPatchExit
+    fmov    fr2, fr1
+
+    add     #0x14, r4
+    fmov.s  @r4+, fr0
+    fmov.s  @r4, fr1
+    fmac    fr0, fr2, fr1
+
+_Pull3DFloatRamPatchExit:
+    fmov    fr1, fr0
+    lds.l   @r15+, mach
+    lds.l   @r15+, pr
+    rts
+    lds.l   @r15+, macl
+
+Pull3DFloatDynRamHook:
+    .long _Pull3DFloatDynRamHook
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 ! injected code, stores RAM table address in `r1` if valid table has been
 ! allocated in RAM, otherwise sets `r1` to point to the original ROM table
 .section RomHole_Code,"ax"
@@ -88,13 +123,56 @@ _Pull2DFloatDynValid:
 
 _Pull2DFloatDynExit:
 ! on exit:
-!   - r1 should contain data table base address
-!   - r3 should contain data table datatype
-!   - r4 should contain the table definition address (unused in routine)
-!   - r5 should contain the X index (unused in routine)
+!   - r1 should contain data table base address (determined in routine)
+!   - r3 should contain data table datatype (determine here)
+!   - r4 should contain the table definition address (untouched in routine)
+!   - r5 should contain the X index (untouched in routine)
     mov.b   @(0x2,r4), r0
     rts
     extu.b  r0, r3
+
+_Pull3DFloatDynRamHook:
+! on enter (simply don't write to these registers!):
+!   - r0 contains the address to the subroutine table needed after return
+!   - r2 contains the X index
+!   - r3 contains the Y index
+!   - r4 contains table definition address
+
+    mov     r0, r6                  ! datatype subroutine table -> r6
+    mov.l   _ROMHeadersStart, r5    ! final RAMHeader array element address -> r5
+    mov.w   _MaxRAMTableHeaders, r0 ! compile-time fixed max number of RAM tables -> r0
+    clrt                            ! clear T register before loop (maybe unnecessary?)
+
+! loop over ROMAddress array to check for match
+_Pull3DFloatDynAddr:
+    bt/s    _Pull3DFloatDynExit     ! exit loop and use ROM address if no match found
+    mov.l   @r5+, r7                ! romaddress at current header -> r7, r5 points to next header
+    cmp/eq  r7, r1                  ! check if header contains desired ROM address
+    bf/s    _Pull3DFloatDynAddr     ! repeat check for next header
+    dt      r0                      ! decrement loop counter
+
+! found a matching address, now need to check if it's valid
+_Pull3DFloatDynValid:
+    shll2   r0                      ! array index to dword offset -> r0
+    mov.l   _RAMHeadersStart, r5    ! RAMArray base address -> r5
+    mov.l   @(r0, r5), r7           ! potential RAM table address -> r7
+    mov.b   @(r0, r5), r0           ! flag bytes into -> r0
+    cmp/eq  #0xFF, r0               ! 0xFF###### is valid, T -> 1 if valid
+    bf      _Pull3DFloatDynExit     ! if invalid, jump directly to exit
+    mov     r7, r1                  ! valid RAM table address -> r1
+
+_Pull3DFloatDynExit:
+! on exit:
+!   - r1 should contain data table base address (determined in routine)
+!   - r2 should contain the X index (untouched in routine)
+!   - r3 should contain the Y index (untouched in routine)
+!   - r4 should contain the table definition address (untouched in routine)
+!   - r5 should contain the address to subroutine corresponding to the table datatype (determine here)
+    mov     #0x10, r5
+    add     r4, r5
+    mov.b   @r5, r0
+    rts
+    mov.l   @(r0, r6), r5
 
 ! need to compile `DynamicRuntime.c` manually and include here to get
 ! the correct symbols for the RAM Table headers, which are dynamically
