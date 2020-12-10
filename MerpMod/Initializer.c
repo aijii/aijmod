@@ -187,6 +187,11 @@ pRamVariables.CruiseCoastLast = TestCruiseCoastSwitch();
     while(--p >= pRamVariables.RAMTableHeaderRAMAddr){
         *p = DefaultRAMTableRamAddr;
     }
+    
+    p = (long*) pRamHoleEnd;
+    while(--p >= &(pRamVariables.RAMTableHeaderRAMAddr[_MAX_RAM_TABLES_])){
+        *p = 0xF0F0F0F0;
+    }
 #endif
 
 pRamVariables.ECUIdentifier = *(long*)dEcuId;

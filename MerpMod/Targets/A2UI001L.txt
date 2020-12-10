@@ -18,7 +18,7 @@ SECTIONS
 	}
 	hPull3DFloatRamInjectStart 0x00002168 : AT (0x00002168)
 	{
-		*(hPull3DFloatRamInjectStart)
+		*(Pull3DFloatRamInjectStart)
 	}
 	ROMHOLE_START 0x000DF810 : AT (0x000DF810)
 	{

@@ -45,7 +45,15 @@ void Pull2DFloatTests()
     float *TableRows;
     float mult;
     float offs;
-
+    
+    //Verify using values directly from ROM
+    table = (TwoDTable*) tFrontO2Scaling;
+    numCols = table->columnCount;
+    tableType = table->tableType;
+    TableCols = table->columnHeaderArray;
+    mult = table->multiplier;
+    offs = table->offset;
+    
     //uncomment the type of table you're checking
     //e.g. Base Timing is a 1-byte table, so uncomment the `char` table
 
@@ -64,14 +72,7 @@ void Pull2DFloatTests()
     float Table_Y_RAM_1[numCols];
     float Table_Y_RAM_2[numCols];
 
-    //Verify Pull2DFloat using values directly from ROM
-    table = (TwoDTable*) tFrontO2Scaling;
-    tableType = table->tableType;
-    numCols = table->columnCount;
-    TableCols = table->columnHeaderArray;
     Table_Y_ROM = (float*) table->tableCells;
-    mult = table->multiplier;
-    offs = table->offset;
 
     //arbitrary tables to populate in RAM, generated with different values
     //calculated from the original ROM tables
@@ -199,6 +200,15 @@ void Pull3DFloatTests(){
     float mult;
     float offs;
 
+    table = (ThreeDTable*) tBaseTimingPNonCruise;
+    tableType = table->tableType;
+    numCols = table->columnCount;
+    numRows = table->rowCount;
+    TableCols = table->columnHeaderArray;
+    TableRows = table->rowHeaderArray;
+    mult = table->multiplier;
+    offs = table->offset;
+    
     //uncomment the type of table you're checking
     //e.g. Base Timing is a 1-byte table, so uncomment the `char` table
 
@@ -216,16 +226,8 @@ void Pull3DFloatTests(){
     // unsigned short Table_Z_RAM_2[numCols*numRows];
     // float Table_Z_RAM_1[numCols*numRows];
     // float Table_Z_RAM_2[numCols*numRows];
-
-    table = (ThreeDTable*) tBaseTimingPNonCruise;
-    tableType = table->tableType;
-    numCols = table->columnCount;
-    numRows = table->rowCount;
-    TableCols = table->columnHeaderArray;
-    TableRows = table->rowHeaderArray;
+    
     Table_Z_ROM = (char*) (table->tableCells);
-    mult = table->multiplier;
-    offs = table->offset;
 
     //arbitrary tables to populate in RAM, generated with different values
     //calculated from the original ROM tables
