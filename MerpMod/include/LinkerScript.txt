@@ -1,0 +1,114 @@
+OUTPUT_ARCH(sh)
+
+MEMORY
+{
+	ROM (rx) : ORIGIN = 0x00000000, LENGTH = 1048576
+	RAM (rwx) : ORIGIN = 0xFFFF0000, LENGTH = 65536
+	mrodata (rx) : ORIGIN = 0xA0000000, LENGTH = 65536
+}
+
+SECTIONS
+{
+	Zero 0x00000000 : AT (0x00000000)
+	{
+		*(Zero)
+	}
+	INTHandler 0x00000100 : AT (0x00000100)
+	{
+	}
+	RSTHandler 0x00E00000 : AT (0x00E00000)
+	{
+		_ResetHandler = .;
+	}
+	DefinitionData 0x00F00000 : AT (0x00F00000)
+	{
+		*(DefinitionDataHeader)
+		*(DefinitionData)
+		*(DefinitionDataEnd)
+	}
+	.text 0x07001000 : AT (0x07001000)
+	{
+		*(.text)
+		*(.text.*)
+		etext = .;
+	}
+	.init :
+	{
+		*(.init)
+	}
+	.fini :
+	{
+		*(.fini)
+	}
+	.got :
+	{
+		*(.got)
+		*(.got.plt)
+	}
+	.rodata :
+	{
+		*(.rodata)
+		*(.rodata.*)
+		_erodata = .;
+	} > mrodata
+	.eh_frame_hdr :
+	{
+		*(.eh_frame_hdr)
+	}
+	.eh_frame :
+	{
+		*(.eh_frame)
+	}
+	.jcr :
+	{
+		*(.jcr)
+	}
+	.tors :
+	{
+		__CTOR_LIST__ = .;
+		___ctors = .;
+		*(.ctors)
+		___ctors_end = .;
+		__CTOR_END__ = .;
+		__DTOR_LIST__ = .;
+		___dtors = .;
+		*(.dtors)
+		___dtors_end = .;
+		__DTOR_END__ = .;
+		_mdata = .;
+	}
+	Misc 0x0E005000 : AT (0x0E005000)
+	{
+		*(Misc)
+	}
+	.data 0x70000000 : AT (_mdata)
+	{
+		_data = .;
+		*(.data)
+		*(.data.*)
+		_edata = .;
+	}
+	.gcc_exc :
+	{
+		*(.gcc_exc)
+	}
+	.bss :
+	{
+		_bss = .;
+		*(.bss)
+		*(.bss.*)
+		*(COMMON)
+		_ebss = .;
+		_end = .;
+	}
+	.stack 0x73FFFBF0 : AT (0x73FFFBF0)
+	{
+		_stack = .;
+	}
+	MetaData 0x80001000 : AT (0x80001000)
+	{
+		*(MetaDataHeader)
+		*(MetaData)
+		*(MetaDataEnd)
+	}
+}

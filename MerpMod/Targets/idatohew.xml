@@ -36,15 +36,15 @@
         <define name="pTGVRightVoltage" type="unsigned short*">
             <ida name="E_SSM_Tumble_Valve_Pos_R"/>
         </define>
-		
+
 	    <define name="pRearO2Voltage" type="float*">
             <ida name="E_Rear_O2_Voltage"/>
         </define>
-		
+
         <define name="sShortToFloat">
             <ida name="SBR_SHORT_TO_FLOAT"/>
         </define>
-		
+
 		<define name="hPull2DTipInEnrich">
             <ida name="HOOKPULL_TIPIN_ENRICH" />
         </define>
@@ -54,7 +54,7 @@
 		<define name="tTipInEnrich2">
             <ida name="Table_Throttle_Tipin_Enrichment2" />
         </define>
-			
+
 		<define name="hPull2DCrankingFuel">
             <ida name="HOOKPULL_CRANKING_FUEL"/>
         </define>
@@ -100,7 +100,7 @@
 		<define name="tStartupEnrich2_2B">
             <ida name="Table_Min_Primary_Base_Enrich_2_Initial_Start_2B" />
         </define>
-		
+
 		<define name="hPull2DStartupEnrich3">
             <ida name="HOOKPULL_STARTUP_ENRICH_3"/>
         </define>
@@ -116,11 +116,11 @@
 		<define name="tStartupEnrich3_2B">
             <ida name="Table_Min_Primary_Base_Enrich_3_Initial_Start_2B" />
         </define>
-		
+
 		<define name="hPull2DFrontO2Scaling">
             <ida name="HOOKPULL_FRONTO2SCALING"/>
-        </define>		
-		
+        </define>
+
 		<define name="tFrontO2Scaling">
             <ida name="Table_Front_Oxygen_Sensor_Scaling" />
         </define>
@@ -128,14 +128,14 @@
 			<define name="tIntakeTempCompensation">
             <ida name="Table_Timing_Compensation_A_IAT" />
         </define>
-		
+
 		<define name="hPull2DIntakeTempCompensation">
             <ida name="HOOKPULL_INTAKETEMPCOMPENSATION"/>
-        </define>	
-		
-		
-		
-		
+        </define>
+
+
+
+
     </category>
 
     <category name="Rev Limit Hack">
@@ -415,8 +415,8 @@
         </define>
 		<define name="dFBKCRetardValueAlternate" type="float*">
             <ida name="Feedback_Knock_Correction_Retard_Value_Alternate" />
-        </define>		
-	
+        </define>
+
     </category>
 
 	<category name="AVCS Hacks">
@@ -437,19 +437,19 @@
         </define>
         <define name="hPull3DExhaustAVCS">
             <ida name="HOOKTABLE_Exhaust_AVCS" />
-        </define>		
+        </define>
         <define name="tIntakeAVCSNonCruiseCols">
             <ida name="INTAKE_AVCS_COLUMNS_NONCRUISE" />
-        </define>		
+        </define>
 		<define name="tIntakeAVCSNonCruiseRows">
             <ida name="INTAKE_AVCS_ROWS_NONCRUISE" />
-        </define>			
+        </define>
 		<define name="tIntakeAVCSNonCruiseData">
             <ida name="INTAKE_AVCS_DATA_NONCRUISE" />
-        </define>			
+        </define>
 
     </category>
-	
+
     <category name="Spark Cut">
         <define name="sSparkCutOcrStart">
             <ida name="SPARK_CUT_OCR_START" />
@@ -511,7 +511,7 @@
 		<define name="pSSMResetByte" type="unsigned char*">
 			<ida name="SSM_RESET_BYTE" />
 		</define>
-		
+
     </category>
 
     <category name="NonSpecific Engine params">
@@ -549,7 +549,7 @@
             <ida name="E_FUEL_INJECTOR_1_PULSE_WIDTH_4BYTEEXT_E60" />
         </define>
 		<define name="pInjectorLatency" type="float*">
-			<ida name="E_FUEL_INJECTOR_1_LATENCY_4BYTEEXT_E50" />	
+			<ida name="E_FUEL_INJECTOR_1_LATENCY_4BYTEEXT_E50" />
 		</define>
         <define name="pIntakeAirTemp" type="float*">
             <ida name="E_IAT_DIRECT" />
@@ -595,7 +595,7 @@
 		<define name="dLoadSmoothingAlt2"/>
         <define name="dLoadSmoothingFinal"/>
     </category>
-    
+
     <category name="Memory Reset">
         <define name="sMemoryReset">
             <ida name="SBR_MEMORY_RESET" />

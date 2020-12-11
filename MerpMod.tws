@@ -5,31 +5,10 @@
 [CURRENT_PROJECT]
 "MerpMod" 
 [GENERAL_DATA]
-"BuildMultipleSettings" "" 
 "ECXLABEL_LAST_FINDS_DATA" "" 
 [BREAKPOINTS]
 [OPEN_WORKSPACE_FILES]
-"C:\Projects\MerpMod-aijv1.6\MerpMod\BoostHackTables.c" 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\Externs.h" 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\Initializer.c" 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\InputHandler.c" 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\RamTuneTables.c" 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\RamVariables.h" 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\SpeedDensityTables.c" 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\Switch.h" 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\Targets\AZ1G202G.h" 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\TimingHackTables.c" 
 [WORKSPACE_FILE_STATES]
-"C:\Projects\MerpMod-aijv1.6\MerpMod\BoostHackTables.c" 216 150 1003 655 0 5 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\Externs.h" 432 300 1003 655 0 9 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\Initializer.c" 0 0 1451 716 0 1 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\InputHandler.c" 0 0 905 472 0 3 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\RamTuneTables.c" 288 200 1003 655 0 6 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\RamVariables.h" 360 250 1003 655 0 7 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\SpeedDensityTables.c" 0 0 1003 655 0 10 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\Switch.h" 120 120 905 472 0 2 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\Targets\AZ1G202G.h" 396 275 1003 655 0 8 
-"C:\Projects\MerpMod-aijv1.6\MerpMod\TimingHackTables.c" 60 60 905 472 0 4 
 [LOADED_PROJECTS]
 "MerpMod" 
 [END]
