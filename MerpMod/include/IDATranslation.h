@@ -12,6 +12,9 @@
     GNU General Public License for more details.
 */
 
+#ifndef __IDA_TRANSLATION__
+#define __IDA_TRANSLATION__
+
 //#define pRamVariables             ((RamVariables*)pRamHoleStart)
 #define SUB_KCA_HOOK_OLDVAL pKcaIam
 
@@ -154,3 +157,5 @@
 
 #define pFlagsRevLimit				((char*)pFlagsRevLimit)
 */
+
+#endif

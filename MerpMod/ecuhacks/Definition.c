@@ -107,13 +107,13 @@ typedef struct {
 {
 	IdentOp:	OpIdent,
 	IdentOffset:	DERP(dRomHoleStart),
-	Ident:	STR(MOD_ECU_IDENTIFIER),
+	Ident:	STRI(MOD_ECU_IDENTIFIER),
 	Identend:	OpEnd,
 	InhOffset:	0x0,
-	InhIdent:	STR(ECU_CALIBRATION_ID),
+	InhIdent:	STRI(ECU_CALIBRATION_ID),
 	IdentIhnEnd:	OpEnd,
 	InhEcuIdOffset:	0x0,
-	InhEcuId:	STR(ECU_IDENTIFIER),
+	InhEcuId:	STRI(ECU_IDENTIFIER),
 	EcuIdInhEnd:	OpEnd
 );*/
 

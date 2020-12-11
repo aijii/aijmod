@@ -1,6 +1,6 @@
 /*
 	Copyright (C) 2012-2013 Merrill A. Myers III merrillamyersiii@gmail.com
-	
+
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
@@ -23,7 +23,7 @@ void TestFailed(unsigned char *message)
 
 void Assert(int condition, unsigned char *message)
 {
-	
+
 	if (condition == 0)
 	{
 		long shit = 0;

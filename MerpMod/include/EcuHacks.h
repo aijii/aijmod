@@ -12,24 +12,18 @@
     GNU General Public License for more details.
 */
 
-////////////////////////////
-//TODO LIST:
-////////////////////////////
 
-/*
+#ifndef __ECU_HACKS__
+#define __ECU_HACKS__
 
-SHORT TERM:
-1. FBKC disable for LC??
-2. Document programming mode & ram tuning API, and idatohew instructions
-3. Document sharptune API
-4. Write new unit tests for: RamTuning, BoostHacks, FuelHacks, TimingHacks
-5. Write a fuel-cut startup interlocker based on user defined input sequence
-	-Will require some tricky memory management (reset clear, etc)
-6. Figure out make-file building, use ENV vars to set TARGET ROM
-7. Use a batch file to run multi-make-builds, set build config in ENV vars
-	-This will require a new 'update-rom' batch file logic path to direct binary output (use ENV var in batch file!)
-*/
+#define CONCAT(x,y) CONCAT_DO(x,y)
+#define CONCAT_DO(x,y) x y
+#define CONCAT_THREE(x,y,z) CONCAT(CONCAT(x,y),z)
+#define STRINGIFY(x) #x
+#define STRI(x) STRINGIFY(x)
 
+
+//Section Macros
 #define ROMCODE  __attribute__ ((section ("RomHole_Code"),aligned(4)))
 #define DEFDATA __attribute__ ((section ("DefinitionData"),aligned(4)))
 #define METADATA  __attribute__ ((section ("MetaData"),aligned(4)))
@@ -60,10 +54,9 @@ SHORT TERM:
 */
 #define ROMCODE_DATA __attribute__((section("RomHole_Code!")))
 
-
 //Select ECU Target!!
-#include "TargetHeader.h"
-#include "TargetConfig.h"
+#include STRI(_TARGET_HEADER_)
+#include STRI(_TARGET_CONFIG_)
 
 #if defined(pResumeFlags) && defined(pCoastFlags)
 #if LC_ADJUST || CEL_HACKS || PROG_MODE
@@ -235,7 +228,7 @@ SHORT TERM:
 #define MOD_CONFIG_ID CONCAT(STRI(MOD_CONFIG),STRI(.MOD_BUILD))
 #endif
 
-//#define MOD_IDENTIFIER CONCAT_THREE(   CONCAT(  STRI(ECU_CALIBRATION_ID)  ,  STRI(.MeRpMoD.)  )   ,   CONCAT( MOD_CONFIG_ID , STRI(.v) )   ,   STRI(MOD_DATE)    )
+// #define MOD_IDENTIFIER CONCAT_THREE(   CONCAT(  STRI(ECU_CALIBRATION_ID)  ,  STRI(.MeRpMoD.)  )   ,   CONCAT( MOD_CONFIG_ID , STRI(.v) )   ,   STRI(MOD_DATE)    )
 #define ModInfo CONCAT_THREE(STRI(VinInfo ),STRI(SdInfo ),CONCAT_THREE(STRI(BlendInfo ),STRI(RevLimInfo ),CONCAT_THREE(STRI(LcAdjInfo ),STRI(CelInfo ),CONCAT_THREE(STRI(PolfInfo ),STRI(BoostInfo ),STRI(DynRamTuningInfo))))) //ProgInfo SparkCutInfo  BoostInfo Timingfo SubKcaInfo PolfInfo PgwgInfo InjectorInfo MemoryInfo VeRamTuningInfo PolfRamTuningInfo TimingRamTuningInfo PgwgRamTuningInfo WgdcRamTuningInfo
 #define ModLabel CONCAT_THREE(STRI(VinLabel),STRI(SdLabel),CONCAT_THREE(STRI(BlendLabel),STRI(RevLimLabel),CONCAT_THREE(STRI(LcAdjLabel),STRI(CelLabel),CONCAT_THREE(STRI(PolfLabel),STRI(BoostLabel),STRI(DynRamTuningLabel))))) //ProgLabel SparkCutLabel  BoostLabel Timingfo SubKcaLabel PgwgLabel InjectorLabel MemoryLabel VeRamTuningLabel PolfRamTuningLabel TimingRamTuningLabel PgwgRamTuningLabel WgdcRamTuningLabel
 
@@ -245,11 +238,4 @@ SHORT TERM:
 
 extern RamVariables pRamVariables;
 
-#define CONCAT(x,y) CONCAT_DO(x,y)
-#define CONCAT_DO(x,y) x y
-#define CONCAT_THREE(x,y,z) CONCAT(CONCAT(x,y),z)
-#define STRINGIFY(x) #x
-#define STRI(x) STRINGIFY(x)
-#define STR_HELPER(x) #x
-#define STR(x) STR_HELPER(x)
-
+#endif

@@ -12,6 +12,9 @@
     GNU General Public License for more details.
 */
 
+#ifndef __RAM_VARIABLES__
+#define __RAM_VARIABLES__
+
 //////////////////////////
 //RAM VARIABLES STRUCTURE
 //////////////////////////
@@ -323,3 +326,5 @@ char	RamHoleEndMarker;
 	//IF ADDING PARAMS, MUST UPDATE SPARK CUT ASM!!!!
 
 } RamVariables;
+
+#endif

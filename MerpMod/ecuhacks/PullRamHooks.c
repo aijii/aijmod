@@ -1,6 +1,6 @@
 /*
 	Copyright (C) 2012-2013 Merrill A. Myers III merrillamyersiii@gmail.com
-	
+
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
@@ -54,7 +54,7 @@ float Pull2DRamHook(TwoDTable *table, float xLookup)
 
 float Pull2DRamHookTipInEnrich(TwoDTable *table, float xLookup)
 {
-    // Change this to return tipinenrichlookup * injectorscalar multiplier, if switch is on 
+    // Change this to return tipinenrichlookup * injectorscalar multiplier, if switch is on
     // maybe move to fueling hacks?
 
     if((table == (TwoDTable*) tTipInEnrich || table == (TwoDTable*) tTipInEnrich2) &&
@@ -70,9 +70,9 @@ float Pull2DRamHookCrankingFuel(TwoDTable *table, float xLookup)
         table == (TwoDTable*) tCrankingFuelC || table == (TwoDTable*) tCrankingFuelD ||
         table == (TwoDTable*) tCrankingFuelE || table == (TwoDTable*) tCrankingFuelF) &&
         (pRamVariables.PolfHackEnabled == HackEnabled))//This hook is used by other tables!!
-        return Pull2DHooked(table, xLookup) 
+        return Pull2DHooked(table, xLookup)
         * Pull3DHooked((ThreeDTable*)&CrankingFuelMultiplier, pRamVariables.MapBlendRatio, xLookup);
-    return Pull2DHooked(table, xLookup);	
+    return Pull2DHooked(table, xLookup);
 
 }
 
@@ -92,7 +92,7 @@ float Pull2DRamHookStartupEnrich3(TwoDTable *table, float xLookup)
     if((table == (TwoDTable*) tStartupEnrich3_1A || table == (TwoDTable*) tStartupEnrich3_1B ||
         table == (TwoDTable*) tStartupEnrich3_2A || table == (TwoDTable*) tStartupEnrich3_2B) &&
     (pRamVariables.PolfHackEnabled == HackEnabled))//This hook is used by other tables!!
-        return Pull2DHooked(table, xLookup) 
+        return Pull2DHooked(table, xLookup)
         * Pull3DHooked((ThreeDTable*)&StartupEnrichMultiplier,pRamVariables.MapBlendRatio, xLookup);
     return Pull2DHooked(table, xLookup);
 }
@@ -113,9 +113,9 @@ float Pull3DRamHookStartupEnrich1(ThreeDTable *table, float xLookup, float yLook
 {
     if((table == (ThreeDTable*) tStartupEnrich1Cruise || table == (ThreeDTable*) tStartupEnrich1NonCruise) &&
         (pRamVariables.PolfHackEnabled == HackEnabled))//This hook is used by other tables!!
-        return Pull3DHooked(table, xLookup, yLookup) 
+        return Pull3DHooked(table, xLookup, yLookup)
         * Pull3DHooked((ThreeDTable*)&StartupEnrichMultiplier, pRamVariables.MapBlendRatio, xLookup);
-    return Pull3DHooked(table, xLookup, yLookup);	
+    return Pull3DHooked(table, xLookup, yLookup);
 }
 
 
@@ -157,9 +157,9 @@ float Pull3DRamHookAVCSLookup(TwoDTable *table, float xLookup, float yLookup)
             table == (TwoDTable*) tExhaustAVCSCruise ||
             table == (TwoDTable*) tExhaustAVCSNonCruise) &&
             (pRamVariables.AVCSLookupMAPLoad != LoadLookup))
-                return Pull3DHooked(table, ((*pManifoldAbsolutePressure - 760)*.01933677), yLookup); 	
-    else 
-        return Pull3DHooked(table, xLookup, yLookup);	
+                return Pull3DHooked(table, ((*pManifoldAbsolutePressure - 760)*.01933677), yLookup);
+    else
+        return Pull3DHooked(table, xLookup, yLookup);
 
 #else
     if((table == (TwoDTable*) tIntakeAVCSCruise ||
@@ -167,10 +167,10 @@ float Pull3DRamHookAVCSLookup(TwoDTable *table, float xLookup, float yLookup)
     table == (TwoDTable*) tExhaustAVCSCruise ||
     table == (TwoDTable*) tExhaustAVCSNonCruise) &&
     (pRamVariables.AVCSLookupMAPLoad != LoadLookup))
-        return Pull3DHooked(table, ((*pManifoldAbsolutePressure - 760)*.01933677), yLookup); 	
-    return Pull3DHooked(table, xLookup, yLookup);	
-#endif	
-// To-do, create OEMRamTuneTables.c, create AVCS Ramtune table, 
-    
+        return Pull3DHooked(table, ((*pManifoldAbsolutePressure - 760)*.01933677), yLookup);
+    return Pull3DHooked(table, xLookup, yLookup);
+#endif
+// To-do, create OEMRamTuneTables.c, create AVCS Ramtune table,
+
 }
 #endif

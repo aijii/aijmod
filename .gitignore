@@ -2,25 +2,8 @@
 [Dd]ebug/
 [Mm]erp[Mm]od/[Rr]elease/
 [Mm]erp[Mm]od/[Tt]esting/
-[Mm]erp[Mm]od/LinkerScript.txt
-[Mm]erp[Mm]od/TargetHeader.h
-[Mm]erp[Mm]od/TargetConfig.h
-[Mm]erp[Mm]od/TestRom/partial-patch.mot
-[Mm]erp[Mm]od/TestRom/patched.bin
-[Mm]erp[Mm]od/TestRom/reverted.bin
-[Mm]erp[Mm]od/TestRom/*.patch
-MerpMod/Gratis_Debug/
-MerpMod/Gratis_Testing/
-MerpMod/Gratis_Release/
-MerpMod/Flash_Debug/
-MerpMod/Flash_Testing/
-MerpMod/Flash_Release/
-MerpMod/Switch_Debug/
-MerpMod/Switch_Testing/
-MerpMod/Switch_Release/
-MerpMod/TestRom/Gratis_Debug/
-MerpMod/TestRom/Flash_Debug/
-MerpMod/TestRom/Switch_Debug/
+[Mm]erp[Mm]od/TestRom/
+[Mm]erp[Mm]od/build/
 MerpMod/.*
 
 # Custom #
@@ -54,8 +37,6 @@ MerpMod/.*
 *.class
 *.dll
 *.o
-*.s
-!ResetHandler.s
 *.x
 *.mot
 *.gas
