@@ -188,7 +188,7 @@ pRamVariables.CruiseCoastLast = TestCruiseCoastSwitch();
         *p = DefaultRAMTableRamAddr;
     }
     
-    p = (long*) pRamHoleEnd;
+    p = (long*) ((char*) pRamHoleEnd + 1);
     while(--p >= &(pRamVariables.RAMTableHeaderRAMAddr[_MAX_RAM_TABLES_])){
         *p = 0xF0F0F0F0;
     }

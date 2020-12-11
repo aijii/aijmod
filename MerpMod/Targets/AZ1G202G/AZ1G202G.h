@@ -15,7 +15,7 @@
 #define dEcuId (0x000D4C4C)
 #define dRomHoleStart (0x000E1400)
 #define pRamHoleStart (0xFFFFA840)
-#define pRamHoleEnd (0xFFFFBF50)
+#define pRamHoleEnd (0xFFFFBF4F)
 #define sPull2DFloat (0x000BE804)
 #define sPull3DFloat (0x000BE8B8)
 
