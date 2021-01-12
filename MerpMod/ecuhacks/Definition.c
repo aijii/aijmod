@@ -1,6 +1,6 @@
 /*
 	Copyright (C) 2012-2013 Merrill A. Myers III merrillamyersiii@gmail.com
-	
+
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
@@ -92,18 +92,18 @@ typedef struct {
 	long IdentIhnEnd;
 	long InhEcuIdOffset;
 	char InhEcuId[ECU_IDENTIFIER_CHARS];
-	long EcuIdInhEnd; 
+	long EcuIdInhEnd;
 } DefMetaHeader;
 
 
 /*
 typedef struct {
-	
-	
+
+
 } LiveTuneBuffer;
 */
 
-/*const DefMetaHeader defmetaheader __attribute__ ((section ("DefinitionDataHeader"),aligned(4))) = 
+/*const DefMetaHeader defmetaheader __attribute__ ((section ("DefinitionDataHeader"),aligned(4))) =
 {
 	IdentOp:	OpIdent,
 	IdentOffset:	DERP(dRomHoleStart),
@@ -208,7 +208,7 @@ DEFINERAMVAR("MerpMod Prog Mode Value",ProgModeValue,"float","E");
 DEFINERAMVAR("MerpMod Valet Mode",ValetMode,"uint8","E");
 DEFINERAMVAR("MerpMod Hard Reset Flag",HardResetFlag,"uint8","E");
 #endif
-	
+
 DEFIDA1D("ECU Identifier",dEcuId);
 
 //Engine load smoothing factors
@@ -249,7 +249,7 @@ DEFINERAMBIT("MerpMod TestMode Switch",pTestModeFlags, TestModeBitMask,"E");
 	DEFINERAMBIT("MerpMod Rev Limit Fuel Cut Switch",pFlagsRevLim, RevLimBitMask,"E");
 #endif
 
-//VIN stuff	
+//VIN stuff
 #if VIN_HACKS && VIN_TEST_LOG
 DEFINERAMVAR("MerpMod Vehicle Identifier",VehicleIdent,"uint28","E");
 DEFINERAMVAR("MerpMod Auth Pass/Fail",VinAuth,"uint8","E");
@@ -292,7 +292,7 @@ DEFNEW1D("Speed Density Constant",SpeedDensityConstant);
 #if VE_RAMTUNING
 //DEFINERAMVAR3D("Volumetric Efficiencty Ram Table",VERamCols); //TODO this won't work yet!
 DEFINERAMVAR("VERamFlag",VERamFlag,"uint8","E");
-#endif	
+#endif
 
 #endif
 
@@ -302,7 +302,7 @@ DEFNEW1D("Rev Limit (Redline)",DefaultRedLineCut);
 DEFNEW1D("Flat Foot Shift Mode",DefaultFlatFootShiftMode);
 DEFNEW1D("Flat Foot Shift Delta (Automatic Limit)",DefaultFlatFootShiftAutoDelta);
 #endif
-DEFNEW1D("Flat Foot Shift Delta (Static Limit)",DefaultFlatFootShiftStaticDelta);	
+DEFNEW1D("Flat Foot Shift Delta (Static Limit)",DefaultFlatFootShiftStaticDelta);
 DEFNEW1D("Flat Foot Shift Minimum Speed Threshold",DefaultFlatFootShiftSpeedThreshold);
 DEFNEW1D("Flat Foot Shift Minimum RPM Threshold",DefaultFlatFootShiftRpmThreshold);
 DEFNEW1D("Launch Control Maximum Speed Threshold",DefaultLaunchControlSpeedMax);
@@ -311,8 +311,8 @@ DEFNEW1D("Flat Foot Shift Minimum Throttle Threshold",FFSMinimumThrottle);
 #ifdef pCurrentGear
 DEFNEW1D("Flat Foot Shift Gear Ratios",GearRatios);
 #endif
-DEFNEW1D("Rev Limit (Launch Control)",DefaultLaunchControlCut);	
-	
+DEFNEW1D("Rev Limit (Launch Control)",DefaultLaunchControlCut);
+
 	//PARAMS
 DEFINERAMVAR("MerpMod FFS Mode",FlatFootShiftMode,"uint8","E");//TODO add to def base
 DEFINERAMVAR("MerpMod LC Engaged Signal",LCEngaged,"uint8","E");
@@ -337,7 +337,7 @@ DEFNEW1D("Launch Control Adjustment Step",LCAdjustStep);
 
 #if SWITCH_HACKS
 DEFINERAMVAR("MerpMod ECU Identifier",ECUIdentifier,"uint32","E");
-	
+
 DEFINERAMVAR("MerpMod TGV Volts Left",TGVLeftVolts,"float","E");
 DEFINERAMVAR("MerpMod TGV Volts Right",TGVRightVolts,"float","E");
 
@@ -417,13 +417,13 @@ DEFNEW3D("Map Blending Startup Enrichment Multiplier",StartupEnrichMultiplier);
 DEFINERAMVAR("MerpMod LC Fueling Lock Enrichment",LCFuelLock,"float","E");
 DEFINERAMVAR("MerpMod LC Fueling Mode",LCFuelMode,"float","E");
 DEFINERAMVAR("MerpMod LC Fueling Enrichment",LCFuelEnrich,"float","E");
-DEFINERAMVAR("MerpMod LC Fueling Enrichment Multiplier",LCFuelEnrichMultiplier,"float","E");	
+DEFINERAMVAR("MerpMod LC Fueling Enrichment Multiplier",LCFuelEnrichMultiplier,"float","E");
 DEFINERAMVAR("MerpMod Primary Open Loop Fueling Target",PolfTarget,"float","E");
-DEFINERAMVAR("MerpMod Primary Open Loop Fueling Output",PolfOutput,"float","E");	
-	
+DEFINERAMVAR("MerpMod Primary Open Loop Fueling Output",PolfOutput,"float","E");
+
 #if SWITCH_HACKS
 DEFNEW1D("Fueling Hack Enable",DefaultPolfHackEnabled);
-DEFNEW1D("Fueling Lookup Load/MAP",DefaultFuelingLookupMAPLoad);	
+DEFNEW1D("Fueling Lookup Load/MAP",DefaultFuelingLookupMAPLoad);
 DEFNEW3D("Primary Open Loop Fueling Table 1 Intelligent(Ext)",FuelTable1i);
 DEFNEW3D("Primary Open Loop Fueling Table 2 Intelligent(Ext)",FuelTable2i);
 DEFNEW3D("Primary Open Loop Fueling Table 1 Sport(Ext)",FuelTable1s);
@@ -441,7 +441,7 @@ DEFNEW1D("Failsafe Valet Mode Trigger - EGT",EGTFailSafeValetModeEnable);
 DEFNEW1D("Failsafe Valet Mode Trigger - ECT",CoolantTempFailSafeValetModeEnable);
 DEFNEW1D("Failsafe Valet Mode Trigger - Severe Knock",FBKCHiFailSafeValetModeEnable);
 DEFNEW1D("Failsafe Valet Mode Trigger - Lean Boost",LeanBoostFailSafeValetModeEnable);
-DEFNEW1D("Failsafe Valet Mode Trigger - Fuel Pressure Delta",FuelPressureDeltaFailSafeValetModeEnable); 
+DEFNEW1D("Failsafe Valet Mode Trigger - Fuel Pressure Delta",FuelPressureDeltaFailSafeValetModeEnable);
 DEFNEW1D("Failsafe Valet Mode Trigger - Injector Duty Cycle",InjectorDutyCycleFailSafeValetModeEnable);
 DEFNEW1D("Injector Pulse Width Calculation",UseInjectorLatency);
 
@@ -449,13 +449,13 @@ DEFNEW2D("Front Oxygen Sensor Scaling Table 1",FrontOxygenSensorScaling1);
 DEFNEW2D("Front Oxygen Sensor Scaling Table 2",FrontOxygenSensorScaling2);
 
 #else
-DEFNEW3D("Primary Open Loop Fueling Table 1",FuelTable1i);	
-DEFNEW3D("Primary Open Loop Fueling Table 2",FuelTable2i);	
+DEFNEW3D("Primary Open Loop Fueling Table 1",FuelTable1i);
+DEFNEW3D("Primary Open Loop Fueling Table 2",FuelTable2i);
 #endif
-DEFNEW3D("Launch Control Fuel Enrichment",LCFuelEnrichTable);	
-DEFNEW1D("Launch Control Fueling Mode",DefaultLCFuelMode);	
+DEFNEW3D("Launch Control Fuel Enrichment",LCFuelEnrichTable);
+DEFNEW1D("Launch Control Fueling Mode",DefaultLCFuelMode);
 DEFNEW1D("Launch Control Enrichment (Lock Mode)",DefaultLCFuelLock);
-DEFNEW1D("Default Launch Control Fueling Compensation Multiplier",DefaultLCFuelEnrichMultiplier);	
+DEFNEW1D("Default Launch Control Fueling Compensation Multiplier",DefaultLCFuelEnrichMultiplier);
 
 #endif
 
@@ -466,15 +466,15 @@ DEFNEW1D("Default Launch Control Fueling Compensation Multiplier",DefaultLCFuelE
 #endif
 
 #if AVCS_HACKS
-DEFNEW1D("AVCS Lookup Load/MAP",DefaultAVCSLookupMAPLoad);	
+DEFNEW1D("AVCS Lookup Load/MAP",DefaultAVCSLookupMAPLoad);
 #endif
 
 #if CEL_HACKS
-DEFNEW1D("FBKC Threshold",FBKCLoThreshold);	
-DEFNEW1D("FBKC Flash Speed",FBKCLoFlashSpeed);	
-DEFNEW1D("FBKC Flash Count",FBKCLoFlashes);	
-DEFNEW1D("FBKC Severe Knock Threshold",FBKCHiThreshold);	
-DEFNEW1D("FBKC Severe Knock Flash Speed",FBKCHiFlashSpeed);	
+DEFNEW1D("FBKC Threshold",FBKCLoThreshold);
+DEFNEW1D("FBKC Flash Speed",FBKCLoFlashSpeed);
+DEFNEW1D("FBKC Flash Count",FBKCLoFlashes);
+DEFNEW1D("FBKC Severe Knock Threshold",FBKCHiThreshold);
+DEFNEW1D("FBKC Severe Knock Flash Speed",FBKCHiFlashSpeed);
 DEFNEW1D("FBKC Severe Knock Flash Count",FBKCHiFlashes);
 DEFNEW1D("FBKC Load Threshold",FBKCLoadThreshold);
 DEFNEW1D("IAM Flash Threshold",IAMFlashThreshold);
@@ -509,7 +509,7 @@ DEFNEW1D("Fuel Pressure Delta Delay",FuelPressureDeltaDelay);
 DEFNEW1D("Fuel Pressure Delta Threshold",FuelPressureDeltaThreshold);
 DEFNEW1D("Fuel Pressure Delta - Minimum RPM",FuelPressureTriggerMinRPM);
 
-	
+
 #ifdef pAf1Res
 DEFNEW1D("EGT AF1 Resistance Threshold",EGTResistanceThreshold);
 DEFNEW1D("EGT Flash Speed",EGTFlashSpeed);
@@ -521,7 +521,7 @@ DEFNEW1D("EGT Load Threshold",EGTCelLoadThreshold);
 DEFNEW1D("ECT Flash Speed",ECTFlashSpeed);
 DEFNEW1D("ECT Flash Count",ECTFlashes);
 DEFNEW1D("ECT Flash Temperature Threshold",ECTFlashThreshold);
-	
+
 #if defined(CRUISE_FLAGS) || defined (CRUISE_RESUME_FLAGS)
 DEFNEW1D("IAM Recall Flash Speed",IAMFlashSpeed);
 #endif
@@ -534,7 +534,7 @@ DEFNEW1D("Injector Duty Cycle Threshold",InjectorDutyCycleThreshold);
 //DEFINERAM("MerpMod CEL Signal OEM",pCelSignalOem,"uint8","E");
 //DEFINERAMVAR("MerpMod CEL Flash Counter",CelFlashCounter,"uint8","E");
 //DEFINERAMVAR("MerpMod CEL Speed Counter",CelFlashSpeedCounter,"uint8","E");
-	
+
 #endif
 
 
@@ -611,7 +611,7 @@ DEFNEW3D("Target Boost Compensation Table 2 Sport Sharp",TargetBoostTable2ss);
 DEFNEW3D("Target Boost Compensation Table 1",TargetBoostTable1);
 DEFNEW3D("Target Boost Compensation Table 2",TargetBoostTable2);
 #endif
-	
+
 	#if WGDC_LOCK
 DEFNEW1D("WGDC Lock Maximum RPM",RPMWGDCLock);
 DEFNEW1D("WGDC Lock Minimum Throttle",ThrottleLockWGDC);
@@ -626,17 +626,17 @@ DEFINERAMVAR("MerpMod LC Timing Retard Multiplier",LCTimingRetardMultiplier,"flo
 DEFINERAMVAR("MerpMod Base Timing Final Target",BaseTimingTarget,"float","E");
 DEFINERAMVAR("MerpMod Base Timing Final Output",BaseTimingOutput,"float","E");
 
-DEFNEW1D("Timing Lookup Load/MAP",DefaultTimingLookupMAPLoad);	
+DEFNEW1D("Timing Lookup Load/MAP",DefaultTimingLookupMAPLoad);
 DEFNEW1D("Launch Control Timing Mode",DefaultLCTimingMode);
-DEFNEW1D("Launch Control Timing Lock",DefaultLCTimingLock);	
+DEFNEW1D("Launch Control Timing Lock",DefaultLCTimingLock);
 DEFNEW1D("Default Launch Control Timing Retard Multiplier",DefaultLCTimingRetardMultiplier);
 DEFNEW3D("Launch Control Timing Retard Table",LCTimingRetardTable);
-	
+
 DEFNEW1D("Feedback Knock Correction Blended Retard Value 1",FBKCRetardValue1);
 DEFNEW1D("Feedback Knock Correction Blended Retard Value 2",FBKCRetardValue2);
 DEFNEW1D("Feedback Knock Correction Blended Retard Value Alternate 1",FBKCRetardValueAlternate1);
-DEFNEW1D("Feedback Knock Correction Blended Retard Value Alternate 2",FBKCRetardValueAlternate2);	
-	
+DEFNEW1D("Feedback Knock Correction Blended Retard Value Alternate 2",FBKCRetardValueAlternate2);
+
 #if SWITCH_HACKS
 DEFNEW1D("Timing Hack Enable",DefaultTimingHackEnabled);
 DEFNEW2D("Timing Compensation A (IAT) Table 1", IntakeTempCompensationTable1);
@@ -672,6 +672,11 @@ DEFNEW3D("Knock Correction Retard Table 2",KnockCorrectionRetardTable2i);
 #endif
 
 #if MEMORY_HACKS
+#endif
+
+#if DYN_RAMTUNING
+DEFINERAMVAR("aijmod RAM Tune Max Tables",MaxDynRAMTables,"uint32","E");
+DEFINERAM("aijmod RAM Tune End",pRamHoleEnd,"uint32","E");
 #endif
 
 #if VE_RAMTUNING

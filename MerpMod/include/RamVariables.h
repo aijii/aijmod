@@ -312,18 +312,35 @@ typedef struct
 	unsigned long ScannedStackPointer;
 #endif
 
-//this should be at the end of the RAM hole to not have to worry about
-//collisions with other RAM variables
-#if DYN_RAMTUNING
-    unsigned long   RAMTableHeaderROMAddr[_MAX_RAM_TABLES_];
-    unsigned long   RAMTableHeaderRAMAddr[_MAX_RAM_TABLES_];
-    unsigned char   *RAMTableArrayMarker;
-#endif
-
 long	RamHoleSpace;
-char	RamHoleEndMarker;
+char	RamHoleEndMarker; //end of static RAM variables
 
-	//IF ADDING PARAMS, MUST UPDATE SPARK CUT ASM!!!!
+//Dynamic RAM tuning should be at the end of the RAM hole to not have to
+//worry about collisions with other RAM variables
+//the RAM tune memory section is organized as follows:
+//
+// ---------------------START OF RAMTUNE SECTION-------------------------------
+// ulong indicating the offset used to jump from ROM to RAM array (4 bytes)
+// ulong indicating the maximum number of RAM tables (4 bytes)
+// array of ulong storing ROM table addresses to intercept (dynamic sized)
+// array of ulong storing RAM table addresses to inject (dynamic sized)
+// array of bytes storing RAM table data (dynamic sized)
+// -----------END OF RAMTUNE SECTION (assumed to be end of RAMHole)------------
+//
+// Because the number of tables is dynamically set by the controlling PC,
+// there is no way to statically/compile-time store a marker to the end
+// of the RAMhole, so this needs to be at the end of the RAM hole, and
+// the PC uses `pRamHoleEnd` to determine how much space is available
+// for RAM tuning
+#if DYN_RAMTUNING
+    //ROMtoRAMArrayOffset should always be set to MaxDynRAMTables-1 by the PC
+    unsigned long ROMtoRAMArrayOffset;
+
+    //MaxDynRAMTables **must** be the last variable before the arrays
+    unsigned long MaxDynRAMTables;
+
+    //no need to have pointers to rest of sections
+#endif
 
 } RamVariables;
 

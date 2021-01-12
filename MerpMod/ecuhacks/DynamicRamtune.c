@@ -41,8 +41,7 @@
 
 #if DYN_RAMTUNING
 
-unsigned long *ROMHeadersStart ROMCODE_DATA = pRamVariables.RAMTableHeaderROMAddr;
-unsigned long *RAMHeadersStart ROMCODE_DATA = pRamVariables.RAMTableHeaderRAMAddr;
-unsigned short MaxRAMTableHeaders ROMCODE_DATA = _MAX_RAM_TABLES_;
+unsigned long *pROMtoRAMArrayOffs ROMCODE_DATA = &(pRamVariables.ROMtoRAMArrayOffset);
+unsigned long *pMaxRAMTables ROMCODE_DATA = &(pRamVariables.MaxDynRAMTables);
 
 #endif

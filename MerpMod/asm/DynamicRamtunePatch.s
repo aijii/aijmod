@@ -98,10 +98,10 @@ _Pull2DFloatDynRamHook:
 !   - r4 contains table definition address
 !   - r5 contains the X index
 
-    mov.l   _ROMHeadersStart, r3    ! final RAMHeader array element address -> r3
-    mov.w   _MaxRAMTableHeaders, r0 ! compile-time fixed max number of RAM tables -> r0
+    mov.l   _pMaxRAMTables, r3      ! pointer to max RAM tables -> r3
+    mov.l   @r3+, r0                ! max RAM tables -> r0, r3 points to ROM header array
     mov.l   @(0x8, r4), r1          ! table ROM address -> r1
-    clrt                            ! clear T register before loop (maybe unnecessary?)
+    cmp/eq  #0, r0                  ! set T register if no tables allocated
 
 ! loop over ROMAddress array to check for match
 _Pull2DFloatDynAddr:
@@ -113,8 +113,8 @@ _Pull2DFloatDynAddr:
 
 ! found a matching address, now need to check if it's valid
 _Pull2DFloatDynValid:
-    shll2   r0                      ! array index to dword offset -> r0
-    mov.l   _RAMHeadersStart, r3    ! RAMArray base address -> r3
+    mov.l   _pROMtoRAMArrayOffs, r0 ! pointer to offset from ROM to RAM headers -> r0
+    mov.l   @r0, r0                 ! dword offset from ROM to RAM headers -> r0
     mov.l   @(r0, r3), r2           ! potential RAM table address -> r2
     mov.b   @(r0, r3), r0           ! flag bytes into -> r0
     cmp/eq  #0xFF, r0               ! 0xFF###### is valid, T -> 1 if valid
@@ -134,14 +134,15 @@ _Pull2DFloatDynExit:
 _Pull3DFloatDynRamHook:
 ! on enter (simply don't write to these registers!):
 !   - r0 contains the address to the subroutine table needed after return
+!   - r1 contains the table ROM address
 !   - r2 contains the X index
 !   - r3 contains the Y index
 !   - r4 contains table definition address
 
     mov     r0, r6                  ! datatype subroutine table -> r6
-    mov.l   _ROMHeadersStart, r5    ! final RAMHeader array element address -> r5
-    mov.w   _MaxRAMTableHeaders, r0 ! compile-time fixed max number of RAM tables -> r0
-    clrt                            ! clear T register before loop (maybe unnecessary?)
+    mov.l   _pMaxRAMTables, r5      ! pointer to max RAM tables -> r5
+    mov.l   @r5+, r0                ! max RAM tables -> r0, r5 points to ROM header array
+    cmp/eq  #0, r0                  ! set T register if no tables allocated
 
 ! loop over ROMAddress array to check for match
 _Pull3DFloatDynAddr:
@@ -153,8 +154,8 @@ _Pull3DFloatDynAddr:
 
 ! found a matching address, now need to check if it's valid
 _Pull3DFloatDynValid:
-    shll2   r0                      ! array index to dword offset -> r0
-    mov.l   _RAMHeadersStart, r5    ! RAMArray base address -> r5
+    mov.l   _pROMtoRAMArrayOffs, r0 ! pointer to offset from ROM to RAM header -> r0
+    mov.l   @r0, r0                 ! dword offset from ROM to RAM header -> r0
     mov.l   @(r0, r5), r7           ! potential RAM table address -> r7
     mov.b   @(r0, r5), r0           ! flag bytes into -> r0
     cmp/eq  #0xFF, r0               ! 0xFF###### is valid, T -> 1 if valid

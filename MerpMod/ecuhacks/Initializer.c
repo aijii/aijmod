@@ -42,7 +42,7 @@ void Initializer()
 
 void ResetRamVariables()
 {
-	ClearRamVariables((long*)&pRamVariables,(long*)&pRamVariables.RamHoleEndMarker);
+	ClearRamVariables((long*)&pRamVariables, (long*)pRamHoleEnd);
 	PopulateRamVariables();
 }
 
@@ -178,20 +178,12 @@ pRamVariables.CruiseCoastLast = TestCruiseCoastSwitch();
 
 #if DYN_RAMTUNING
     unsigned long *p;
-    p = &(pRamVariables.RAMTableHeaderROMAddr[_MAX_RAM_TABLES_]);
-    while(--p >= pRamVariables.RAMTableHeaderROMAddr){
-        *p = DefaultRAMTableRomAddr;
+    p = (unsigned long*) ((char*) pRamHoleEnd + 1);
+    while(--p >= &(pRamVariables.MaxDynRAMTables)){
+        *p = 0x00000000;
     }
-
-    p = &(pRamVariables.RAMTableHeaderRAMAddr[_MAX_RAM_TABLES_]);
-    while(--p >= pRamVariables.RAMTableHeaderRAMAddr){
-        *p = DefaultRAMTableRamAddr;
-    }
-    
-    p = (long*) ((char*) pRamHoleEnd + 1);
-    while(--p >= &(pRamVariables.RAMTableHeaderRAMAddr[_MAX_RAM_TABLES_])){
-        *p = 0xF0F0F0F0;
-    }
+    pRamVariables.ROMtoRAMArrayOffset = (pRamVariables.MaxDynRAMTables - 1)<<2; //doesn't matter for 0 case
+    pRamVariables.MaxDynRAMTables = 0;
 #endif
 
 pRamVariables.ECUIdentifier = *(long*)dEcuId;
