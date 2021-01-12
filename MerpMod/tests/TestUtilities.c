@@ -14,14 +14,14 @@
 
 #include "EcuHacks.h"
 
-void TestFailed(unsigned char *message) __attribute__ ((section ("Misc")));
-void TestFailed(unsigned char *message)
+void TestFailed(char *message) __attribute__ ((section ("Misc")));
+void TestFailed(char *message)
 {
 	// This just provides a place to set a breakpoint.
 	asm("nop");
 }
 
-void Assert(int condition, unsigned char *message)
+void Assert(int condition, char *message)
 {
 
 	if (condition == 0)

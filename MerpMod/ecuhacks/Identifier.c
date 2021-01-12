@@ -1,6 +1,6 @@
 /*
 	Copyright (C) 2012-2013 Merrill A. Myers III merrillamyersiii@gmail.com
-	
+
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
@@ -15,7 +15,7 @@
 #include "EcuHacks.h"
 
 #if CEL_HACKS
-	char* CelSignalMod __attribute__ ((section ("Test_Section"),aligned(4))) = &(pRamVariables.CelSignal);
+	unsigned char* CelSignalMod __attribute__ ((section ("Test_Section"),aligned(4))) = &(pRamVariables.CelSignal);
 #endif
 
 #define DATE_AS_INT (((COMPILE_YEAR - 2000) * 12 + COMPILE_MONTH) * 31 + COMPILE_DAY)
@@ -29,13 +29,13 @@ unsigned char ModIdentifier[] __attribute__ ((section ("RomHole_Identifier"),ali
 unsigned char ModDisclaimer[] __attribute__ ((section ("RomHole_Misc"),aligned(4))) = "COPYRIGHT 2017 Adrian Pistritto DISTRIBUTION PROHIBITED OFFROAD USE ONLY NO WARRANTY";
 
 #else
-unsigned char ModDisclaimer[] __attribute__ ((section ("RomHole_Misc"),aligned(4))) = "COPYRIGHT 2017 Adrian Pistritto, aijii81@gmail.com. UNAUTHORIZED DISTRIBUTION STRICTLY PROHIBITED. OFFROAD USE ONLY. NO WARRANTY. THIS SOFTWARE IS LICENSED TO YOU “AS IS,” AND WITHOUT ANY WARRANTY OF ANY KIND, WHETHER ORAL, WRITTEN, EXPRESS, IMPLIED OR STATUTORY, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT.";
+unsigned char ModDisclaimer[] __attribute__ ((section ("RomHole_Misc"),aligned(4))) = "COPYRIGHT 2017 Adrian Pistritto, aijii81@gmail.com. UNAUTHORIZED DISTRIBUTION STRICTLY PROHIBITED. OFFROAD USE ONLY. NO WARRANTY. THIS SOFTWARE IS LICENSED TO YOU ï¿½AS IS,ï¿½ AND WITHOUT ANY WARRANTY OF ANY KIND, WHETHER ORAL, WRITTEN, EXPRESS, IMPLIED OR STATUTORY, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT.";
 #endif
 
 #if VIN_HACKS
 
 
-const VinBlockStruct VinBlock __attribute__ ((section ("RomHole_Vin"),aligned(8))) = 
+const VinBlockStruct VinBlock __attribute__ ((section ("RomHole_Vin"),aligned(8))) =
 {
 	s1: 0x54320001,
 	s2: 0x65430001,

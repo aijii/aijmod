@@ -135,8 +135,8 @@ extern void (*RevLimDeleteHooked) ();
 #define MafVoltageToInternalUnits 13107.20005368709
 
 // Test utility functions.
-void TestFailed(unsigned char *message) __attribute__ ((section ("Misc")));
-void Assert(int condition, unsigned char *message) __attribute__ ((section ("Misc")));
+void TestFailed(char *message) __attribute__ ((section ("Misc")));
+void Assert(int condition, char *message) __attribute__ ((section ("Misc")));
 int AreCloseEnough(float actual, float expected) __attribute__ ((section ("Misc")));
 
 ////////////////////
