@@ -35,9 +35,6 @@ void SpeedDensityUnitTests()
 {
 	pRamVariables.MafMode = MafModeUndefined;
 	ClearRam();
-#if VE_RAMTUNING	
-	pRamVariables.VERamFlag = 0;
-#endif
 	//Run initializer 
 	PopulateRamVariables();
 	
@@ -98,46 +95,6 @@ void SpeedDensityUnitTests()
 	//Clear manifold pressure
 	*pManifoldAbsolutePressure = 268.917649;;
 
-#if VE_RAMTUNING	
-	//Test RAM table 
-	*pEngineSpeed = 1000.0f;
-	*pManifoldAbsolutePressure = 268.917649; // Corresponds to -9.5psiG, which is normal for idle.	
-	*pAtmoPress = 700;
-	*pIntakeAirTemp = 15;
-	pRamVariables.VERamFlag = 1;
-	result = CallSpeedDensityHook();
-	Assert(AreCloseEnough(result, 0), "Checking blend mode code, cell should be zero and return maf sensor value.");
-	//populate table
-	extern float VE_COLS[];
-	extern float VE_ROWS[];
-	extern short VE_DATA1[];
-	
-	int i;
-/*	float* fpoint = pRamVariables.VERamCols;
-	for (i=0; i < 24; i++)
-	{
-	*fpoint = VE_COLS[i];
-	fpoint += 0x1;
-	}
-	fpoint = pRamVariables.VERamRows;
-	for (i=0; i < 24; i++)
-	{
-	*fpoint = VE_ROWS[i];
-	fpoint += 0x1;
-	}
-*/
-	short* spoint = pRamVariables.VERamData;
-	for (i=0; i < 576; i++)
-	{
-	*spoint = VE_DATA1[i];
-	spoint += 0x1;
-	}
-	result = CallSpeedDensityHook();
-	Assert(AreCloseEnough(result, expectedMafFromSpeedDensity), "Checking blend mode code, cell should be zero and return maf sensor value.");
-
-
-#endif	
-	
 	pRamVariables.MafMode = MafModeSensor;
 	
 }

@@ -227,24 +227,6 @@ ThreeDTable SDDeltaMapTable SPEEDDENSITYDATA = {
 	//! 2/32767  (0-2.00 range, 16bit precision)
 #endif
 
-#if VE_RAMTUNING
-//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-//!! VE RAM table
-//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-ThreeDTable VolumetricEfficiencyRamTable  SPEEDDENSITYDATA = {
-	.columnCount = 24,
-	.rowCount = 24,
-//	.columnHeaderArray = &(pRamVariables.VERamCols),
-//	.rowHeaderArray = &(pRamVariables.VERamRows),
-	.columnHeaderArray = VE_COLS,
-	.rowHeaderArray = VE_ROWS,
-	.tableCells = &(pRamVariables.VERamData),
-	.tableType = UInt16Table3D,
-	.multiplier = 0.0000457763672f,	
-	.offset = 0.0 };
-//! 1.5/32767  (0-2.00 range, 16bit precision)
-#endif
-
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 //!! Atmospheric compensation table
 //!! Compensate SD-calculated MAF values based on atmospheric pressure and MAF.

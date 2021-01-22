@@ -576,21 +576,4 @@ unsigned char LeanBoostFailSafeFuelAdditiveEnable FUELDATA = 0;
 	
 #endif
 
-#if POLF_RAMTUNING
-//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-//!! Fuel Ram Table
-//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-ThreeDTable FuelRamTable FUELDATA = {
-	.columnCount = 24,
-	.rowCount = 24,
-//	.columnHeaderArray = &(pRamVariables.POLFRamCols),
-//	.rowHeaderArray = &(pRamVariables.POLFRamRows),
-	.columnHeaderArray = F_COLS,
-	.rowHeaderArray = F_ROWS,
-	.tableCells = &(pRamVariables.POLFRamData),
-	.tableType = UInt8Table3D,
-	.multiplier = 0.0078125,// 0x3C000000, // 0.78125 = 2/255 (0-2 range, 8bit precision)
-	.offset = 0.0f };
-#endif
 #endif

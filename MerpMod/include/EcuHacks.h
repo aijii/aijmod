@@ -167,41 +167,16 @@
 #define MemoryInfo
 #define MemoryLabel
 #endif
-#if VE_RAMTUNING
-#define VeRamTuningInfo	VE Ramtuning
-#define VeRamTuningLabel
-#else
 #define VeRamTuningInfo
 #define VeRamTuningLabel
-#endif
-#if POLF_RAMTUNING
-#define PolfRamTuningInfo POLF Ramtuning
-#define PolfRamTuningLabel
-#else
 #define PolfRamTuningInfo
 #define PolfRamTuningLabel
-#endif
-#if TIMING_RAMTUNING
-#define TimingRamTuningInfo Timing Ramtuning
-#define TimingRamTuningLabel
-#else
 #define TimingRamTuningInfo
 #define TimingRamTuningLabel
-#endif
-#if PGWG_RAMTUNING
-#define PgwgRamTuningInfo PGWG Ramtuning
-#define PgwgRamTuningLabel
-#else
 #define PgwgRamTuningInfo
 #define PgwgRamTuningLabel
-#endif
-#if WGDC_RAMTUNING
-#define WgdcRamTuningInfo WGDC Ramtuning
-#define WgdcRamTuningLabel
-#else
 #define WgdcRamTuningInfo
 #define WgdcRamTuningLabel
-#endif
 #if DYN_RAMTUNING
 #define DynRamTuningInfo Dynamic RAM Tuning
 #define DynRamTuningLabel

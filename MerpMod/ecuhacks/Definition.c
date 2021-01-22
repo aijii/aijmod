@@ -289,10 +289,6 @@ DEFNEW1D("Engine Displacement",Displacement);
 DEFNEW1D("Mass Airflow Mode",DefaultMafMode);
 DEFNEW1D("Speed Density Constant",SpeedDensityConstant);
 
-#if VE_RAMTUNING
-//DEFINERAMVAR3D("Volumetric Efficiencty Ram Table",VERamCols); //TODO this won't work yet!
-DEFINERAMVAR("VERamFlag",VERamFlag,"uint8","E");
-#endif
 
 #endif
 
@@ -679,20 +675,6 @@ DEFINERAMVAR("aijmod RAM Tune Max Tables",MaxDynRAMTables,"uint32","E");
 DEFINERAM("aijmod RAM Tune End",pRamHoleEnd,"uint32","E");
 #endif
 
-#if VE_RAMTUNING
-#endif
-
-#if POLF_RAMTUNING
-#endif
-
-#if TIMING_RAMTUNING
-#endif
-
-#if PGWG_RAMTUNING
-#endif
-
-#if WGDC_RAMTUNING
-#endif
 
 
 const long endofdeffile __attribute__ ((section ("DefinitionDataEnd"),aligned(4))) = 0x00090009;

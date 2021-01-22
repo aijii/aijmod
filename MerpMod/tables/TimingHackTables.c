@@ -679,23 +679,6 @@ ThreeDTable KnockCorrectionRetardTable2ss  TIMINGDATA = {
 	.offset = -20.0f }; 	//-20 offset
 #endif
 
-#if TIMING_RAMTUNING
-//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-//!!Timing Ram table
-//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!	
-ThreeDTable TimingRamTable  TIMINGDATA = {
-	.columnCount = 24,
-	.rowCount = 24,
-//	.columnHeaderArray = &(pRamVariables.TimingRamCols),
-//	.rowHeaderArray = &(pRamVariables.TimingRamRows),
-	.columnHeaderArray = T_COLS,
-	.rowHeaderArray = T_ROWS,
-	.tableCells = &(pRamVariables.TimingRamData),
-	.tableType = UInt8Table3D,
-	.multiplier = 0.3515625f,	//
-	.offset = -20.0f }; 	//-20 offset
-#endif
-
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 //!! Launch Control Timing Retard Table
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
