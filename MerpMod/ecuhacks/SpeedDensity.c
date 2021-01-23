@@ -17,7 +17,12 @@
 #if SD_HACKS
 
 float ComputeMassAirFlow(TwoDTable* MafScalingTable, float MafVoltage)
-{	
+{
+
+#if CAN_HACKS
+	CustomCanService();
+#endif	
+	
 	pRamVariables.MafFromSensor = Pull2DHooked(MafScalingTable,MafVoltage);	
 	
 	pRamVariables.MafFromDualSensorScaling = BlendCurve(Pull2DHooked(&MafScalingTable1,MafVoltage),Pull2DHooked(&MafScalingTable2,MafVoltage),MassAirFlowScalingBlendCurveSwitch);

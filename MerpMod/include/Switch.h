@@ -35,6 +35,7 @@
 #define INJECTOR_HACKS 1	//
 #define E85_HACKS 0			//
 #define AVCS_HACKS 0		//
+#define CAN_HACKS 1			//
 							//
 //////////////////////////////
 							

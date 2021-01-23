@@ -5,10 +5,37 @@
 [CURRENT_PROJECT]
 "MerpMod" 
 [GENERAL_DATA]
+"BuildMultipleSettings" "" 
 "ECXLABEL_LAST_FINDS_DATA" "" 
 [BREAKPOINTS]
 [OPEN_WORKSPACE_FILES]
+"C:\Projects\aijmod\MerpMod\asm\ResetHandler.s" 
+"C:\Projects\aijmod\MerpMod\ecuhacks\CelFlash.c" 
+"C:\Projects\aijmod\MerpMod\ecuhacks\CustomCan.c" 
+"C:\Projects\aijmod\MerpMod\ecuhacks\Definition.c" 
+"C:\Projects\aijmod\MerpMod\ecuhacks\EcuHacks.c" 
+"C:\Projects\aijmod\MerpMod\ecuhacks\SpeedDensity.c" 
+"C:\Projects\aijmod\MerpMod\include\EcuHacks.h" 
+"C:\Projects\aijmod\MerpMod\include\enums.h" 
+"C:\Projects\aijmod\MerpMod\include\Externs.h" 
+"C:\Projects\aijmod\MerpMod\include\RamVariables.h" 
+"C:\Projects\aijmod\MerpMod\include\Switch.h" 
+"C:\Projects\aijmod\MerpMod\tables\CustomCanTables.c" 
+"C:\Projects\aijmod\MerpMod\tests\CustomCanTests.c" 
 [WORKSPACE_FILE_STATES]
+"C:\Projects\aijmod\MerpMod\asm\ResetHandler.s" 130 130 1159 416 0 5 
+"C:\Projects\aijmod\MerpMod\ecuhacks\CelFlash.c" 104 104 1185 371 0 11 
+"C:\Projects\aijmod\MerpMod\ecuhacks\CustomCan.c" 0 0 1357 898 0 2 
+"C:\Projects\aijmod\MerpMod\ecuhacks\Definition.c" 130 130 1185 371 0 12 
+"C:\Projects\aijmod\MerpMod\ecuhacks\EcuHacks.c" 156 156 1159 416 0 6 
+"C:\Projects\aijmod\MerpMod\ecuhacks\SpeedDensity.c" 0 0 1159 416 0 8 
+"C:\Projects\aijmod\MerpMod\include\EcuHacks.h" 0 0 1237 274 0 10 
+"C:\Projects\aijmod\MerpMod\include\Externs.h" -8 -31 1357 566 1 4 
+"C:\Projects\aijmod\MerpMod\include\RamVariables.h" 78 78 1185 371 0 3 
+"C:\Projects\aijmod\MerpMod\include\Switch.h" 182 182 1159 416 0 7 
+"C:\Projects\aijmod\MerpMod\include\enums.h" 104 104 1237 274 0 9 
+"C:\Projects\aijmod\MerpMod\tables\CustomCanTables.c" 0 0 1357 516 0 0 
+"C:\Projects\aijmod\MerpMod\tests\CustomCanTests.c" 26 26 1185 371 0 1 
 [LOADED_PROJECTS]
 "MerpMod" 
 [END]

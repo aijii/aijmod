@@ -89,6 +89,9 @@ float HighPass(float input, float limit) ROMCODE;
 float BandPass(float input, float lowlim, float highlim) ROMCODE;
 int BandPassInt(int input, int lowlim, int highlim) ROMCODE;
 float Smooth(float smoothingFactor, float input, float previous) ROMCODE;
+unsigned char limit_u8(float input) ROMCODE;
+unsigned short limit_u16(float input) ROMCODE;
+unsigned long limit_u32(float input) ROMCODE;
 
 void RevLimCode() ROMCODE;
 void RevLimReset() ROMCODE;
@@ -394,10 +397,41 @@ extern float LCAdjustStep;
 
 extern float ValetModeRevLim;
 
-extern unsigned char DefaultRamTuneTableBlend;
-extern unsigned char DefaultRamTuneTableSwitch;
-extern ThreeDTable AVCSRamTable;
 
+#if CAN_HACKS
+#define ccmCount 12
+extern CanMessageSetupStruct ccm00;
+extern CanMessageSetupStruct ccm01;
+extern CanMessageSetupStruct ccm02;
+extern CanMessageSetupStruct ccm03;
+extern CanMessageSetupStruct ccm04;
+extern CanMessageSetupStruct ccm05;
+extern CanMessageSetupStruct ccm06;
+extern CanMessageSetupStruct ccm07;
+extern CanMessageSetupStruct ccm08;
+extern CanMessageSetupStruct ccm09;
+extern CanMessageSetupStruct ccm10;
+extern CanMessageSetupStruct ccm11;
+
+extern unsigned char dataLinkedInRam;
+
+#define cmDTCount 32
+extern unsigned long cmDTaddr[];
+extern unsigned char cmDTtypeIn[];
+extern unsigned char cmDTtypeOut[];
+extern unsigned char cmDTccm[];
+extern unsigned char cmDTpos[];
+extern float cmDTscale[];
+extern float cmDToffset[];
+
+//extern TwoDTable FuelPressureTable;
+//void updateFuelPressure(unsigned short rawVoltage);
+//void raceGradeKeyPadCallback(unsigned char* data) ROMCODE;
+//void canCallbackRamTune(unsigned char* data) ROMCODE;
+//void canCallbackAEMwideband(unsigned char* data) ROMCODE;
+//void canCallbackMK3e85Packet(unsigned char* data) ROMCODE;
+
+#endif
 
 
 #if VIN_HACKS

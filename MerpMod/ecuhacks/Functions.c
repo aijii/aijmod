@@ -66,3 +66,24 @@ float Smooth(float smoothingFactor, float input, float previous)
 	output += diff * smooth;
 	return output;
 }
+
+unsigned char limit_u8(float input)
+{
+	if(input <0) return 0;
+	else if(input > 255) return 0xFF;
+	else return (unsigned char)input;	
+}
+
+unsigned short limit_u16(float input)
+{
+	if(input <0) return 0;
+	else if(input > 65535) return 0xFFFF;
+	else return (unsigned short)input;	
+}
+
+unsigned long limit_u32(float input)
+{
+	if(input <0) return 0;
+	else if(input > 4294967295) return 0xFFFFFFFF;
+	else return (unsigned long)input;	
+}

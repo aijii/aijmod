@@ -94,6 +94,11 @@ pRamVariables.CruiseCoastLast = TestCruiseCoastSwitch();
 
 #endif
 
+#if CAN_HACKS
+	pRamVariables.initFunctionRun = 0;
+	pRamVariables.sdTimer = 0;
+#endif 
+
 #if PROG_MODE
 	pRamVariables.ProgModeCurrentMode = 1;
 	pRamVariables.ProgModeValueFlashes = 0;

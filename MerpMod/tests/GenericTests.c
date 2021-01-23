@@ -34,6 +34,10 @@ void CallMemoryReset()
 void GenericTests() 
 {
 	ResetRamVariables();
+
+#if CAN_HACKS
+	CustomCanUnitTests();
+#endif
 	
 #if VIN_HACKS
 	Assert(pRamVariables.VinAuth != 0x00,"Check VIN auth!");

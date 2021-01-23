@@ -36,6 +36,7 @@
 #define RAMTUNEDATA __attribute__ ((section ("RomHole_MapSwitchTables"),aligned(4)))
 #define FUELDATA __attribute__ ((section ("RomHole_POLFHackTables"),aligned(4)))
 #define BOOSTDATA __attribute__ ((section ("RomHole_BoostHackTables"),aligned(4)))
+#define CANDATA __attribute__ ((section ("RomHole_BoostHackTables"),aligned(4)))
 #define PORTDATA __attribute__ ((section ("RomHole_PortLoggerTables"),aligned(4)))
 
 /*
