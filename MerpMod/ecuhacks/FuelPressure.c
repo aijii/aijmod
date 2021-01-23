@@ -20,9 +20,9 @@ void UpdateFuelPressureInput(float InputVoltage)
 {
 	//scale
 	pRamVariables.FuelPressure = Smooth(FuelPressureSensorSmoothingFactor,Pull2DHooked(&FuelPressureScaling,InputVoltage),pRamVariables.FuelPressure);
-	pRamVariables.FuelPressureDelta = pRamVariables.FuelPressure - *pManifoldRelativePressure - BaseFuelPressure;
+	pRamVariables.FuelPressureDifferential = pRamVariables.FuelPressure - *pManifoldRelativePressure;
 
-	if((Abs(pRamVariables.FuelPressureDelta) > FuelPressureDeltaThreshold) && (*pEngineSpeed > FuelPressureTriggerMinRPM))
+	if((Abs(pRamVariables.FuelPressureDifferential - BaseFuelPressure) > FuelPressureDeltaThreshold) && (*pEngineSpeed > FuelPressureTriggerMinRPM))
 	{
 		if(pRamVariables.FuelPressureDeltaCounter == 0) pRamVariables.FailSafeFuelPressureDeltaSwitch = 1;
 	}
@@ -37,6 +37,5 @@ void FuelPressureDeltaCount()
 {
 	if(pRamVariables.FuelPressureDeltaCounter > 0) pRamVariables.FuelPressureDeltaCounter--;
 }
-
 
 #endif

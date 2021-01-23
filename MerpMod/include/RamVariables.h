@@ -90,7 +90,7 @@ typedef struct
 	float TGVRightVolts;
 	float WideBandLambda;
 	float FuelPressure;
-	float FuelPressureDelta;
+	float FuelPressureDifferential;
 	float RearO2Volts;
 	float MAFSensorVolts;
 	float MapSwitchInputVoltage;

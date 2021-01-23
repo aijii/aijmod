@@ -390,12 +390,8 @@ DEFNEW1D("Base Fuel Pressure",BaseFuelPressure);
 DEFINERAMVAR("Merpmod Fuel Pressure",FuelPressure,"float","E");
 DEFINERAMVAR("Merpmod Rear O2 Voltage",RearO2Volts,"float","E");
 DEFINERAMVAR("Merpmod Wideband",WideBandLambda,"float","E");
-
-
 DEFINERAMVAR("Merpmod Lean Boost Counter",LeanBoostCounter,"uint16","E");
-
-
-DEFINERAMVAR("Merpmod Fuel Pressure Delta",FuelPressureDelta,"float","E");
+DEFINERAMVAR("Merpmod Fuel Pressure Delta",FuelPressureDifferential,"float","E");
 DEFINERAMVAR("Merpmod Injector Duty Cycle",InjectorDutyCycle,"float","E");
 
 #if INJECTOR_HACKS
@@ -498,9 +494,6 @@ DEFINERAMVAR("Merpmod Trigger Lean Boost",FailSafeLeanBoostSwitch,"uint8","E");
 DEFINERAMVAR("Merpmod Trigger Fuel Pressure Delta",FailSafeFuelPressureDeltaSwitch,"uint8","E");
 DEFINERAMVAR("Merpmod Trigger Injector Duty Cycle",FailSafeInjectorDutyCycleSwitch,"uint8","E");
 DEFINERAMVAR("Merpmod Action Fuel Additive Active",FailSafeFuelAdditiveSwitch,"uint8","E");
-
-
-
 DEFNEW1D("Fuel Pressure Delta Delay",FuelPressureDeltaDelay);
 DEFNEW1D("Fuel Pressure Delta Threshold",FuelPressureDeltaThreshold);
 DEFNEW1D("Fuel Pressure Delta - Minimum RPM",FuelPressureTriggerMinRPM);
