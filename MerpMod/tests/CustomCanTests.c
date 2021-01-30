@@ -122,7 +122,7 @@ void CustomCanUnitTests()
 	dte85[0] = 0x31;	dte85[1] = 0x4d; dte85[2] = 45;	dte85[4] = 0x38;	dte85[5] = 0x52;	*pManifoldAbsolutePressure = 10.2;	
 	canCallbackMK3e85Packet(&dte85[0]);	
 	Assert(Abs(pRamVariables.pFuelCan - 22.5) <0.001f, "mk3 pFuelTest failed");
-	Assert(Abs(pRamVariables.tFuelCAN - 5) <0.001f, "mk3 tFuelCAN failed");
+	 (Abs(pRamVariables.tFuelCAN - 5) <0.001f, "mk3 tFuelCAN failed");
 	Assert(Abs(pRamVariables.rEthanolCAN - 0.2465) <0.001f, "mk3 rEthanolCAN failed");
 	Assert(Abs(pRamVariables.pFuelCanRel - 12.3) <0.001f, "mk3 pFuelCanRel failed");
 */	
@@ -287,8 +287,17 @@ void CustomCanUnitTests()
 	*((float*)cmDTaddr[0]) = 4294967296;
 	cmDTscale[0] = 0;
 	cmDToffset[0] = 0;
-	updateCanDT(0);
 	Assert(*(unsigned long*)(0xFFFFD100+0x08+19*0x20) == 4294967295, "DT float u8 Check Failed");
+	
+	CustomCanService();
+	
+	pRamVariables.initFunctionRun = 0;
+	
+		cmDTtypeIn[0] = 4;
+	cmDTtypeOut[0] = 4;
+	updateCanDT(0);
+	updateCanDT(1);
+	
 	
 	CustomCanService();
 	

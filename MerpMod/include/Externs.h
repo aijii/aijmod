@@ -54,6 +54,21 @@ float CallSpeedDensityHook()  ROMCODE;
 void CelDoubleRepeat(unsigned char * CelFlashes1, unsigned char Speed1, unsigned char * CelFlashes2, unsigned char Speed2, unsigned char Delay1, unsigned char Delay2)  ROMCODE;
 void CelFlashStart(unsigned char CelFlashes, unsigned char Speed, unsigned char Delay, unsigned char Interrupt)  ROMCODE;
 void CelFlash()	ROMCODE;
+
+#if CAN_HACKS
+void CanSetup()	ROMCODE;
+void setupMailBox(unsigned char bus, unsigned char mailBox, unsigned short id, unsigned char mcs, unsigned char dlc) ROMCODE;
+void updateCanRaw(unsigned long addr, unsigned char type, unsigned char ccm, unsigned char bytePos) ROMCODE;
+void sendRamTuneMemoryReadRequest(unsigned char type, unsigned long addr) ROMCODE;
+void setupMailBoxStruct(CanMessageSetupStruct* cs) ROMCODE;
+void sendCanMessage(unsigned char ccm) ROMCODE;
+void recieveCanMessage(unsigned char ccm) ROMCODE;
+void updateCanDT(unsigned char dt) ROMCODE;
+void CustomCanService() ROMCODE;
+unsigned short returnShifter(unsigned char c) ROMCODE;
+#endif
+
+
 void WGDCHack(void) ROMCODE;
 void TargetBoostHack(void) ROMCODE;
 void InjectorHack() ROMCODE;
@@ -103,7 +118,8 @@ float BlendAndSwitchCurve(TableGroup tg, float xLookup, float yLookup, unsigned 
 float SwitchSelect(TableSubSet tss, float xLookup, float yLookup) ROMCODE;
 void InputUpdate() ROMCODE;
 void MapBlendFailSafeCount() ROMCODE;
-void UpdateMapBlendRatio(float inputVoltage) ROMCODE;
+void UpdateMapBlendRatioAnalog(float inputVoltage) ROMCODE;
+void UpdateMapBlendRatioCANBus(unsigned char ethanolContent, unsigned char ethanolStatus) ROMCODE;
 void MapSwitchThresholdCheck(float input) ROMCODE;
 void UpdateFuelPressureInput(float InputVoltage) ROMCODE;
 void FuelPressureDeltaCount() ROMCODE;
@@ -415,7 +431,7 @@ extern CanMessageSetupStruct ccm11;
 
 extern unsigned char dataLinkedInRam;
 
-#define cmDTCount 32
+#define cmDTCount 16 
 extern unsigned long cmDTaddr[];
 extern unsigned char cmDTtypeIn[];
 extern unsigned char cmDTtypeOut[];
@@ -430,6 +446,8 @@ extern float cmDToffset[];
 //void canCallbackRamTune(unsigned char* data) ROMCODE;
 //void canCallbackAEMwideband(unsigned char* data) ROMCODE;
 //void canCallbackMK3e85Packet(unsigned char* data) ROMCODE;
+
+void canCallbackECAPacket(unsigned char* data) ROMCODE;
 
 #endif
 

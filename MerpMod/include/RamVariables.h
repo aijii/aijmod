@@ -40,28 +40,27 @@ typedef struct
 #endif
 
 #if CAN_HACKS	
-	float ethanolContentCAN;
-	unsigned short ethanolContentShortCAN;
 	unsigned short ccmSendTimers[ccmCount];
 	unsigned short sdTimer;
 	
 	unsigned short initFunctionRun;
 	unsigned char randomTimer;
+	
 	unsigned char rgBackLight;
+	
 	unsigned char ecuHacksMainCtr;
-	
-	
-		float rEthanolCAN;
-		float tFuelCAN;		
-		float pFuelCan;	
-		float pFuelCanRel;
-		float aemLambda;
-		float aemOxygen;
-		float vFuelPressureRel;
-		unsigned char aemDataValid;
-		unsigned char aemSensorFault;
-		unsigned char aemn1;
-		unsigned char aemn2;
+
+	unsigned char rEthanolCAN;
+	unsigned char ethanolSensorFault;
+/*	
+	float aemLambda;
+	float aemOxygen;
+	unsigned char aemDataValid;
+	unsigned char aemSensorFault;
+	unsigned char aemn1;
+	unsigned char aemn2;
+*/	
+	unsigned char tFuelCAN;		
 		
 #endif
 

@@ -15,32 +15,68 @@
 #include "EcuHacks.h"
 #if SWITCH_HACKS
 
-void UpdateMapBlendRatio(float inputVoltage)
+
+void UpdateMapBlendRatioCANBus(unsigned char ethanolContent, unsigned char ethanolStatus)
 {
-	if((inputVoltage < BlendInputMinimumVolts) || (inputVoltage > BlendInputMaximumVolts))
-			{
-			//out of range!
-			if(pRamVariables.MapBlendOutOfRangeCounter == 0)
-			{
-				//counter has hit zero, fall back to default mapblend and trigger cel flash
+	if(ethanolStatus) //sensor error, data[7] = 0x01 if fault
+	//TODO - need to also throw an error (different one?) and trigger the blend failsafe if we fail to see ECA messages on the canbus
+	{
+		if(pRamVariables.MapBlendOutOfRangeCounter == 0)
+		{ //counter has hit 0, either fail to default blend ratio or leave the last known good(maybe?!?) value
+
 				if(MapBlendFailSafe == FailToDefaultBlendRatio) 
 					pRamVariables.MapBlendRatio = Smooth(MapBlendSmoothingFactor,DefaultMapBlendRatio,pRamVariables.MapBlendRatio);
-					pRamVariables.FailSafeMapBlendSwitch = 1;
-				}
-			// do nothing, leave map blend ratio at last known good value! don't reset counter, so it will count down to zero.
-			}
-			else if(*pManifoldRelativePressure < MapBlendBoostContentLock)
-			{
-				//within range, boost is under content lock value, all good. 
-				pRamVariables.MapBlendRatio = Smooth(MapBlendSmoothingFactor,Pull2DHooked(&MapBlendScaling,inputVoltage),pRamVariables.MapBlendRatio); 
-				pRamVariables.MapBlendOutOfRangeCounter = MapBlendCount; //  reset the counter
-				pRamVariables.FailSafeMapBlendSwitch = 0;
-			}
-			else //within range but above content lock, don't update output
-			{
-				pRamVariables.MapBlendOutOfRangeCounter = MapBlendCount; //  reset the counter
-				pRamVariables.FailSafeMapBlendSwitch = 0;
-			}	
+				pRamVariables.FailSafeMapBlendSwitch = 1;
+		}
+		//or do nothing and let it count down
+}
+	else if(*pManifoldRelativePressure < MapBlendBoostContentLock)
+	{
+		//if boost is below content lock threshold, update blend ratio
+
+			pRamVariables.MapBlendRatio = Smooth(MapBlendSmoothingFactor,(ethanolContent/100),pRamVariables.MapBlendRatio); 
+			pRamVariables.MapBlendOutOfRangeCounter = MapBlendCount; //  reset the counter
+			pRamVariables.FailSafeMapBlendSwitch = 0;
+			
+	}
+	else
+	{
+		// otherwise don't udpate eca, just reset the counter. depending on how flex sensor is plumbed, we may not be able to rely on eca content
+		// readings during high load (i.e. in return line, high load could starve flow back to tank)
+			pRamVariables.MapBlendOutOfRangeCounter = MapBlendCount; //  reset the counter
+			pRamVariables.FailSafeMapBlendSwitch = 0;
+			
+	}	
+	
+}
+
+void UpdateMapBlendRatioAnalog(float inputVoltage)
+{
+	if((inputVoltage < BlendInputMinimumVolts) || (inputVoltage > BlendInputMaximumVolts))
+	{
+	//out of range!
+		if(pRamVariables.MapBlendOutOfRangeCounter == 0)
+		{
+		//counter has hit zero, fall back to default mapblend and trigger cel flash
+			if(MapBlendFailSafe == FailToDefaultBlendRatio) 
+				pRamVariables.MapBlendRatio = Smooth(MapBlendSmoothingFactor,DefaultMapBlendRatio,pRamVariables.MapBlendRatio);
+			pRamVariables.FailSafeMapBlendSwitch = 1;
+		}
+	
+	// do nothing, leave map blend ratio at last known good value! don't reset counter, so it will count down to zero.
+	}
+	else if(*pManifoldRelativePressure < MapBlendBoostContentLock)
+	{
+		//within range, boost is under content lock value, all good. 
+		pRamVariables.MapBlendRatio = Smooth(MapBlendSmoothingFactor,Pull2DHooked(&MapBlendScaling,inputVoltage),pRamVariables.MapBlendRatio); 
+		pRamVariables.MapBlendOutOfRangeCounter = MapBlendCount; //  reset the counter
+		pRamVariables.FailSafeMapBlendSwitch = 0;
+	}
+	else //within range but above content lock, don't update output
+	{
+		pRamVariables.MapBlendOutOfRangeCounter = MapBlendCount; //  reset the counter
+		pRamVariables.FailSafeMapBlendSwitch = 0;
+	}	
 }
 
 float GetBlendCurveRatio(unsigned char curve)
@@ -72,27 +108,7 @@ float BlendAndSwitchCurve(TableGroup tg, float xLookup, float yLookup, unsigned 
 	float ThisMapBlendRatio;
 	
 	ThisMapBlendRatio = GetBlendCurveRatio(curve);	
-/*	
-	switch(curve)
-	{
-		case BlendCurve1:
-			ThisMapBlendRatio = Pull2DHooked(&MapBlendCurve1,pRamVariables.MapBlendRatio);
-		break;
-		case BlendCurve2:
-			ThisMapBlendRatio = Pull2DHooked(&MapBlendCurve2,pRamVariables.MapBlendRatio);
-		break;
-		case BlendCurve3:
-			ThisMapBlendRatio = Pull2DHooked(&MapBlendCurve3,pRamVariables.MapBlendRatio);
-		break;
-		case BlendCurve4:
-			ThisMapBlendRatio = Pull2DHooked(&MapBlendCurve4,pRamVariables.MapBlendRatio);
-		break;
-		case MasterBlendCurve:
-		default:
-			ThisMapBlendRatio = pRamVariables.MapBlendRatio;
-		break;
-	}
-*/	
+
 	if(ThisMapBlendRatio < 0.01)
 	{
 		OutputValue = SwitchSelect(tg.Map1, xLookup, yLookup);
@@ -131,27 +147,6 @@ float BlendCurve(float firstValue, float secondValue, unsigned char curve)
 	float ThisMapBlendRatio;
 	
 	ThisMapBlendRatio = GetBlendCurveRatio(curve);	
-/*	
-	switch(curve)
-	{
-		case BlendCurve1:
-			ThisMapBlendRatio = Pull2DHooked(&MapBlendCurve1,pRamVariables.MapBlendRatio);
-		break;
-		case BlendCurve2:
-			ThisMapBlendRatio = Pull2DHooked(&MapBlendCurve2,pRamVariables.MapBlendRatio);
-		break;
-		case BlendCurve3:
-			ThisMapBlendRatio = Pull2DHooked(&MapBlendCurve3,pRamVariables.MapBlendRatio);
-		break;
-		case BlendCurve4:
-			ThisMapBlendRatio = Pull2DHooked(&MapBlendCurve4,pRamVariables.MapBlendRatio);
-		break;
-		case MasterBlendCurve:
-		default:
-			ThisMapBlendRatio = pRamVariables.MapBlendRatio;
-		break;
-	}
-*/	
 
 	if(ThisMapBlendRatio < 0.01)
 	{
@@ -164,7 +159,6 @@ float BlendCurve(float firstValue, float secondValue, unsigned char curve)
 	}
 	else
 	{
-
 		//Blend
 		
 		firstValue *= (1 - ThisMapBlendRatio);

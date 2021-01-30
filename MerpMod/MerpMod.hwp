@@ -131,7 +131,7 @@
 "Compile" 1 
 "Assemble" 1 
 "Link" 1 
-"UpdateTestRom" 0 
+"UpdateTestRom" 1 
 [BUILD_PHASE_DETAILS]
 "GNU Assembler" "Assembly source file" 1 
 "GNU Compiler" "C source file|C++ source file|Preprocess Assembly file" 1 
@@ -274,9 +274,9 @@
 "C:\Projects\aijmod\MerpMod\Targets\AZ1G101N\AZ1G101N.map" "User" "C header file|Targets|EDM|FXT|AZ1G101N_EDM_2009-10_FXT_AT" 2 
 "C:\Projects\aijmod\MerpMod\Targets\AZ1G101N\AZ1G101N.txt" "User" "C header file|Targets|EDM|FXT|AZ1G101N_EDM_2009-10_FXT_AT" 2 
 "C:\Projects\aijmod\MerpMod\Targets\AZ1G101N\AZ1G101NConfig.h" "User" "C header file|Targets|EDM|FXT|AZ1G101N_EDM_2009-10_FXT_AT" 2 
-"C:\Projects\aijmod\MerpMod\Targets\AZ1G202G\AZ1G202G.h" "User" "C header file|Targets|EDM|STi|AZ1G202G_EDM_2008_STI" 2 
-"C:\Projects\aijmod\MerpMod\Targets\AZ1G202G\AZ1G202G.txt" "User" "C header file|Targets|EDM|STi|AZ1G202G_EDM_2008_STI" 2 
-"C:\Projects\aijmod\MerpMod\Targets\AZ1G202G\AZ1G202GConfig.h" "User" "C header file|Targets|EDM|STi|AZ1G202G_EDM_2008_STI" 2 
+"C:\Projects\aijmod\MerpMod\Targets\AZ1G202G\AZ1G202G.h" "User" "C header file|Targets|ADM|AZ1G202G_EDM_2008_STI" 2 
+"C:\Projects\aijmod\MerpMod\Targets\AZ1G202G\AZ1G202G.txt" "User" "C header file|Targets|ADM|AZ1G202G_EDM_2008_STI" 2 
+"C:\Projects\aijmod\MerpMod\Targets\AZ1G202G\AZ1G202GConfig.h" "User" "C header file|Targets|ADM|AZ1G202G_EDM_2008_STI" 2 
 "C:\Projects\aijmod\MerpMod\Targets\AZ1G202I\AZ1G202I.h" "User" "C header file|Targets|USDM|STI|2008_2009_AZ1G202I_USDM_STI" 2 
 "C:\Projects\aijmod\MerpMod\Targets\AZ1G202I\AZ1G202I.map" "User" "C header file|Targets|USDM|STI|2008_2009_AZ1G202I_USDM_STI" 2 
 "C:\Projects\aijmod\MerpMod\Targets\AZ1G202I\AZ1G202I.txt" "User" "C header file|Targets|USDM|STI|2008_2009_AZ1G202I_USDM_STI" 2 
@@ -382,6 +382,7 @@
 "C header file|Targets|ADM|A8DH200V_ADM_2006_STI" "" 
 "C header file|Targets|ADM|A8DK100H_ADM_2007_FXT_AT" "" 
 "C header file|Targets|ADM|AZ1E400C_ADM_2008_WRX" "" 
+"C header file|Targets|ADM|AZ1G202G_EDM_2008_STI" "" 
 "C header file|Targets|ADM|AZ1G900C_ADM_2011_WRX" "" 
 "C header file|Targets|ADM|AZ1N100M_ADM_2014_STI" "" 
 "C header file|Targets|EDM" "" 
@@ -395,7 +396,6 @@
 "C header file|Targets|EDM|STi" "" 
 "C header file|Targets|EDM|STi|A8DH200Z_EDM_2006_STI" "" 
 "C header file|Targets|EDM|STi|A8DK100Z_EDM_2007_STI" "" 
-"C header file|Targets|EDM|STi|AZ1G202G_EDM_2008_STI" "" 
 "C header file|Targets|EDM|STi|AZ1J500G_EDM_2011_STi" "" 
 "C header file|Targets|EDM|WRX" "" 
 "C header file|Targets|EDM|WRX|A8DH200Y_EDM_2006_WRX" "" 

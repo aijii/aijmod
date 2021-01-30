@@ -97,6 +97,10 @@ pRamVariables.CruiseCoastLast = TestCruiseCoastSwitch();
 #if CAN_HACKS
 	pRamVariables.initFunctionRun = 0;
 	pRamVariables.sdTimer = 0;
+	
+	pRamVariables.rEthanolCAN = 0;
+	pRamVariables.tFuelCAN = 0;
+	
 #endif 
 
 #if PROG_MODE

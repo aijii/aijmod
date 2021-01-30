@@ -91,6 +91,11 @@ enum MapBlendModeValues
 	MapBlendingInputModeTGVRight = (unsigned char)0x02,
 	MapBlendingInputModeRearO2 = (unsigned char)0x03,
 	MapBlendingInputModeMAF = (unsigned char)0x04,
+	
+#if CAN_HACKS	
+	MapBlendingInputModeEthanolCANBus = (unsigned char)0x05
+#endif
+
 };
 enum MapSwitchModeValues
 {

@@ -39,22 +39,26 @@ void InputUpdate()//TODO: put on SD branch
 		case MapBlendingInputModeUndefined:
 		break;
 		
+		case MapBlendingInputModeEthanolCANBus:
+			UpdateMapBlendRatioCANBus(pRamVariables.rEthanolCAN,pRamVariables.ethanolSensorFault);
+		break;
+		
 		case MapBlendingInputModeTGVLeft:
-			UpdateMapBlendRatio(pRamVariables.TGVLeftVolts);
+			UpdateMapBlendRatioAnalog(pRamVariables.TGVLeftVolts);
 		break;
 		
 		case MapBlendingInputModeTGVRight:
-			UpdateMapBlendRatio(pRamVariables.TGVRightVolts);			
+			UpdateMapBlendRatioAnalog(pRamVariables.TGVRightVolts);			
 		break;
 		
 		case MapBlendingInputModeRearO2:
-			UpdateMapBlendRatio(pRamVariables.RearO2Volts);			
+			UpdateMapBlendRatioAnalog(pRamVariables.RearO2Volts);			
 		break;	
 								
 		case MapBlendingInputModeMAF:
-			UpdateMapBlendRatio(pRamVariables.MAFSensorVolts);			
+			UpdateMapBlendRatioAnalog(pRamVariables.MAFSensorVolts);			
 		break;	
-				
+			
 		default:
 			pRamVariables.MapBlendRatio = DefaultMapBlendRatio;
 		break;

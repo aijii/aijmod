@@ -312,6 +312,27 @@ void recieveCanMessage(unsigned char ccm)
 
 unsigned long shC[24] CANDATA = {1,2,4,8,16,32,64,128,256,512,1024,2048,4096,8192,16384,32768,65536,131072,262144,524288,1048576,2097152,4192304,8388608};
 
+void canCallbackECAPacket(unsigned char* data)
+{
+
+	if(!data[7])
+	{
+		pRamVariables.rEthanolCAN = data[0];
+		pRamVariables.tFuelCAN = data[1]-40;	//0 to 165 for -40 to 125C
+		pRamVariables.ethanolSensorFault = 0x00;
+	}
+	else
+	{
+		pRamVariables.ethanolSensorFault = 0x01;		
+	}
+	
+//	pRamVariables.rEthanolCAN = 0x71; // data[0];
+//	pRamVariables.tFuelCAN = 0x69; //data[1]-40;	//0 to 165 for -40 to 125C
+
+
+}
+
+
 /*
 void canCallbackAEMwideband(unsigned char* data)
 {
@@ -319,20 +340,6 @@ void canCallbackAEMwideband(unsigned char* data)
 	pRamVariables.aemOxygen = (float)(data[2]*256 + data[3])*0.001;
 	pRamVariables.aemDataValid = (unsigned char)(data[6])>>7&0x01;
 	pRamVariables.aemSensorFault = (unsigned char)(data[7])>>6&0x01;	
-}
-
-void canCallbackMK3e85Packet(unsigned char* data)
-{
-	pRamVariables.rEthanolCAN = (float)(data[0]*256 + data[1])/51200; 		//0 to 1024 for 0 to 100% 1/1024 LSB/%	
-	pRamVariables.tFuelCAN = (float)(data[2])-40;	//0 to 165 for -40 to 125C
-	updateFuelPressure((unsigned short)((unsigned short)data[4]*256 + (unsigned short)data[5]));
-	pRamVariables.pFuelCanRel = pRamVariables.pFuelCan - *pManifoldAbsolutePressure;
-}
-
-void updateFuelPressure(unsigned short rawVoltage)
-{
-	pRamVariables.vFuelPressureRel = ShortToFloatHooked(rawVoltage, (1/13107.2f),0);
-	pRamVariables.pFuelCan = Pull2DHooked(&FuelPressureTable, pRamVariables.vFuelPressureRel);	 
 }
 
 
@@ -374,6 +381,8 @@ void CustomCanService()
 	{
 		CanSetup();
 	}
+
+
 	
 	//Update all possible DataTransfers, stop when list is seen to be not configured	
 	while(i<cmDTCount)
