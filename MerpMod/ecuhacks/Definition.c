@@ -675,8 +675,8 @@ DEFNEW3D("Knock Correction Retard Table 2",KnockCorrectionRetardTable2i);
 #endif
 
 #if DYN_RAMTUNING
-DEFINERAMVAR("aijmod RAM Tune Max Tables",MaxDynRAMTables,"uint32","E");
-DEFINERAM("aijmod RAM Tune End",pRamHoleEnd,"uint32","E");
+DEFINERAMVAR("MerpMod RAM Tune Max Tables",MaxDynRAMTables,"uint32","E");
+DEFINERAM("MerpMod RAM Tune End",pRamHoleEnd,"uint32","E");
 #endif
 
 #if VE_RAMTUNING
