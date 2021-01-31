@@ -102,17 +102,21 @@
 "GNU Linker" 
 [UTILITY_PHASE]
 [CUSTOM_PHASES]
-"Assemble" "$(PROJDIR)\Assemble.bat" "$(TCINSTALL)" 1 0 0 
-"Compile" "$(PROJDIR)\Compile.bat" "$(TCINSTALL)" 1 0 0 
+"Assemble" "$(PROJDIR)\Assemble.bat" "$(TCINSTALL)" 1 0 1 
+"Compile" "$(PROJDIR)\Compile.bat" "$(TCINSTALL)" 1 0 1 
 "CreateEnv" "CreateEnv.bat" "$(PROJDIR)" 0 0 0 
 "LibGen" "$(PROJDIR)\LibGen.bat" "$(TCINSTALL)" 0 0 0 
-"Link" "$(PROJDIR)\Link.bat" "$(TCINSTALL)" 0 0 0 
+"Link" "$(PROJDIR)\Link.bat" "$(TCINSTALL)" 0 0 1 
 "TargetSelection" "$(PROJDIR)\TargetSelection.bat" "$(PROJDIR)" 0 0 0 
 "UpdateTestRom" "..\Update.bat" "$(PROJDIR)\TestRom" 0 0 0 
 [CUSTOM_PHASE_INPUT_GROUP]
 "Assemble" "Assembly source file" 
 "Compile" "C source file" 
 [CUSTOM_PHASE_OUTPUT_SYNTAX]
+"Assemble" "Error|$(FILEDIR)\$(FILENAME):$(LINE):*Error*" 
+"Assemble" "Warning|$(FILEDIR)\$(FILENAME):$(LINE):*Warning*" 
+"Compile" "Error|$(FILEDIR)\$(FILENAME):$(LINE):*error*" 
+"Compile" "Warning|$(FILEDIR)\$(FILENAME):$(LINE):*warning*" 
 [ENVIRONMENT_Assemble]
 [ENVIRONMENT_Compile]
 [ENVIRONMENT_CreateEnv]
@@ -452,54 +456,54 @@
 "DefaultSession" "C:\Projects\aijmod\MerpMod\DefaultSession.hsf" 0 
 [GENERAL_DATA_SESSION_DefaultSession]
 [OPTIONS_A2UI001L_Assemble]
-"Assembly source file" "0e3443d895fc6d10" 11 
-"C:\Projects\aijmod\MerpMod\asm\DynamicRamtunePatch.s" "0e3443d895fc6d10" 11 
-"C:\Projects\aijmod\MerpMod\asm\ResetHandler.s" "0e3443d895fc6d10" 11 
+"Assembly source file" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\asm\DynamicRamtunePatch.s" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\asm\ResetHandler.s" "09f4ed724f7f6d10" 10 
 [OPTIONS_A2UI001L_Compile]
-"C source file" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\ecuhacks\BlendAndSwitch.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\ecuhacks\BoostHacks.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\ecuhacks\CelFlash.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\ecuhacks\Definition.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\ecuhacks\DynamicRamtune.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\ecuhacks\EcuHacks.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\ecuhacks\FailSafes.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\ecuhacks\FuelHacks.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\ecuhacks\FuelPressure.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\ecuhacks\Functions.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\ecuhacks\Identifier.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\ecuhacks\Initializer.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\ecuhacks\InputHandler.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\ecuhacks\Metadata.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\ecuhacks\PortLogger.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\ecuhacks\ProgMode.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\ecuhacks\PullRamHooks.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\ecuhacks\RamHoleScanner.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\ecuhacks\RevLimiter.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\ecuhacks\SparkHacks.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\ecuhacks\SpeedDensity.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\ecuhacks\SwitchChecks.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\ecuhacks\TimingHacks.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\ecuhacks\WideBand.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\tables\BoostHackTables.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\tables\CelFlashTables.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\tables\FuelHackTables.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\tables\MapSwitchTables.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\tables\MiscInputTables.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\tables\ProgModeTables.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\tables\RamTuneTables.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\tables\RevLimiterTables.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\tables\SpeedDensityTables.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\tables\TimingHackTables.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\tests\CelFlashTests.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\tests\DynamicRamtuneTests.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\tests\GenericTests.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\tests\ProgModeTests.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\tests\RevLimiterTests.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\tests\SpeedDensityTests.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\tests\SwitchTests.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\tests\TableHackTests.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\tests\TestUtilities.c" "0e3443d895fc6d10" 10 
+"C source file" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\ecuhacks\BlendAndSwitch.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\ecuhacks\BoostHacks.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\ecuhacks\CelFlash.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\ecuhacks\Definition.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\ecuhacks\DynamicRamtune.c" "0079a6335f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\ecuhacks\EcuHacks.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\ecuhacks\FailSafes.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\ecuhacks\FuelHacks.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\ecuhacks\FuelPressure.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\ecuhacks\Functions.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\ecuhacks\Identifier.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\ecuhacks\Initializer.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\ecuhacks\InputHandler.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\ecuhacks\Metadata.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\ecuhacks\PortLogger.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\ecuhacks\ProgMode.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\ecuhacks\PullRamHooks.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\ecuhacks\RamHoleScanner.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\ecuhacks\RevLimiter.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\ecuhacks\SparkHacks.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\ecuhacks\SpeedDensity.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\ecuhacks\SwitchChecks.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\ecuhacks\TimingHacks.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\ecuhacks\WideBand.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\tables\BoostHackTables.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\tables\CelFlashTables.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\tables\FuelHackTables.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\tables\MapSwitchTables.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\tables\MiscInputTables.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\tables\ProgModeTables.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\tables\RamTuneTables.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\tables\RevLimiterTables.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\tables\SpeedDensityTables.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\tables\TimingHackTables.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\tests\CelFlashTests.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\tests\DynamicRamtuneTests.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\tests\GenericTests.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\tests\ProgModeTests.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\tests\RevLimiterTests.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\tests\SpeedDensityTests.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\tests\SwitchTests.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\tests\TableHackTests.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\tests\TestUtilities.c" "09f4ed724f7f6d10" 10 
 [OPTIONS_A2UI001L_CreateEnv]
 "Single Shot" "0de899a352fc6d10" 8 
 [OPTIONS_A2UI001L_GNU Assembler]
@@ -560,18 +564,17 @@
 [OPTIONS_A2UI001L_LibGen]
 "Single Shot" "090233a835fc6d10" 9 
 [OPTIONS_A2UI001L_Link]
-"Single Shot" "0e3443d895fc6d10" 9 
+"Single Shot" "009e64fa0f7f6d10" 9 
 [OPTIONS_A2UI001L_TargetSelection]
 "Single Shot" "0de1faed18ec6d10" 1 
 [OPTIONS_A2UI001L_UpdateTestRom]
-"Single Shot" "0de899a352fc6d10" 12 
+"Single Shot" "0de899a352fc6d10" 11 
 [OPTIONS_A2UI001L]
 "" 0 
 "$(CONFIGNAME) $(BUILDCONFIG) $(MMVERSION)" 1 
-"$(CONFIGNAME) $(BUILDCONFIG) $(PROJECTNAME)" 12 
+"$(CONFIGNAME) $(BUILDCONFIG) $(PROJECTNAME)" 11 
 "$(CONFIGNAME) lib$(PROJECTNAME).a" 8 
-"$(FULLFILE) $(FILELEAF) $(FILEDIR) $(PROJDIR)  $(CONFIGNAME)" 10 
-"$(FULLFILE) $(FILELEAF) $(FILEDIR) $(PROJDIR) $(CONFIGNAME)" 11 
+"$(FULLFILE) $(FILELEAF) $(FILEDIR) $(PROJDIR) $(CONFIGNAME)" 10 
 "$(PROJDIR) $(CONFIGNAME) $(PROJECTNAME)" 9 
 "[V|VERSION|2] [B|DOSEGF|1] [S|INCDIR|^"$(TCINSTALL)\sh-elf\lib\gcc\sh-elf\4.7-GNUSH_v13.01\mrenesas\m2e^"|^"$(CONFIGDIR)^"] [B|RSARCH|1] [B|FIXUPLIBS|1] [S|ARCHIVE|libgcc.a*libgcc-Os-4-200.a*lib$(PROJECTNAME).a] [S|OUTFORM|BOTH] [S|OUTFILE|^"$(CONFIGDIR)\$(PROJECTNAME).x^"] [S|MEMDET|RAM|-1|0xFFFF0000|0xFFFFFFFF|*] [S|GROUPDET|Zero|0|0||1|0x00000000|0|0|0|Zero|All-files|<<FEND>>|<<CEND>>|<<GEND>>|INTHandler|0|0||1|0x00000100|0|0|<<CEND>>|<<GEND>>|RSTHandler|0|0||1|0x00E00000|0|0|1|_ResetHandler|<<FEND>>|<<CEND>>|<<GEND>>|DefinitionData|0|0||1|0x00F00000|0|0|0|DefinitionDataHeader|All-files|<<FEND>>|0|DefinitionData|All-files|<<FEND>>|0|DefinitionDataEnd|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.text|0|0||1|0x07001000|0|0|0|.text|All-files|<<FEND>>|0|.text.*|All-files|<<FEND>>|1|etext|<<FEND>>|<<CEND>>|<<GEND>>|.init|0|0||0||0|0|0|.init|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.fini|0|0||0||0|0|0|.fini|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.got|0|0||0||0|0|0|.got|All-files|<<FEND>>|0|.got.plt|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.rodata|0|2|_mrodata|0||0|0|0|.rodata|All-files|<<FEND>>|0|.rodata.*|All-files|<<FEND>>|1|_erodata|<<FEND>>|<<CEND>>|<<GEND>>|.eh_frame_hdr|0|0||0||0|0|0|.eh_frame_hdr|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.eh_frame|0|0||0||0|0|0|.eh_frame|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.jcr|0|0||0||0|0|0|.jcr|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.tors|0|0||0||0|0|1|__CTOR_LIST__|<<FEND>>|1|___ctors|<<FEND>>|0|.ctors|All-files|<<FEND>>|1|___ctors_end|<<FEND>>|1|__CTOR_END__|<<FEND>>|1|__DTOR_LIST__|<<FEND>>|1|___dtors|<<FEND>>|0|.dtors|All-files|<<FEND>>|1|___dtors_end|<<FEND>>|1|__DTOR_END__|<<FEND>>|1|_mdata|<<FEND>>|1|_mrodata|<<FEND>>|<<CEND>>|<<GEND>>|Misc|0|0||1|0x0E005000|0|0|0|Misc|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.data|0|2|_mdata|1|0x70000000|0|0|1|_data|<<FEND>>|0|.data|All-files|<<FEND>>|0|.data.*|All-files|<<FEND>>|1|_edata|<<FEND>>|<<CEND>>|<<GEND>>|.gcc_exc|0|0||0||0|0|0|.gcc_exc|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.bss|0|0||0||0|0|1|_bss|<<FEND>>|0|.bss|All-files|<<FEND>>|0|.bss.*|All-files|<<FEND>>|0|COMMON|All-files|<<FEND>>|1|_ebss|<<FEND>>|1|_end|<<FEND>>|<<CEND>>|<<GEND>>|.stack|0|0||1|0x73FFFBF0|0|0|1|_stack|<<FEND>>|<<CEND>>|<<GEND>>|MetaData|0|0||1|0x80001000|0|0|0|MetaDataHeader|All-files|<<FEND>>|0|MetaData|All-files|<<FEND>>|0|MetaDataEnd|All-files|<<FEND>>|<<CEND>>|<<GEND>>|] [S|APPTXT|^"-e _ResetHandler
 
@@ -658,54 +661,54 @@
 [LINKAGE_ORDER_A2UI001L]
 [GENERAL_DATA_CONFIGURATION_A2UI001L]
 [OPTIONS_AZ1G202G_Assemble]
-"Assembly source file" "0e3443d895fc6d10" 11 
-"C:\Projects\aijmod\MerpMod\asm\DynamicRamtunePatch.s" "0e3443d895fc6d10" 11 
-"C:\Projects\aijmod\MerpMod\asm\ResetHandler.s" "0e3443d895fc6d10" 11 
+"Assembly source file" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\asm\DynamicRamtunePatch.s" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\asm\ResetHandler.s" "09f4ed724f7f6d10" 10 
 [OPTIONS_AZ1G202G_Compile]
-"C source file" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\ecuhacks\BlendAndSwitch.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\ecuhacks\BoostHacks.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\ecuhacks\CelFlash.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\ecuhacks\Definition.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\ecuhacks\DynamicRamtune.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\ecuhacks\EcuHacks.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\ecuhacks\FailSafes.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\ecuhacks\FuelHacks.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\ecuhacks\FuelPressure.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\ecuhacks\Functions.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\ecuhacks\Identifier.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\ecuhacks\Initializer.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\ecuhacks\InputHandler.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\ecuhacks\Metadata.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\ecuhacks\PortLogger.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\ecuhacks\ProgMode.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\ecuhacks\PullRamHooks.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\ecuhacks\RamHoleScanner.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\ecuhacks\RevLimiter.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\ecuhacks\SparkHacks.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\ecuhacks\SpeedDensity.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\ecuhacks\SwitchChecks.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\ecuhacks\TimingHacks.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\ecuhacks\WideBand.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\tables\BoostHackTables.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\tables\CelFlashTables.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\tables\FuelHackTables.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\tables\MapSwitchTables.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\tables\MiscInputTables.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\tables\ProgModeTables.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\tables\RamTuneTables.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\tables\RevLimiterTables.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\tables\SpeedDensityTables.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\tables\TimingHackTables.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\tests\CelFlashTests.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\tests\DynamicRamtuneTests.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\tests\GenericTests.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\tests\ProgModeTests.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\tests\RevLimiterTests.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\tests\SpeedDensityTests.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\tests\SwitchTests.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\tests\TableHackTests.c" "0e3443d895fc6d10" 10 
-"C:\Projects\aijmod\MerpMod\tests\TestUtilities.c" "0e3443d895fc6d10" 10 
+"C source file" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\ecuhacks\BlendAndSwitch.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\ecuhacks\BoostHacks.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\ecuhacks\CelFlash.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\ecuhacks\Definition.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\ecuhacks\DynamicRamtune.c" "0079a6335f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\ecuhacks\EcuHacks.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\ecuhacks\FailSafes.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\ecuhacks\FuelHacks.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\ecuhacks\FuelPressure.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\ecuhacks\Functions.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\ecuhacks\Identifier.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\ecuhacks\Initializer.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\ecuhacks\InputHandler.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\ecuhacks\Metadata.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\ecuhacks\PortLogger.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\ecuhacks\ProgMode.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\ecuhacks\PullRamHooks.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\ecuhacks\RamHoleScanner.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\ecuhacks\RevLimiter.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\ecuhacks\SparkHacks.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\ecuhacks\SpeedDensity.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\ecuhacks\SwitchChecks.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\ecuhacks\TimingHacks.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\ecuhacks\WideBand.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\tables\BoostHackTables.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\tables\CelFlashTables.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\tables\FuelHackTables.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\tables\MapSwitchTables.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\tables\MiscInputTables.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\tables\ProgModeTables.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\tables\RamTuneTables.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\tables\RevLimiterTables.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\tables\SpeedDensityTables.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\tables\TimingHackTables.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\tests\CelFlashTests.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\tests\DynamicRamtuneTests.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\tests\GenericTests.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\tests\ProgModeTests.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\tests\RevLimiterTests.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\tests\SpeedDensityTests.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\tests\SwitchTests.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\tests\TableHackTests.c" "09f4ed724f7f6d10" 10 
+"C:\Projects\aijmod\MerpMod\tests\TestUtilities.c" "09f4ed724f7f6d10" 10 
 [OPTIONS_AZ1G202G_CreateEnv]
 "Single Shot" "0de899a352fc6d10" 8 
 [OPTIONS_AZ1G202G_GNU Assembler]
@@ -766,18 +769,17 @@
 [OPTIONS_AZ1G202G_LibGen]
 "Single Shot" "090233a835fc6d10" 9 
 [OPTIONS_AZ1G202G_Link]
-"Single Shot" "0e3443d895fc6d10" 9 
+"Single Shot" "009e64fa0f7f6d10" 9 
 [OPTIONS_AZ1G202G_TargetSelection]
 "Single Shot" "0de1faed18ec6d10" 1 
 [OPTIONS_AZ1G202G_UpdateTestRom]
-"Single Shot" "0de899a352fc6d10" 12 
+"Single Shot" "0de899a352fc6d10" 11 
 [OPTIONS_AZ1G202G]
 "" 0 
 "$(CONFIGNAME) $(BUILDCONFIG) $(MMVERSION)" 1 
-"$(CONFIGNAME) $(BUILDCONFIG) $(PROJECTNAME)" 12 
+"$(CONFIGNAME) $(BUILDCONFIG) $(PROJECTNAME)" 11 
 "$(CONFIGNAME) lib$(PROJECTNAME).a" 8 
-"$(FULLFILE) $(FILELEAF) $(FILEDIR) $(PROJDIR)  $(CONFIGNAME)" 10 
-"$(FULLFILE) $(FILELEAF) $(FILEDIR) $(PROJDIR) $(CONFIGNAME)" 11 
+"$(FULLFILE) $(FILELEAF) $(FILEDIR) $(PROJDIR) $(CONFIGNAME)" 10 
 "$(PROJDIR) $(CONFIGNAME) $(PROJECTNAME)" 9 
 "[V|VERSION|2] [B|DOSEGF|1] [S|INCDIR|^"$(TCINSTALL)\sh-elf\lib\gcc\sh-elf\4.7-GNUSH_v13.01\mrenesas\m2e^"|^"$(CONFIGDIR)^"] [B|RSARCH|1] [B|FIXUPLIBS|1] [S|ARCHIVE|libgcc.a*libgcc-Os-4-200.a*lib$(PROJECTNAME).a] [S|OUTFORM|BOTH] [S|OUTFILE|^"$(CONFIGDIR)\$(PROJECTNAME).x^"] [S|MEMDET|RAM|-1|0xFFFF0000|0xFFFFFFFF|*] [S|GROUPDET|Zero|0|0||1|0x00000000|0|0|0|Zero|All-files|<<FEND>>|<<CEND>>|<<GEND>>|INTHandler|0|0||1|0x00000100|0|0|<<CEND>>|<<GEND>>|RSTHandler|0|0||1|0x00E00000|0|0|1|_ResetHandler|<<FEND>>|<<CEND>>|<<GEND>>|DefinitionData|0|0||1|0x00F00000|0|0|0|DefinitionDataHeader|All-files|<<FEND>>|0|DefinitionData|All-files|<<FEND>>|0|DefinitionDataEnd|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.text|0|0||1|0x07001000|0|0|0|.text|All-files|<<FEND>>|0|.text.*|All-files|<<FEND>>|1|etext|<<FEND>>|<<CEND>>|<<GEND>>|.init|0|0||0||0|0|0|.init|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.fini|0|0||0||0|0|0|.fini|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.got|0|0||0||0|0|0|.got|All-files|<<FEND>>|0|.got.plt|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.rodata|0|2|_mrodata|0||0|0|0|.rodata|All-files|<<FEND>>|0|.rodata.*|All-files|<<FEND>>|1|_erodata|<<FEND>>|<<CEND>>|<<GEND>>|.eh_frame_hdr|0|0||0||0|0|0|.eh_frame_hdr|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.eh_frame|0|0||0||0|0|0|.eh_frame|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.jcr|0|0||0||0|0|0|.jcr|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.tors|0|0||0||0|0|1|__CTOR_LIST__|<<FEND>>|1|___ctors|<<FEND>>|0|.ctors|All-files|<<FEND>>|1|___ctors_end|<<FEND>>|1|__CTOR_END__|<<FEND>>|1|__DTOR_LIST__|<<FEND>>|1|___dtors|<<FEND>>|0|.dtors|All-files|<<FEND>>|1|___dtors_end|<<FEND>>|1|__DTOR_END__|<<FEND>>|1|_mdata|<<FEND>>|1|_mrodata|<<FEND>>|<<CEND>>|<<GEND>>|Misc|0|0||1|0x0E005000|0|0|0|Misc|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.data|0|2|_mdata|1|0x70000000|0|0|1|_data|<<FEND>>|0|.data|All-files|<<FEND>>|0|.data.*|All-files|<<FEND>>|1|_edata|<<FEND>>|<<CEND>>|<<GEND>>|.gcc_exc|0|0||0||0|0|0|.gcc_exc|All-files|<<FEND>>|<<CEND>>|<<GEND>>|.bss|0|0||0||0|0|1|_bss|<<FEND>>|0|.bss|All-files|<<FEND>>|0|.bss.*|All-files|<<FEND>>|0|COMMON|All-files|<<FEND>>|1|_ebss|<<FEND>>|1|_end|<<FEND>>|<<CEND>>|<<GEND>>|.stack|0|0||1|0x73FFFBF0|0|0|1|_stack|<<FEND>>|<<CEND>>|<<GEND>>|MetaData|0|0||1|0x80001000|0|0|0|MetaDataHeader|All-files|<<FEND>>|0|MetaData|All-files|<<FEND>>|0|MetaDataEnd|All-files|<<FEND>>|<<CEND>>|<<GEND>>|] [S|APPTXT|^"-e _ResetHandler
 

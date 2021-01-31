@@ -22,7 +22,7 @@
 
 
 
-unsigned char ModIdentifier[] __attribute__ ((section ("RomHole_Identifier"),aligned(4))) = MOD_IDENTIFIER;
+unsigned char ModIdentifier[] __attribute__ ((section ("RomHole_Identifier"),aligned(4))) = STRI(MOD_CALIBRATION_ID);
 
 
 #ifdef SMALLROM

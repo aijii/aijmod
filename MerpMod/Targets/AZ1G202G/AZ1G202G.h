@@ -1,12 +1,48 @@
-#define MOD_IDENTIFIER STRI(AZ1G202G.MeRpMoD.Switch.Debug.v01.60.d19.7.14.1214)
-#define MOD_ECUID 9964016013
-#define MOD_DATE 19.7.14.1214
-#include "Switch.h"
+//stock ROM image info
+#define ECU_IDENTIFIER 5A42784207
+#define ECU_CALID_BASE AZ1G
+#define ECU_CALID_REV 202G
+#define ECU_CALIBRATION_ID CONCAT(ECU_CALID_BASE, ECU_CALID_REV)
+#define ECU_IDENTIFIER_CHARS (10)
+#define ECU_CALIBRATION_CHARS (8)
+#define AUTO_TRANS 0
+#define SD_DMAP 0
+
+//mod info
 #define MOD_CONFIG Switch
 #define MOD_BUILD Debug
 #define MOD_RELEASE 0
-#define ECU_CALIBRATION_ID AZ1G202G
-#define ECU_IDENTIFIER 5A42784207
+#define MOD_VERSION AM16
+
+#define MOD_CALIBRATION_ID CONCAT(ECU_CALID_BASE, MOD_VERSION)
+#define MOD_DATE 2021.01.31
+
+// HACK CONFIGURATION
+#define MEMORY_HACKS 1
+#define VIN_HACKS 0
+#define VIN_TEST_LOG 0
+#define SWITCH_HACKS 1
+#define SD_HACKS 1
+#define REVLIM_HACKS 1
+#define LC_ADJ_HACKS 1
+#define PROG_MODE 1
+#define SPARK_HACKS 0
+#define CEL_HACKS 1
+#define BOOST_HACKS 1
+#define TIMING_HACKS 1
+#define POLF_HACKS 1
+#define PGWG_HACKS 1
+#define INJECTOR_HACKS 1
+#define E85_HACKS 0
+#define AVCS_HACKS 0
+#define RAM_PERSIST 0
+#define DYN_RAMTUNING 1
+#define RAM_HOLE_SCANNER 0
+#define RAMTUNE_AUTOCOPY 0
+
+#define EXPECTED_MAF_SENSOR 4.002399f
+#define EXPECTED_MAF_SD 3.73053f
+
 /////////////////////
 // NonSpecific Rom Info and Routines
 /////////////////////
@@ -239,4 +275,3 @@
 #define hPull2DFloatRamInjectEnd (0x000BE834)
 #define hPull3DFloatRamInjectStart (0x000BE8C0)
 #define hPull3DFloatRamInjectEnd (0x000BE8E4)
-

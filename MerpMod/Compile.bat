@@ -45,7 +45,6 @@ REM use default flags
     -I "%PROJDIR%\include" ^
     -I "%PROJDIR%\Targets\%CONFIGNAME%" ^
     -D _TARGET_HEADER_=%CONFIGNAME%.h ^
-    -D _TARGET_CONFIG_=%CONFIGNAME%Config.h ^
     -nostdinc ^
     -g ^
     -g2 ^

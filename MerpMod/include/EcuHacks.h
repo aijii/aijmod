@@ -17,11 +17,12 @@
 #define __ECU_HACKS__
 
 #define CONCAT(x,y) CONCAT_DO(x,y)
-#define CONCAT_DO(x,y) x y
+#define CONCAT_DO(x,y) x##y
+#define CONCAT_STR(x,y) x y
 #define CONCAT_THREE(x,y,z) CONCAT(CONCAT(x,y),z)
+#define CONCAT_THREE_STR(x,y,z) CONCAT_STR(CONCAT_STR(x,y),z)
 #define STRINGIFY(x) #x
 #define STRI(x) STRINGIFY(x)
-
 
 //Section Macros
 #define ROMCODE  __attribute__ ((section ("RomHole_Code"),aligned(4)))
@@ -56,7 +57,6 @@
 
 //Select ECU Target!!
 #include STRI(_TARGET_HEADER_)
-#include STRI(_TARGET_CONFIG_)
 
 #if defined(pResumeFlags) && defined(pCoastFlags)
 #if LC_ADJUST || CEL_HACKS || PROG_MODE
@@ -203,7 +203,7 @@
 #define WgdcRamTuningLabel
 #endif
 #if DYN_RAMTUNING
-#define DynRamTuningInfo Dynamic RAM Tuning
+#define DynRamTuningInfo Dynamic RAM Tuning__
 #define DynRamTuningLabel
 #else
 #define DynRamTuningInfo
@@ -225,12 +225,58 @@
 #if MOD_RELEASE
 #define MOD_CONFIG_ID STRI(MOD_CONFIG)
 #else
-#define MOD_CONFIG_ID CONCAT(STRI(MOD_CONFIG),STRI(.MOD_BUILD))
+#define MOD_CONFIG_ID CONCAT_STR(STRI(MOD_CONFIG),STRI(.MOD_BUILD))
 #endif
 
-// #define MOD_IDENTIFIER CONCAT_THREE(   CONCAT(  STRI(ECU_CALIBRATION_ID)  ,  STRI(.MeRpMoD.)  )   ,   CONCAT( MOD_CONFIG_ID , STRI(.v) )   ,   STRI(MOD_DATE)    )
-#define ModInfo CONCAT_THREE(STRI(VinInfo ),STRI(SdInfo ),CONCAT_THREE(STRI(BlendInfo ),STRI(RevLimInfo ),CONCAT_THREE(STRI(LcAdjInfo ),STRI(CelInfo ),CONCAT_THREE(STRI(PolfInfo ),STRI(BoostInfo ),STRI(DynRamTuningInfo))))) //ProgInfo SparkCutInfo  BoostInfo Timingfo SubKcaInfo PolfInfo PgwgInfo InjectorInfo MemoryInfo VeRamTuningInfo PolfRamTuningInfo TimingRamTuningInfo PgwgRamTuningInfo WgdcRamTuningInfo
-#define ModLabel CONCAT_THREE(STRI(VinLabel),STRI(SdLabel),CONCAT_THREE(STRI(BlendLabel),STRI(RevLimLabel),CONCAT_THREE(STRI(LcAdjLabel),STRI(CelLabel),CONCAT_THREE(STRI(PolfLabel),STRI(BoostLabel),STRI(DynRamTuningLabel))))) //ProgLabel SparkCutLabel  BoostLabel Timingfo SubKcaLabel PgwgLabel InjectorLabel MemoryLabel VeRamTuningLabel PolfRamTuningLabel TimingRamTuningLabel PgwgRamTuningLabel WgdcRamTuningLabel
+#define ModInfo \
+    CONCAT_THREE_STR( \
+        STRI(VinInfo ), \
+        STRI(BlendInfo ), \
+    CONCAT_THREE_STR( \
+        STRI(RevLimInfo ), \
+        STRI(LcAdjInfo ), \
+    CONCAT_THREE_STR( \
+        STRI(ProgModeInfo ), \
+        STRI(SparkCutInfo ), \
+    CONCAT_THREE_STR( \
+        STRI(CelInfo ), \
+        STRI(BoostInfo ), \
+    CONCAT_THREE_STR( \
+        STRI(TimingInfo ), \
+        STRI(PolfInfo ), \
+    CONCAT_THREE_STR( \
+        STRI(InjectorInfo ), \
+        STRI(MemoryInfo ), \
+    CONCAT_THREE_STR( \
+        STRI(DynRamTuningInfo), \
+        STRI(SdInfo ), \
+        STRI() \
+    )))))))
+
+#define ModLabel \
+    CONCAT_THREE_STR( \
+        STRI(VinLabel ), \
+        STRI(BlendLabel ), \
+    CONCAT_THREE_STR( \
+        STRI(RevLimLabel ), \
+        STRI(LcAdjLabel ), \
+    CONCAT_THREE_STR( \
+        STRI(ProgModeLabel ), \
+        STRI(SparkCutLabel ), \
+    CONCAT_THREE_STR( \
+        STRI(CelLabel ), \
+        STRI(BoostLabel ), \
+    CONCAT_THREE_STR( \
+        STRI(TimingLabel ), \
+        STRI(PolfLabel ), \
+    CONCAT_THREE_STR( \
+        STRI(InjectorLabel ), \
+        STRI(MemoryLabel ), \
+    CONCAT_THREE_STR( \
+        STRI(DynRamTuningLabel), \
+        STRI(SdLabel ), \
+        STRI() \
+    )))))))
 
 #include "IDATranslation.h"
 #include "Externs.h"
