@@ -19,6 +19,15 @@
 void UpdateFailSafes()
 {
 	// Call other failsafe counters
+	
+	
+
+#if CAN_HACKS
+	
+	CANBusECAFailSafeCount();
+
+#endif
+
 	MapBlendFailSafeCount();
 	LeanBoostCount();
 	FuelPressureDeltaCount();

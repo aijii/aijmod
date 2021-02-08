@@ -168,7 +168,7 @@ if(pRamVariables.ProgModeStatus == ProgModeEnabled)
 	{
 		CelFlashStart(IAMFlashes,IAMFlashSpeed,64,0);
 	}
-	else if(pRamVariables.FailSafeMapBlendSwitch == 1)
+	else if(pRamVariables.FailSafeMapBlendSwitch == 1 || ((pRamVariables.FailSafeCANBusECAUpdateSwitch == 1)&&(pRamVariables.MapBlendingInputMode==MapBlendingInputModeEthanolCANBus)))
 	{
 		CelFlashStart(MapBlendFlashes,MapBlendFlashSpeed,32,0);	
 	}

@@ -66,6 +66,9 @@ void recieveCanMessage(unsigned char ccm) ROMCODE;
 void updateCanDT(unsigned char dt) ROMCODE;
 void CustomCanService() ROMCODE;
 unsigned short returnShifter(unsigned char c) ROMCODE;
+
+
+void CANBusECAFailSafeCount() ROMCODE;
 #endif
 
 
@@ -137,6 +140,14 @@ extern unsigned long *pMaxRAMTables;
 extern unsigned long **ppDynRAMTableHeaders;
 #endif
 
+
+//////////////////////////
+//CAN HACKS
+//////////////////////////
+#if CAN_HACKS
+extern unsigned short CANBusECAUpdateCount;
+#endif
+
 //////////////////////////
 //Extern Function Pointers
 //////////////////////////
@@ -167,8 +178,10 @@ extern ThreeDTable SDBlendingTable;
 extern short VE_DATA1[];
 extern short VE_DATA2[];
 
+#if DUALMAF_HACKS
 extern TwoDTable MafScalingTable1;
 extern TwoDTable MafScalingTable2;
+#endif
 
 extern TwoDTable InjectorScalingMultiplierTable;
 

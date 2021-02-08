@@ -722,8 +722,6 @@ const MetaReplace POLFHook METADATA =
 	};
 
 
-
-
 #endif
 
 #if AVCS_HACKS

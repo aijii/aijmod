@@ -15,6 +15,7 @@
 #include "EcuHacks.h"
 #if SWITCH_HACKS
 
+#if CAN_HACKS
 
 void UpdateMapBlendRatioCANBus(unsigned char ethanolContent, unsigned char ethanolStatus)
 {
@@ -29,7 +30,14 @@ void UpdateMapBlendRatioCANBus(unsigned char ethanolContent, unsigned char ethan
 				pRamVariables.FailSafeMapBlendSwitch = 1;
 		}
 		//or do nothing and let it count down
-}
+	}
+	else if(pRamVariables.FailSafeCANBusECAUpdateSwitch)
+	{
+		if(MapBlendFailSafe == FailToDefaultBlendRatio) 
+					pRamVariables.MapBlendRatio = Smooth(MapBlendSmoothingFactor,DefaultMapBlendRatio,pRamVariables.MapBlendRatio);		
+					
+		pRamVariables.MapBlendOutOfRangeCounter = MapBlendCount; //  reset the counter
+	}
 	else if(*pManifoldRelativePressure < MapBlendBoostContentLock)
 	{
 		//if boost is below content lock threshold, update blend ratio
@@ -49,6 +57,7 @@ void UpdateMapBlendRatioCANBus(unsigned char ethanolContent, unsigned char ethan
 	}	
 	
 }
+#endif
 
 void UpdateMapBlendRatioAnalog(float inputVoltage)
 {

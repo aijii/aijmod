@@ -328,8 +328,17 @@ void canCallbackECAPacket(unsigned char* data)
 	
 //	pRamVariables.rEthanolCAN = 0x71; // data[0];
 //	pRamVariables.tFuelCAN = 0x69; //data[1]-40;	//0 to 165 for -40 to 125C
+	pRamVariables.CANBusECAUpdateCounter = CANBusECAUpdateCount;
+}
 
-
+void CANBusECAFailSafeCount()
+{
+	if(pRamVariables.CANBusECAUpdateCounter > 0) 
+	{
+		pRamVariables.CANBusECAUpdateCounter--;
+		pRamVariables.FailSafeCANBusECAUpdateSwitch = 0;
+	}
+	else pRamVariables.FailSafeCANBusECAUpdateSwitch = 1;
 }
 
 

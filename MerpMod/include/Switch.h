@@ -33,7 +33,7 @@
 #define POLF_HACKS 1		//	
 #define PGWG_HACKS 1		//
 #define INJECTOR_HACKS 1	//
-#define E85_HACKS 0			//
+#define E85_HACKS 1			//
 #define AVCS_HACKS 0		//
 #define CAN_HACKS 1			//
 							//

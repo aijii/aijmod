@@ -272,6 +272,9 @@ DEFNEW3D("Volumetric Efficiency Table 1",VolumetricEfficiencyTable1);
 
 #if SWITCH_HACKS
 DEFNEW3D("Volumetric Efficiency Table 2",VolumetricEfficiencyTable2);
+#endif
+
+#if DUALMAF_HACKS
 DEFNEW2D("Mass Airflow Sensor Scaling Table 1",MafScalingTable1);
 DEFNEW2D("Mass Airflow Sensor Scaling Table 2",MafScalingTable2);
 DEFINERAMVAR("MerpMod SD Airflow Maf Sensor Dual Scaled",MafFromDualSensorScaling,"float","E");
@@ -379,6 +382,10 @@ DEFNEW1D("Map Blend Failsafe High Threshold Voltage",BlendInputMaximumVolts);
 DEFNEW1D("Map Blend Failsafe Delay",MapBlendCount);
 DEFNEW1D("Map Blend Failsafe Action",MapBlendFailSafe);
 
+#if CAN_HACKS
+DEFNEW1D("CANBus ECA Update Failsafe Delay",CANBusECAUpdateCount);
+#endif
+
 DEFNEW2D("Wideband Sensor Scaling",WideBandScaling);
 DEFNEW1D("Wideband Sensor Smoothing Factor",WidebandSensorSmoothingFactor);
 DEFNEW2D("Fuel Pressure Sensor Scaling",FuelPressureScaling);
@@ -403,6 +410,12 @@ DEFNEW3D("Map Blending Throttle Tip-In Enrichment Multiplier",TipInEnrichMultipl
 DEFNEW3D("Map Blending Cranking Fuel Multiplier",CrankingFuelMultiplier);
 DEFNEW3D("Map Blending Startup Enrichment Multiplier",StartupEnrichMultiplier);
 
+#endif
+
+#if CAN_HACKS
+
+DEFINERAMVAR("Merpmod CANBus ECA Update Counter",CANBusECAUpdateCounter,"uint16","E");
+DEFINERAMVAR("Merpmod Trigger CANBus ECA Update",FailSafeCANBusECAUpdateSwitch,"uint8","E");
 #endif
 
 #if POLF_HACKS
