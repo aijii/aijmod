@@ -51,25 +51,11 @@ EcuHacksMain();
 			fuelingLookup = (*pManifoldAbsolutePressure - 760)*.01933677;	
 		}
 		
-	#if POLF_RAM_TUNING
 
-	
-		if(pRamVariables.POLFRamFlag = 0x01)
-		{
-			//OutputValue = Pull3DHooked(&FuelRamTable, *pEngineLoad, *pEngineSpeed);
-			OutputValue = Pull3DHooked(&FuelRamTable, fuelingLookup, *pEngineSpeed);
-
-		}
-		else
-		{
-	#endif
 	
 	//	OutputValue	= BlendAndSwitchCurve(FuelTableGroup, *pEngineLoad, *pEngineSpeed, OpenLoopFuelingBlendCurveSwitch);
 		OutputValue	= BlendAndSwitchCurve(FuelTableGroup, fuelingLookup, *pEngineSpeed, OpenLoopFuelingBlendCurveSwitch);	
 		
-	#if POLF_RAM_TUNING
-		}
-	#endif
 		pRamVariables.LCFuelEnrich = Pull3DHooked(&LCFuelEnrichTable, *pVehicleSpeed, *pEngineSpeed) * pRamVariables.LCFuelEnrichMultiplier;
 
 		if(pRamVariables.LCFuelMode == LCFuelModeCompensated)
