@@ -81,6 +81,14 @@ TableGroup FuelTableGroup FUELDATA = {
 
 #endif
 
+
+
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//!! Dual Front O2 Scaling Tables
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+#if DUAL_FRONTO2_HACKS
+
 float FRONT_OXYGEN_SENSOR_COLS[13] FUELDATA = 
 {-1.299999952316284,-0.8699999451637268,-0.4699999988079071,-0.1399999856948853,0,
 0.09999999403953552,0.239999994635582,0.3899999856948853,0.5299999713897705,
@@ -113,6 +121,9 @@ TwoDTable FrontOxygenSensorScaling2 FUELDATA = {
 	.tableCells = FRONT_OXYGEN_SENSOR_2_DATA,
 	.multiplier = 1,
 	.offset = 0.0f};
+
+#endif
+
 
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 //!! Tip-in Enrichment Multiplier Table

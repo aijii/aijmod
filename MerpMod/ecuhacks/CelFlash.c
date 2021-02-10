@@ -52,7 +52,7 @@ void CelFlashStart(unsigned char CelFlashes, unsigned char Speed, unsigned char 
 	
 void CelFlash()
 {	
-	unsigned char test;
+	
 	// Check for existing flash call
 	if(pRamVariables.CelFlashCounter > 0)
 	{

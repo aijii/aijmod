@@ -82,7 +82,11 @@ float Pull2DRamHookTipInEnrich(TwoDTable *table, float xLookup) ROMCODE;
 float Pull2DRamHookCrankingFuel(TwoDTable *table, float xLookup) ROMCODE;
 float Pull2DRamHookStartupEnrich2(TwoDTable *table, float xLookup) ROMCODE;
 float Pull2DRamHookStartupEnrich3(TwoDTable *table, float xLookup) ROMCODE;
-float Pull2DRamHookFrontO2Scaling(TwoDTable *table, float xLookup) ROMCODE;
+
+#if DUAL_FRONTO2_HACKS
+	float Pull2DRamHookFrontO2Scaling(TwoDTable *table, float xLookup) ROMCODE;
+#endif
+
 float Pull3DRamHook(ThreeDTable *table, float xLookup, float yLookup) ROMCODE;
 float Pull3DRamHookStartupEnrich1(ThreeDTable *table, float xLookup, float yLookup) ROMCODE;
 float Pull2DRamHookIntakeTempCompensation(TwoDTable *table, float xLookup) ROMCODE;
@@ -206,8 +210,10 @@ extern unsigned char DefaultLCFuelMode;
 extern float DefaultLCFuelLock;
 extern float DefaultLCFuelEnrichMultiplier;
 
+#if DUAL_FRONTO2_HACKS
 extern TwoDTable FrontOxygenSensorScaling1;
 extern TwoDTable FrontOxygenSensorScaling2;
+#endif
 
 extern unsigned char DefaultBoostHackEnabled;
 extern TableGroup PGWGTableGroup;
