@@ -413,9 +413,11 @@ DEFNEW3D("Map Blending Startup Enrichment Multiplier",StartupEnrichMultiplier);
 #endif
 
 #if CAN_HACKS
-
 DEFINERAMVAR("Merpmod CANBus ECA Update Counter",CANBusECAUpdateCounter,"uint16","E");
 DEFINERAMVAR("Merpmod Trigger CANBus ECA Update",FailSafeCANBusECAUpdateSwitch,"uint8","E");
+DEFINERAMVAR("Merpmod Trigger Raw Ethanol Value",rEthanolCAN,"uint8","E");
+DEFINERAMVAR("Merpmod Trigger Scaled Temp Value",tFuelCAN,"uint8","E");
+
 #endif
 
 #if POLF_HACKS

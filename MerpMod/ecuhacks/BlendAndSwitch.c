@@ -42,7 +42,7 @@ void UpdateMapBlendRatioCANBus(unsigned char ethanolContent, unsigned char ethan
 	{
 		//if boost is below content lock threshold, update blend ratio
 
-			pRamVariables.MapBlendRatio = Smooth(MapBlendSmoothingFactor,(ethanolContent/100),pRamVariables.MapBlendRatio); 
+			pRamVariables.MapBlendRatio = Smooth(MapBlendSmoothingFactor,((float)ethanolContent/100),pRamVariables.MapBlendRatio); 
 			pRamVariables.MapBlendOutOfRangeCounter = MapBlendCount; //  reset the counter
 			pRamVariables.FailSafeMapBlendSwitch = 0;
 			
