@@ -89,7 +89,7 @@ unsigned char pad2[8];
 //MODID
 long modidop;
 long modidoffset;
-unsigned char modid[ECU_CALIBRATION_CHARS];
+unsigned char modid[MOD_ALT_ID_CHARS];
 unsigned char padmod[8];
 //ECUID
 long ecuidop;
@@ -130,7 +130,7 @@ pad2:  OpDelim,
 //Alternate Identifier (in ROM HOLE, uniquely identifies this rom!)
 modidop:	OpModId,
 modidoffset: (int)&(ModIdentifier),
-modid:		STRI(MOD_CALIBRATION_ID),
+modid:		STRI(MOD_ALT_ID),
 padmod:		OpDelim,
 
 //ECU ID -- using original ECUID, this shouldn't be modified
