@@ -31,7 +31,12 @@ void UpdateFailSafes()
 	MapBlendFailSafeCount();
 	LeanBoostCount();
 	FuelPressureDeltaCount();
-	
+#if OILPRESSURE_HACKS
+	OilPressureCount();
+#endif
+#if OILTEMP_HACKS
+	OilTemperatureCount();
+#endif	
 	//test failsafe conditions and set switches
 	pRamVariables.FailSafeFBKCHiSwitch = (*pFBKC <= FBKCHiThreshold && *pEngineLoad > FBKCLoadThreshold);
 	pRamVariables.FailSafeFBKCLoSwitch = (*pFBKC <= FBKCLoThreshold && *pEngineLoad > FBKCLoadThreshold);
@@ -54,6 +59,13 @@ void UpdateFailSafes()
 								((pRamVariables.FailSafeFBKCHiSwitch == 1) && (FBKCHiFailSafeValetModeEnable == 1)) || 
 								((pRamVariables.FailSafeLeanBoostSwitch == 1) && (LeanBoostFailSafeValetModeEnable == 1)) ||
 								((pRamVariables.FailSafeFuelPressureDeltaSwitch == 1) && (FuelPressureDeltaFailSafeValetModeEnable == 1)) ||
+#if OILPRESSURE_HACKS
+								((pRamVariables.FailSafeOilPressureSwitch == 1) && (OilPressureFailSafeValetModeEnable == 1)) ||
+#endif
+#if OILTEMP_HACKS								
+								((pRamVariables.FailSafeOilTemperatureSwitch == 1) && (OilTemperatureFailSafeValetModeEnable == 1)) ||
+#endif								
+
 								((pRamVariables.FailSafeInjectorDutyCycleSwitch == 1) && (InjectorDutyCycleFailSafeValetModeEnable == 1));																
 
 

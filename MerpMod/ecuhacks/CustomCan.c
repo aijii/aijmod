@@ -312,13 +312,12 @@ void recieveCanMessage(unsigned char ccm)
 
 unsigned long shC[24] CANDATA = {1,2,4,8,16,32,64,128,256,512,1024,2048,4096,8192,16384,32768,65536,131072,262144,524288,1048576,2097152,4192304,8388608};
 
-void canCallbackECAPacket(unsigned char* data)
+void canCallbackECA2Packet(unsigned char* data)
 {
-
 	if(!data[7])
 	{
-		pRamVariables.rEthanolCAN = data[0];
-		pRamVariables.tFuelCAN = data[1]-40;	//0 to 165 for -40 to 125C
+		pRamVariables.ECA2EthanolContentCAN = data[0];
+		pRamVariables.ECA2FuelTemperatureCAN = data[1]-40;	//0 to 165 for -40 to 125C
 		pRamVariables.ethanolSensorFault = 0x00;
 	}
 	else
@@ -326,8 +325,6 @@ void canCallbackECAPacket(unsigned char* data)
 		pRamVariables.ethanolSensorFault = 0x01;		
 	}
 	
-//	pRamVariables.rEthanolCAN = 0x71; // data[0];
-//	pRamVariables.tFuelCAN = 0x69; //data[1]-40;	//0 to 165 for -40 to 125C
 	pRamVariables.CANBusECAUpdateCounter = CANBusECAUpdateCount;
 }
 
@@ -339,6 +336,20 @@ void CANBusECAFailSafeCount()
 		pRamVariables.FailSafeCANBusECAUpdateSwitch = 0;
 	}
 	else pRamVariables.FailSafeCANBusECAUpdateSwitch = 1;
+}
+
+void canCallbackZT3Packet(unsigned char* data)
+{
+	if(!data[7])
+	{
+		pRamVariables.ZT3LambdaCAN = (float)data[2]*0.01;
+		pRamVariables.ZT3AFRCAN = (float)(data[3])*0.1;
+		pRamVariables.ZT3StatusCAN = (unsigned char)data[7];
+	}
+	else
+	{
+		pRamVariables.ZT3StatusCAN = (unsigned char)data[7];
+	}
 }
 
 
@@ -376,7 +387,7 @@ void CanSetup()
 ////////////////////
 // *** needs to be called every 1mSec
 // Checks each Transmit slot to see if it needs to be sent
-// Check every Receive slow to see if there is new data
+// Check every Receive slot to see if there is new data
 // Calls the RX Callback in case it is configured to run
 ////////////////////
 void CustomCanService()

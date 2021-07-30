@@ -50,11 +50,16 @@ typedef struct
 	
 	unsigned char ecuHacksMainCtr;
 
-	unsigned char rEthanolCAN;
+	unsigned char ECA2EthanolContentCAN;
 	unsigned char ethanolSensorFault;
 	
 	unsigned short CANBusECAUpdateCounter;
 	unsigned char FailSafeCANBusECAUpdateSwitch;
+	
+	float ZT3LambdaCAN;
+	float ZT3AFRCAN;
+	unsigned char ZT3StatusCAN;	
+	
 /*	
 	float aemLambda;
 	float aemOxygen;
@@ -63,7 +68,7 @@ typedef struct
 	unsigned char aemn1;
 	unsigned char aemn2;
 */	
-	unsigned char tFuelCAN;		
+	unsigned char ECA2FuelTemperatureCAN;		
 		
 #endif
 
@@ -86,12 +91,16 @@ typedef struct
 	unsigned char MapSwitchingInputMode;
 	unsigned char WideBandLambdaInputMode;
 	unsigned char FuelPressureInputMode;
+	unsigned char OilPressureInputMode;
+	unsigned char OilTemperatureInputMode;
 	unsigned char swblank;
 	float MapBlendRatio;
 	float TGVLeftVolts;
 	float TGVRightVolts;
 	float WideBandLambda;
 	float FuelPressure;
+	float OilPressure;	
+	float OilTemperature;
 	float FuelPressureDifferential;
 	float RearO2Volts;
 	float MAFSensorVolts;
@@ -104,15 +113,21 @@ typedef struct
 	unsigned short FuelPressureDeltaCounter;
 	unsigned char FailSafeFuelPressureDeltaSwitch;
 	unsigned char FailSafeFuelAdditiveSwitch;
+	unsigned short OilPressureCounter;
+	unsigned char FailSafeOilPressureSwitch;
+	unsigned short OilTemperatureCounter;
+	unsigned char FailSafeOilTemperatureSwitch;
 	float InjectorDutyCycle;
 	unsigned char FailSafeInjectorDutyCycleSwitch;
 	unsigned char FuelingLookupMAPLoad;
 	unsigned char TimingLookupMAPLoad;
 	unsigned char AVCSLookupMAPLoad;
-
+	
+	unsigned short exhaustCutoutCounter;
+	unsigned char exhaustCutoutOutput;
+	
+	
 #endif
-
-
 
 #if SD_HACKS
 	//MAF/SD params

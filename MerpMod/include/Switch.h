@@ -38,6 +38,9 @@
 #define CAN_HACKS 1			//
 #define DUAL_FRONTO2_HACKS 0//
 #define DUALMAF_HACKS 0		//
+#define AUXOUT_HACKS 1		//
+#define OILPRESSURE_HACKS 1	//
+#define OILTEMP_HACKS 1		//
 //////////////////////////////
 							
 //////////////////////////////

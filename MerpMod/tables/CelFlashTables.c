@@ -32,6 +32,10 @@ unsigned char LeanBoostFlashSpeed CELFLASHDATA = 0x01;
 unsigned char LeanBoostFlashes CELFLASHDATA = 0x10;
 unsigned char FuelPressureDeltaFlashSpeed CELFLASHDATA = 0x01;
 unsigned char FuelPressureDeltaFlashes CELFLASHDATA = 0x18;
+unsigned char OilPressureFlashSpeed CELFLASHDATA = 0x01;
+unsigned char OilPressureFlashes CELFLASHDATA = 0x18;
+unsigned char OilTemperatureFlashSpeed CELFLASHDATA = 0x01;
+unsigned char OilTemperatureFlashes CELFLASHDATA = 0x18;
 unsigned char InjectorDutyCycleFlashSpeed CELFLASHDATA = 0x01;
 unsigned char InjectorDutyCycleFlashes CELFLASHDATA = 0x2;
 

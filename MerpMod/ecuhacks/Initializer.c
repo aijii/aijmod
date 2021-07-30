@@ -91,16 +91,28 @@ pRamVariables.CruiseCoastLast = TestCruiseCoastSwitch();
 	pRamVariables.WideBandLambda = 0;
 	pRamVariables.FuelPressure = 0;
 
-
+#if OILPRESSURE_HACKS
+pRamVariables.OilPressureInputMode=OilPressureInputMode;
+pRamVariables.OilPressure = 0;
+#endif
+#if OILTEMP_HACKS
+pRamVariables.OilTemperatureInputMode=OilTemperatureInputMode;
+pRamVariables.OilTemperature = 0;
+#endif
+	
+	
 #endif
 
 #if CAN_HACKS
 	pRamVariables.initFunctionRun = 0;
 	pRamVariables.sdTimer = 0;
 	
-	pRamVariables.rEthanolCAN = 0;
-	pRamVariables.tFuelCAN = 0;
+	pRamVariables.ECA2EthanolContentCAN = 0;
+	pRamVariables.ECA2FuelTemperatureCAN = 0;
 	
+	pRamVariables.ZT3LambdaCAN = 0;
+	pRamVariables.ZT3AFRCAN = 0;
+	pRamVariables.ZT3StatusCAN = 0;
 #endif 
 
 #if PROG_MODE

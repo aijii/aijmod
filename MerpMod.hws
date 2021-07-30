@@ -3,12 +3,12 @@
 [DATABASE_VERSION]
 "11.0" 
 [WORKSPACE_DETAILS]
-"MerpMod" "C:\Projects\aijmod" "C:\Projects\aijmod\MerpMod.hws" "SuperH RISC engine" "KPIT GNUSH [ELF]" 
+"MerpMod" "C:\Dev\MerpMod" "C:\Dev\MerpMod\MerpMod.hws" "SuperH RISC engine" "KPIT GNUSH [ELF]" 
 [SHARED_WORKSPACE_CONTROL_STATUS]
 "" "" "" 
 "" "" "" 
 [PROJECTS]
-"MerpMod" "C:\Projects\aijmod\MerpMod" "C:\Projects\aijmod\MerpMod\MerpMod.hwp" 4 
+"MerpMod" "C:\Dev\MerpMod\MerpMod" "C:\Dev\MerpMod\MerpMod\MerpMod.hwp" 4 
 [INFORMATION]
 "No workspace information available" 
 [SCRAP]
@@ -23,7 +23,7 @@
 [MAKEFILE_BUILD_INFO]
 "$(WORKSPDIR)\make\$(PROJECTNAME)_$(CONFIGNAME).mak" "" "$(WORKSPDIR)\make" 0 0 0 
 [VD_CONFIGURATION_OPTIONS]
-"ACTIVE_DESKTOP" "1" 
+"ACTIVE_DESKTOP" "2" 
 [VD_CONFIGURATIONS]
 "0" "Default1" "1" 
 "1" "Default2" "1" 

@@ -31,6 +31,22 @@ void UpdateWideBandLambdaInput(float InputVoltage)
 	}
 }
 
+void UpdateWideBandLambdaZT3CAN(float sensorLambda, unsigned char sensorStatus)
+{
+
+	pRamVariables.WideBandLambda = sensorLambda;
+
+	if((!sensorStatus) && (pRamVariables.WideBandLambda > (LeanBoostAFRThreshold*14.7)) && (*pManifoldRelativePressure > LeanBoostMRPThreshold))
+	{
+		if(pRamVariables.LeanBoostCounter == 0) pRamVariables.FailSafeLeanBoostSwitch = 1;
+	}
+	else
+	{
+		pRamVariables.FailSafeLeanBoostSwitch = 0;
+		pRamVariables.LeanBoostCounter = LeanBoostDelay;
+	}		
+}
+
 void LeanBoostCount()
 {
 	if(pRamVariables.LeanBoostCounter > 0) pRamVariables.LeanBoostCounter--;

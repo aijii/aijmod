@@ -56,13 +56,17 @@ RamVariables pRamVariables  __attribute__ ((section ("RamHole")));
 
 void EcuHacksMain() //Constant Hz main routine, hooked into wgdc lookup
 {	
+
+#if AUXOUT_HACKS
+	UpdateAuxilliaryOutputs();
+#endif
 	
 #if REVLIM_TEST
 	RevLimCode();
 
-		#if SWITCH_HACKS
+#if SWITCH_HACKS
 			InputUpdate();
-		#endif
+#endif
 #endif
 
 #if PROG_MODE && CRUISE_CONTROL
@@ -104,7 +108,6 @@ void EcuHacksMain() //Constant Hz main routine, hooked into wgdc lookup
 #elif BOOST_HACKS && !WGDC_MAIN_HOOK
 	WGDCHack();
 #endif
-
 
 }
 

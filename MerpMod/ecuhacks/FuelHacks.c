@@ -53,7 +53,6 @@ EcuHacksMain();
 		
 
 	
-	//	OutputValue	= BlendAndSwitchCurve(FuelTableGroup, *pEngineLoad, *pEngineSpeed, OpenLoopFuelingBlendCurveSwitch);
 		OutputValue	= BlendAndSwitchCurve(FuelTableGroup, fuelingLookup, *pEngineSpeed, OpenLoopFuelingBlendCurveSwitch);	
 		
 		pRamVariables.LCFuelEnrich = Pull3DHooked(&LCFuelEnrichTable, *pVehicleSpeed, *pEngineSpeed) * pRamVariables.LCFuelEnrichMultiplier;

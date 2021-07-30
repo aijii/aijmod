@@ -113,6 +113,7 @@ enum WidebandLambdaModeValues
 	WideBandLambdaInputModeTGVRight = (unsigned char)0x02,
 	WideBandLambdaInputModeRearO2 = (unsigned char) 0x03,
 	WideBandLambdaInputModeMAF = (unsigned char)0x04,
+	WideBandLambdaInputModeZT3CAN = (unsigned char)0x05,
 };
 enum FuelPressureModeValues
 {
@@ -121,6 +122,22 @@ enum FuelPressureModeValues
 	FuelPressureInputModeTGVRight = (unsigned char)0x02,
 	FuelPressureInputModeRearO2 = (unsigned char) 0x03,
 	FuelPressureInputModeMAF = (unsigned char)0x04,
+};
+enum OilPressureModeValues
+{
+	OilPressureInputModeUndefined = (unsigned char)0x00,
+	OilPressureInputModeTGVLeft = (unsigned char)0x01,
+	OilPressureInputModeTGVRight = (unsigned char)0x02,
+	OilPressureInputModeRearO2 = (unsigned char) 0x03,
+	OilPressureInputModeMAF = (unsigned char)0x04,
+};
+enum OilTemperatureModeValues
+{
+	OilTemperatureInputModeUndefined = (unsigned char)0x00,
+	OilTemperatureInputModeTGVLeft = (unsigned char)0x01,
+	OilTemperatureInputModeTGVRight = (unsigned char)0x02,
+	OilTemperatureInputModeRearO2 = (unsigned char) 0x03,
+	OilTemperatureInputModeMAF = (unsigned char)0x04,
 };
 enum HardResetFlagValues
 {

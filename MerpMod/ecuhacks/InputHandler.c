@@ -1,6 +1,6 @@
 /*
 	Copyright (C) 2012-2013 Merrill A. Myers III merrillamyersiii@gmail.com
-	
+
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
@@ -21,7 +21,7 @@ void InputUpdate()//TODO: put on SD branch
 	float grad1 = 0.0000762939453125;
 //	float grad2 = 0.0049999999;
 	float offs = 0.0f;
-	
+
 	pRamVariables.TGVLeftVolts = ShortToFloatHooked(*pTGVLeftVoltage,grad1,offs);
 	pRamVariables.TGVRightVolts = ShortToFloatHooked(*pTGVRightVoltage,grad1,offs);
 	pRamVariables.RearO2Volts = *pRearO2Voltage;
@@ -33,57 +33,57 @@ void InputUpdate()//TODO: put on SD branch
 ///***************
 /// MAP Blending
 ///***************
-	
+
 	switch(pRamVariables.MapBlendingInputMode)
 	{
 		case MapBlendingInputModeUndefined:
 		break;
 #if CAN_HACKS		
 		case MapBlendingInputModeEthanolCANBus:
-			UpdateMapBlendRatioCANBus(pRamVariables.rEthanolCAN,pRamVariables.ethanolSensorFault);
+			UpdateMapBlendRatioCANBus(pRamVariables.ECA2EthanolContentCAN,pRamVariables.ethanolSensorFault);
 		break;
 #endif
 	
 		case MapBlendingInputModeTGVLeft:
 			UpdateMapBlendRatioAnalog(pRamVariables.TGVLeftVolts);
 		break;
-		
+
 		case MapBlendingInputModeTGVRight:
 			UpdateMapBlendRatioAnalog(pRamVariables.TGVRightVolts);			
 		break;
-		
+
 		case MapBlendingInputModeRearO2:
 			UpdateMapBlendRatioAnalog(pRamVariables.RearO2Volts);			
-		break;	
-								
+		break;
+
 		case MapBlendingInputModeMAF:
 			UpdateMapBlendRatioAnalog(pRamVariables.MAFSensorVolts);			
-		break;	
-			
+		break;
+
 		default:
 			pRamVariables.MapBlendRatio = DefaultMapBlendRatio;
 		break;
 	}
-	
+
 ///***************
 /// MAP Switching
 ///***************
-	
+
 	switch(pRamVariables.MapSwitchingInputMode)
 	{
 		case MapSwitchingInputModeUndefined:
 		break;
-		
+
 		#ifdef pSiDrive
 		case MapSwitchingInputModeSiDrive:
 			MapSwitchSiDriveCheck();
 			break;
 		#endif
-		
+
 		case MapSwitchingInputModeTGVLeft:
 			MapSwitchThresholdCheck(pRamVariables.TGVLeftVolts);
 			break;
-		
+
 		case MapSwitchingInputModeTGVRight:
 			MapSwitchThresholdCheck(pRamVariables.TGVRightVolts);
 			break;
@@ -91,11 +91,11 @@ void InputUpdate()//TODO: put on SD branch
 		case MapSwitchingInputModeRearO2:
 			MapSwitchThresholdCheck(pRamVariables.RearO2Volts);
 			break;
-			
+
 		case MapSwitchingInputModeMAF:
 			MapSwitchThresholdCheck(pRamVariables.MAFSensorVolts);
 			break;
-					
+
 		default:
 		pRamVariables.MapSwitch = DefaultMapSwitch;
 		break;
@@ -109,6 +109,12 @@ void InputUpdate()//TODO: put on SD branch
 	{
 		case WideBandLambdaInputModeUndefined:
 		break;
+		
+#if CAN_HACKS		
+		case WideBandLambdaInputModeZT3CAN:
+			UpdateWideBandLambdaZT3CAN(pRamVariables.ZT3LambdaCAN,pRamVariables.ZT3StatusCAN);
+		break;
+#endif		
 		case WideBandLambdaInputModeTGVLeft:
 			UpdateWideBandLambdaInput(pRamVariables.TGVLeftVolts);
 		break;
@@ -153,7 +159,64 @@ void InputUpdate()//TODO: put on SD branch
 		default:
 		break;
 	}
+	
+	
+#if OILPRESSURE_HACKS	
+///*********************
+/// Oil Pressure Input
+///*********************
 
+	switch(pRamVariables.OilPressureInputMode)
+	{
+		case OilPressureInputModeUndefined:
+		break;
+		case OilPressureInputModeTGVLeft:
+			UpdateOilPressureInput(pRamVariables.TGVLeftVolts);
+		break;
+		case OilPressureInputModeTGVRight:
+			UpdateOilPressureInput(pRamVariables.TGVRightVolts);
+		break;
+		case OilPressureInputModeRearO2:
+			UpdateOilPressureInput(pRamVariables.RearO2Volts);
+		break;
+		
+		case OilPressureInputModeMAF:
+			UpdateOilPressureInput(pRamVariables.MAFSensorVolts);
+		break;
+		
+		default:
+		break;
+	}
+	
+#endif
+#if OILTEMP_HACKS
+///*********************
+/// Oil Temperature Input
+///*********************
+
+	switch(pRamVariables.OilTemperatureInputMode)
+	{
+		case OilTemperatureInputModeUndefined:
+		break;
+		case OilTemperatureInputModeTGVLeft:
+			UpdateOilTemperatureInput(pRamVariables.TGVLeftVolts);
+		break;
+		case OilTemperatureInputModeTGVRight:
+			UpdateOilTemperatureInput(pRamVariables.TGVRightVolts);
+		break;
+		case OilTemperatureInputModeRearO2:
+			UpdateOilTemperatureInput(pRamVariables.RearO2Volts);
+		break;
+		
+		case OilTemperatureInputModeMAF:
+			UpdateOilTemperatureInput(pRamVariables.MAFSensorVolts);
+		break;
+		
+		default:
+		break;
+	}
+
+#endif
 
 }
 

@@ -52,7 +52,6 @@ void CelFlashStart(unsigned char CelFlashes, unsigned char Speed, unsigned char 
 	
 void CelFlash()
 {	
-	
 	// Check for existing flash call
 	if(pRamVariables.CelFlashCounter > 0)
 	{
@@ -99,6 +98,7 @@ void CelFlash()
 	//	}
 	//}
 	
+
 ////////////////////////////////
 //KNOCK LIGHT CODE w/ IAM RECALL
 ////////////////////////////////
@@ -107,45 +107,6 @@ void CelFlash()
 if(pRamVariables.ProgModeStatus == ProgModeEnabled)
 {
 #endif
-/*
-	if(*pFBKC <= FBKCHiThreshold && *pEngineLoad > FBKCLoadThreshold) // to-do, use switches and check elsewhere instead.
-	{
-		CelFlashStart(FBKCHiFlashes,FBKCHiFlashSpeed,0,0);
-	}
-	else if(*pFBKC <= FBKCLoThreshold && *pEngineLoad > FBKCLoadThreshold) // to-do, use switches and check elsewhere instead.
-	{
-		CelFlashStart(FBKCLoFlashes,FBKCLoFlashSpeed,0,0);
-	}
-#if !defined(NOAF1RES)
-	else if(*pAf1Res < EGTResistanceThreshold && *pEngineLoad > EGTCelLoadThreshold)// to-do, use switches and check elsewhere instead.
-	{
-		CelFlashStart(EGTFlashes,EGTFlashSpeed,0,0);
-	}
-#endif
-	else if (*pCoolantTemp > ECTFlashThreshold) // to-do, use switches and check elsewhere instead.
-	{
-		CelFlashStart(ECTFlashes,ECTFlashSpeed,64,0);
-	}
-	else if(IAM < IAMFlashThreshold) // to-do, use switches and check elsewhere instead.
-	{
-		CelFlashStart(IAMFlashes,IAMFlashSpeed,64,0);
-	}
-	else if(pRamVariables.MapBlendOutOfRangeSwitch == 1)
-	{
-		CelFlashStart(MapBlendFlashes,MapBlendFlashSpeed,32,0);		
-	}
-	else if(pRamVariables.LeanBoostSwitch == 1)
-	{
-		CelFlashStart(LeanBoostFlashes,LeanBoostFlashSpeed,32,0);		
-	}
-	else if(pRamVariables.FuelPressureDeltaSwitch == 1)
-	{
-		CelFlashStart(FuelPressureDeltaFlashes,FuelPressureDeltaFlashSpeed,32,0);		
-	}	
-
-*/
-
-
 	if(pRamVariables.FailSafeFBKCHiSwitch == 1)
 	{
 		CelFlashStart(FBKCHiFlashes,FBKCHiFlashSpeed,0,0);
@@ -180,11 +141,22 @@ if(pRamVariables.ProgModeStatus == ProgModeEnabled)
 	{
 		CelFlashStart(FuelPressureDeltaFlashes,FuelPressureDeltaFlashSpeed,32,0);		
 	}
+#if OILPRESSURE_HACKS
+	else if(pRamVariables.FailSafeOilPressureSwitch == 1)
+	{
+		CelFlashStart(OilPressureFlashes,OilPressureFlashSpeed,32,0);		
+	}
+#endif
+#if OILTEMP_HACKS
+	else if(pRamVariables.FailSafeOilTemperatureSwitch == 1)
+	{
+		CelFlashStart(OilTemperatureFlashes,OilTemperatureFlashSpeed,32,0);		
+	}
+#endif
 	else if(pRamVariables.FailSafeInjectorDutyCycleSwitch ==1)
 	{
 		CelFlashStart(InjectorDutyCycleFlashes,InjectorDutyCycleFlashSpeed,32,0);		
 	}	
-
 
 #if PROG_MODE
 }

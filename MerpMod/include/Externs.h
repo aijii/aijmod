@@ -130,9 +130,23 @@ void UpdateMapBlendRatioCANBus(unsigned char ethanolContent, unsigned char ethan
 void MapSwitchThresholdCheck(float input) ROMCODE;
 void UpdateFuelPressureInput(float InputVoltage) ROMCODE;
 void FuelPressureDeltaCount() ROMCODE;
+#if OILPRESSURE_HACKS
+void OilPressureCount() ROMCODE;
+void UpdateOilPressureInput(float InputVoltage) ROMCODE;
+#endif
+#if OILTEMP_HACKS
+void OilTemperatureCount() ROMCODE;
+void UpdateOilTemperatureInput(float InputVoltage) ROMCODE;
+#endif 
 void UpdateWideBandLambdaInput(float InputVoltage) ROMCODE;
+#if CAN_HACKS
+void UpdateWideBandLambdaZT3CAN(float sensorLambda, unsigned char sensorStatus) ROMCODE;
+#endif
 void LeanBoostCount() ROMCODE;
 void UpdateFailSafes() ROMCODE;
+#if AUXOUT_HACKS
+void UpdateAuxilliaryOutputs() ROMCODE;
+#endif
 
 //////////////////////////
 //Dynamic RAM Tuning
@@ -341,9 +355,32 @@ extern unsigned char CoolantTempFailSafeValetModeEnable;
 extern unsigned char FBKCHiFailSafeValetModeEnable;
 extern unsigned char LeanBoostFailSafeValetModeEnable;
 extern unsigned char FuelPressureDeltaFailSafeValetModeEnable;
-extern unsigned char InjectorDutyCycleFailSafeValetModeEnable;
+#if OILPRESSURE_HACKS
+extern unsigned char OilPressureFailSafeValetModeEnable;
+#endif
+#if OILTEMP_HACKS
+extern unsigned char OilTemperatureFailSafeValetModeEnable;
+#endif
 
+extern unsigned char InjectorDutyCycleFailSafeValetModeEnable;
 extern unsigned char UseInjectorLatency;
+
+#if AUXOUT_HACKS
+extern unsigned char exhaustCutoutDelay;
+
+extern TableSubSet ExhaustCutoutTableSet;
+extern ThreeDTable ExhaustCutoutTable1i;
+extern ThreeDTable ExhaustCutoutTable1s;
+extern ThreeDTable ExhaustCutoutTable1ss;
+extern float EC_COLS[];
+extern float EC_ROWS[]; 
+extern unsigned char ECi_DATA[];
+extern unsigned char ECs_DATA[];
+extern unsigned char ECss_DATA[];
+
+
+#endif
+
 
 extern float RPMLockWGDC;
 extern float ThrottleLockWGDC;
@@ -400,6 +437,16 @@ extern unsigned char LeanBoostFlashSpeed;
 extern unsigned char LeanBoostFlashes;
 extern unsigned char FuelPressureDeltaFlashSpeed;
 extern unsigned char FuelPressureDeltaFlashes;
+#if OILPRESSURE_HACKS
+extern unsigned char OilPressureFlashSpeed;
+extern unsigned char OilPressureFlashes;
+extern float OilPressureTriggerMinRPM;
+#endif
+#if OILTEMP_HACKS
+extern unsigned char OilTemperatureFlashSpeed;
+extern unsigned char OilTemperatureFlashes;
+extern float OilTemperatureTriggerMinRPM;
+#endif
 extern float FuelPressureTriggerMinRPM;
 extern unsigned char InjectorDutyCycleFlashSpeed;
 extern unsigned char InjectorDutyCycleFlashes;
@@ -459,14 +506,8 @@ extern unsigned char cmDTpos[];
 extern float cmDTscale[];
 extern float cmDToffset[];
 
-//extern TwoDTable FuelPressureTable;
-//void updateFuelPressure(unsigned short rawVoltage);
-//void raceGradeKeyPadCallback(unsigned char* data) ROMCODE;
-//void canCallbackRamTune(unsigned char* data) ROMCODE;
-//void canCallbackAEMwideband(unsigned char* data) ROMCODE;
-//void canCallbackMK3e85Packet(unsigned char* data) ROMCODE;
-
-void canCallbackECAPacket(unsigned char* data) ROMCODE;
+void canCallbackECA2Packet(unsigned char* data) ROMCODE;
+void canCallbackZT3Packet(unsigned char* data) ROMCODE;
 
 #endif
 
@@ -480,23 +521,6 @@ extern unsigned char Licensee[];
 extern unsigned char DefaultMapSwitch;
 extern float DefaultMapBlendRatio;
 
-
-
-/*
-extern float LeftTGVInputSmoothingFactor;
-extern float RightTGVInputSmoothingFactor;
-
-extern float LeftTGVInputMultiplier;
-extern float RightTGVInputMultiplier;
-extern float RearO2InputMultiplier;
-
-extern float LeftTGVInputOffset;
-extern float RightTGVInputOffset;
-extern float RearO2InputOffset;
-
-extern float LeftTGVInputThreshold;
-extern float RightTGVInputThreshold;
-*/
 extern float BlendInputMinimumVolts;
 extern float BlendInputMaximumVolts;
 extern unsigned char MapBlendFailSafe;
@@ -535,7 +559,25 @@ extern unsigned char WideBandLambdaInputMode;
 extern unsigned char FuelPressureInputMode;
 extern float WidebandSensorSmoothingFactor;
 extern float FuelPressureSensorSmoothingFactor;
+#if OILPRESSURE_HACKS
+extern unsigned char OilPressureInputMode;
+extern float OilPressureSensorSmoothingFactor;
+extern unsigned short OilPressureDelay;
+extern float OilPressureThreshold;
+extern TwoDTable OilPressureScaling;
+extern float OILPRESSURE_SCALING_ROWS[];
+extern short OILPRESSURE_SCALING_DATA[];
+#endif
+#if OILTEMP_HACKS
+extern unsigned char OilTemperatureInputMode;
+extern float OilTemperatureSensorSmoothingFactor;
+extern unsigned short OilTemperatureDelay;
+extern float OilTemperatureThreshold;
+extern TwoDTable OilTemperatureScaling;
+extern float OILTEMPERATURE_SCALING_ROWS[];
+extern float OILTEMPERATURE_SCALING_DATA[];
 
+#endif
 extern unsigned short LeanBoostDelay;
 extern float LeanBoostAFRThreshold;
 extern float LeanBoostMRPThreshold;

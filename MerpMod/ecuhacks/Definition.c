@@ -201,12 +201,12 @@ DEFINERAMVAR("MerpMod Ram Hole Scanner Stack Pointer",ScannedStackPointer,"uint3
 #endif
 
 #if PROG_MODE
-DEFINERAMVAR("MerpMod Prog Mode Status",ProgModeStatus,"uint8","E");
-DEFINERAMVAR("MerpMod Prog Mode Current Mode",ProgModeCurrentMode,"uint8","E");
-DEFINERAMVAR("MerpMod Prog Mode Selected Value Flash",ProgModeValueFlashes,"uint8","E");
-DEFINERAMVAR("MerpMod Prog Mode Value",ProgModeValue,"float","E");
-DEFINERAMVAR("MerpMod Valet Mode",ValetMode,"uint8","E");
-DEFINERAMVAR("MerpMod Hard Reset Flag",HardResetFlag,"uint8","E");
+DEFINERAMVAR("MerpMod Prog Mode Status",ProgModeStatus,"uint8","E1518");
+DEFINERAMVAR("MerpMod Prog Mode Current Mode",ProgModeCurrentMode,"uint8","E1519");
+DEFINERAMVAR("MerpMod Prog Mode Selected Value Flash",ProgModeValueFlashes,"uint8","E1520");
+DEFINERAMVAR("MerpMod Prog Mode Value",ProgModeValue,"float","E1521");
+DEFINERAMVAR("MerpMod Valet Mode",ValetMode,"uint8","E1522");
+DEFINERAMVAR("MerpMod Hard Reset Flag",HardResetFlag,"uint8","E1601");
 #endif
 
 DEFIDA1D("ECU Identifier",dEcuId);
@@ -261,13 +261,13 @@ DEFINERAMVAR("LC Spark Events Cut From",SparkEventsX,"uint8","E");
 #endif
 
 #if SD_HACKS
-DEFINERAMVAR("MerpMod SD Mode Switch",MafMode,"uint8","E");
-DEFINERAMVAR("MerpMod SD Volumetric Efficiency",VolumetricEfficiency,"float","E");
-DEFINERAMVAR("MerpMod SD Airflow Final Output",MafFromSpeedDensity,"float","E");
-DEFINERAMVAR("MerpMod SD Airflow Maf Sensor",MafFromSensor,"float","E");
-DEFINERAMVAR("MerpMod SD Atmospheric Compensation",AtmosphericCompensation,"float","E");
-DEFINERAMVAR("MerpMod SD Blending Ratio",SDMafBlendRatio,"float","E");
-DEFINERAMVAR("MerpMod SD Airflow Blending",SDMafFromBlend,"float","E");
+DEFINERAMVAR("MerpMod SD Mode Switch",MafMode,"uint8","E1100");
+DEFINERAMVAR("MerpMod SD Volumetric Efficiency",VolumetricEfficiency,"float","E1101");
+DEFINERAMVAR("MerpMod SD Airflow Final Output",MafFromSpeedDensity,"float","E1102");
+DEFINERAMVAR("MerpMod SD Airflow Maf Sensor",MafFromSensor,"float","E1106");
+DEFINERAMVAR("MerpMod SD Atmospheric Compensation",AtmosphericCompensation,"float","E1103");
+DEFINERAMVAR("MerpMod SD Blending Ratio",SDMafBlendRatio,"float","E1104");
+DEFINERAMVAR("MerpMod SD Airflow Blending",SDMafFromBlend,"float","E1105");
 DEFNEW3D("Volumetric Efficiency Table 1",VolumetricEfficiencyTable1);
 
 #if SWITCH_HACKS
@@ -394,7 +394,23 @@ DEFNEW1D("Wideband Sensor Input Mode",WideBandLambdaInputMode);
 DEFNEW1D("Fuel Pressure Sensor Input Mode",FuelPressureInputMode);
 DEFNEW1D("Base Fuel Pressure",BaseFuelPressure);
 
+
+#if OILPRESSURE_HACKS
+DEFNEW2D("Oil Pressure Sensor Scaling",OilPressureScaling);
+DEFNEW1D("Oil Pressure Sensor Smoothing Factor",OilPressureSensorSmoothingFactor);
+DEFNEW1D("Oil Pressure Sensor Input Mode",OilPressureInputMode);
+DEFINERAMVAR("Merpmod Oil Pressure",OilPressure,"float","E");
+DEFINERAMVAR("Merpmod Oil Temperature",OilTemperature,"float","E");
+#endif 
+
+#if OILTEMP_HACKS
+DEFNEW2D("Oil Temperature Sensor Scaling",OilTemperatureScaling);
+DEFNEW1D("Oil Temperature Sensor Smoothing Factor",OilTemperatureSensorSmoothingFactor);
+DEFNEW1D("Oil Temperature Sensor Input Mode",OilTemperatureInputMode);
+#endif
+
 DEFINERAMVAR("Merpmod Fuel Pressure",FuelPressure,"float","E");
+
 DEFINERAMVAR("Merpmod Rear O2 Voltage",RearO2Volts,"float","E");
 DEFINERAMVAR("Merpmod Wideband",WideBandLambda,"float","E");
 DEFINERAMVAR("Merpmod Lean Boost Counter",LeanBoostCounter,"uint16","E");
@@ -413,10 +429,18 @@ DEFNEW3D("Map Blending Startup Enrichment Multiplier",StartupEnrichMultiplier);
 #endif
 
 #if CAN_HACKS
+
+//Zeitronix ECA-2 CAN Bus
 DEFINERAMVAR("Merpmod CANBus ECA Update Counter",CANBusECAUpdateCounter,"uint16","E");
 DEFINERAMVAR("Merpmod Trigger CANBus ECA Update",FailSafeCANBusECAUpdateSwitch,"uint8","E");
-DEFINERAMVAR("Merpmod Trigger Raw Ethanol Value",rEthanolCAN,"uint8","E");
-DEFINERAMVAR("Merpmod Trigger Scaled Temp Value",tFuelCAN,"uint8","E");
+
+DEFINERAMVAR("Merpmod CANBus ECA-2 Raw Ethanol Content",ECA2EthanolContentCAN,"uint8","E");
+DEFINERAMVAR("Merpmod CANBus ECA-2 Raw Fuel Temp",ECA2FuelTemperatureCAN,"uint8","E");
+
+//Zeitronix ZT-3 Wideband CAN Bus
+DEFINERAMVAR("Merpmod CANBus ZT3 Raw Lambda",ZT3LambdaCAN,"float","E");
+DEFINERAMVAR("Merpmod CANBus ZT3 Raw AFR",ZT3AFRCAN,"uint8","E");
+DEFINERAMVAR("Merpmod CANBus ZT3 Sensor Status",ZT3StatusCAN,"uint8","E");
 
 #endif
 
@@ -449,12 +473,25 @@ DEFNEW1D("Failsafe Valet Mode Trigger - ECT",CoolantTempFailSafeValetModeEnable)
 DEFNEW1D("Failsafe Valet Mode Trigger - Severe Knock",FBKCHiFailSafeValetModeEnable);
 DEFNEW1D("Failsafe Valet Mode Trigger - Lean Boost",LeanBoostFailSafeValetModeEnable);
 DEFNEW1D("Failsafe Valet Mode Trigger - Fuel Pressure Delta",FuelPressureDeltaFailSafeValetModeEnable);
+#if OILPRESSURE_HACKS
+DEFNEW1D("Failsafe Valet Mode Trigger - Oil Pressure",OilPressureFailSafeValetModeEnable);
+#endif
+#if OILTEMP_HACKS
+DEFNEW1D("Failsafe Valet Mode Trigger - Oil Temperature",OilTemperatureFailSafeValetModeEnable);
+#endif
 DEFNEW1D("Failsafe Valet Mode Trigger - Injector Duty Cycle",InjectorDutyCycleFailSafeValetModeEnable);
 DEFNEW1D("Injector Pulse Width Calculation",UseInjectorLatency);
 
 #if DUAL_FRONTO2_HACKS
 DEFNEW2D("Front Oxygen Sensor Scaling Table 1",FrontOxygenSensorScaling1);
 DEFNEW2D("Front Oxygen Sensor Scaling Table 2",FrontOxygenSensorScaling2);
+#endif
+
+#if AUXOUT_HACKS
+DEFNEW3D("Exhaust Cutout Valve Output Table Intelligent",ExhaustCutoutTable1i);
+DEFNEW3D("Exhaust Cutout Valve Output Table Sport",ExhaustCutoutTable1s);
+DEFNEW3D("Exhaust Cutout Valve Output Table Sport Sharp",ExhaustCutoutTable1ss);
+DEFINERAMVAR("MerpMod Auxilliary Output - Exhaust Cutout",exhaustCutoutOutput,"uint8","E");
 #endif
 
 #else
@@ -496,10 +533,17 @@ DEFNEW1D("Lean Boost Flash Count",LeanBoostFlashes);
 DEFNEW1D("Lean Boost AFR Threshold",LeanBoostAFRThreshold);
 DEFNEW1D("Lean Boost MRP Threshold",LeanBoostMRPThreshold);
 DEFNEW1D("Lean Boost Delay",LeanBoostDelay);
-DEFNEW1D("Fuel Pressure Delta Flash Speed",FuelPressureDeltaFlashSpeed);
-DEFNEW1D("Fuel Pressure Delta Flash Count",FuelPressureDeltaFlashes);
+DEFNEW1D("Differential Fuel Pressure Flash Speed",FuelPressureDeltaFlashSpeed);
+DEFNEW1D("Differential Fuel Pressure Flash Count",FuelPressureDeltaFlashes);
 
-DEFINERAMVAR("Blabla",FailSafeFBKCHiSwitch,"uint8","E");
+#if OILPRESSURE_HACKS
+DEFNEW1D("Oil Pressure Flash Speed",OilPressureFlashSpeed);
+DEFNEW1D("Oil Pressure Flash Count",OilPressureFlashes);
+#endif
+#if OILTEMP_HACKS
+DEFNEW1D("Oil Temperature Flash Speed",OilTemperatureFlashSpeed);
+DEFNEW1D("Oil Temperature Flash Count",OilTemperatureFlashes);
+#endif
 DEFINERAMVAR("Merpmod Trigger Low FBKC",FailSafeFBKCLoSwitch,"uint8","E");
 #if !defined(NOAF1RES)
 DEFINERAMVAR("Merpmod Trigger Exhaust Gas Temperature",FailSafeEGTSwitch,"uint8","E");
@@ -511,10 +555,20 @@ DEFINERAMVAR("Merpmod Trigger Lean Boost",FailSafeLeanBoostSwitch,"uint8","E");
 DEFINERAMVAR("Merpmod Trigger Fuel Pressure Delta",FailSafeFuelPressureDeltaSwitch,"uint8","E");
 DEFINERAMVAR("Merpmod Trigger Injector Duty Cycle",FailSafeInjectorDutyCycleSwitch,"uint8","E");
 DEFINERAMVAR("Merpmod Action Fuel Additive Active",FailSafeFuelAdditiveSwitch,"uint8","E");
+
 DEFNEW1D("Fuel Pressure Delta Delay",FuelPressureDeltaDelay);
 DEFNEW1D("Fuel Pressure Delta Threshold",FuelPressureDeltaThreshold);
 DEFNEW1D("Fuel Pressure Delta - Minimum RPM",FuelPressureTriggerMinRPM);
-
+#if OILPRESSURE_HACKS
+DEFNEW1D("Oil Pressure Delay",OilPressureDelay);
+DEFNEW1D("Oil Pressure Threshold",OilPressureThreshold);
+DEFNEW1D("Oil Pressure - Minimum RPM",OilPressureTriggerMinRPM);
+#endif
+#if OILTEMP_HACKS
+DEFNEW1D("Oil Temperature Delay",OilTemperatureDelay);
+DEFNEW1D("Oil Temperature Threshold",OilTemperatureThreshold);
+DEFNEW1D("Oil Temperature - Minimum RPM",OilTemperatureTriggerMinRPM);
+#endif
 
 #ifdef pAf1Res
 DEFNEW1D("EGT AF1 Resistance Threshold",EGTResistanceThreshold);
