@@ -1,6 +1,6 @@
-#define MOD_IDENTIFIER STRI(AZ1G202G.MeRpMoD.Switch.Debug.v01.60.d19.7.14.1214)
-#define MOD_ECUID 9964016013
-#define MOD_DATE 19.7.14.1214
+#define MOD_IDENTIFIER STRI(AZ1G202G.MeRpMoD.Switch.Debug.v01.60.d21.9.17.1401)
+#define MOD_ECUID 9964016014
+#define MOD_DATE 21.9.22.1401
 #include "Switch.h"
 #define MOD_CONFIG Switch
 #define MOD_BUILD Debug

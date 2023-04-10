@@ -48,7 +48,7 @@
 //////////////////////////////
 							//
 #define RAM_PERSIST 0		//
-#define DYN_RAMTUNING 1		//
+#define DYN_RAMTUNING 0		//
 #define RAM_HOLE_SCANNER 0  //
 							//
 //////////////////////////////	

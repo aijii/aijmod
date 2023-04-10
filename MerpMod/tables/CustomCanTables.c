@@ -60,6 +60,11 @@ unsigned long cmDTaddr[cmDTCount] CANDATA = {
 */
 
 
+//640: BBBB FFFF  //boost fuel press 
+//641: cifo Exhaust-ethanol-x-x //temps ethanol
+//650: ECA
+//651: ZT3
+
 unsigned long cmDTaddr[cmDTCount] CANDATA = {
 	(unsigned long)pManifoldRelativePressure, (unsigned long)&pRamVariables.FuelPressureDifferential,
 	(unsigned long)pCoolantTemp,(unsigned long)pIntakeAirTemp,(unsigned long)&pRamVariables.ECA2FuelTemperatureCAN,(unsigned long)&pRamVariables.OilTemperature,
